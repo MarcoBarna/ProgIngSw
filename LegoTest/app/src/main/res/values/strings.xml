@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LegoTest</string>
+    <string name="text">Text</string>
 </resources>
