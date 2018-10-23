@@ -17,7 +17,7 @@ public class MainActivity extends Form
     private ListPicker listPicker1;
     private BluetoothClient BluetoothClient1;
     private Button button;
-    private Button buttonBluethoot;
+    private Button buttonBluetooth;
     private TextView text;
     // $define is where you'll create components, initialize properties and make any calls that
     // you'd put in Screen.Initialize of an App Inventor app
@@ -25,7 +25,7 @@ public class MainActivity extends Form
     {
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
-        buttonBluethoot = findViewById(R.id.buttonBluethoot);
+        buttonBluetooth = findViewById(R.id.buttonBluethoot);
         text = findViewById(R.id.textView);
         listPicker1 = new ListPicker(this);
         listPicker1.Text("Connect");
@@ -36,7 +36,7 @@ public class MainActivity extends Form
                 buttonClicked();
             }
         });
-        buttonBluethoot.setOnClickListener(new View.OnClickListener() {
+        buttonBluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 buttonBluethootClicked();
@@ -50,9 +50,17 @@ public class MainActivity extends Form
         button.setText("Clicked " + numbers + " time" + listPicker1.Selection());
     }
     public void buttonBluethootClicked(){
-        listPicker1.Elements(YailList.makeList(BluetoothClient1.AddressesAndNames()));
-        BluetoothClient1.Connect(listPicker1.Selection());
-        buttonBluethoot.setText(listPicker1.Selection());
+        String macAdress= "00:16:53:61:cb:69 YAO";
+        //BluetoothClient1.AddressesAndNames();
+        //listPicker1.Elements(YailList.makeList(BluetoothClient1.AddressesAndNames()));
+       // BluetoothClient1.Connect(listPicker1.Selection());
+        if (BluetoothClient1.Connect(macAdress)) {
+          buttonBluetooth.setText("Connesso");
+        }
+        else {
+            buttonBluetooth.setText("Non connesso");
+        };
+
     }
 
 }
