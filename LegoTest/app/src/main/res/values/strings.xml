@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LegoTest</string>
     <string name="text">Text</string>
+    <string name="connect">Connect</string>
 </resources>
