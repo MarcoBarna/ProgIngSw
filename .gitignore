@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 
 LegoTest/.idea/gradle.xml
 LegoTest/.idea/misc.xml
 LegoTest/.idea/runConfigurations.xml
+=======
+LegoTest/.idea/
+LegoTest/gradle/
+>>>>>>> 4aab60c15c0b815f7d33aa225e7a106fe2c9e8f7
