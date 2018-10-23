@@ -8,4 +8,4 @@ In fase di costruzione
 
 # Support
 
-Per qualsiasi informazione non esitate a conttatare ad <http://http://optimusprime.altervista.org/>
+Per qualsiasi informazione non esitate a conttatare ad <http://optimusprime.altervista.org/>
