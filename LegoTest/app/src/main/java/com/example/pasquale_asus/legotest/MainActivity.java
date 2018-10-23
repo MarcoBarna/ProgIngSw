@@ -11,7 +11,7 @@ public class MainActivity extends Form
 {
     private Ev3Motors motor1;
     private int numbers = 0;
-    private ListPicker ListPicker1;
+    private ListPicker listPicker1;
     private BluetoothClient BluetoothClient1;
     private Button button;
     // $define is where you'll create components, initialize properties and make any calls that
@@ -20,8 +20,8 @@ public class MainActivity extends Form
     {
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
-        ListPicker1 = new ListPicker(this);
-        ListPicker1.Text("Connect");
+        listPicker1 = new ListPicker(this);
+        listPicker1.Text("Connect");
         BluetoothClient1 = new BluetoothClient(this);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
