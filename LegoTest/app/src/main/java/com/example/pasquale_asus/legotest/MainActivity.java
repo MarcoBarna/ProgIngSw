@@ -68,4 +68,12 @@ public class MainActivity extends Form
         Intent intent = new Intent(this, BtPaired.class);
         startActivity(intent);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String bluetoothValue = data.getStringExtra("bluetooth");
+        TextView textView = findViewById(R.id.textView);
+        textView.setText("." + bluetoothValue + ".");
+    }
 }
