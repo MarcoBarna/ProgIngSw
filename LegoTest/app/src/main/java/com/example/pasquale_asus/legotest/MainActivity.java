@@ -7,7 +7,6 @@ import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Form;
 import com.google.appinventor.components.runtime.ListPicker;
-import com.google.appinventor.components.runtime.util.YailList;
 
 
 public class MainActivity extends Form
@@ -15,7 +14,7 @@ public class MainActivity extends Form
     private Ev3Motors motor1;
     private int numbers = 0;
     private ListPicker listPicker1;
-    private BluetoothClient BluetoothClient1;
+    private BluetoothClient bluetoothClient1;
     private Button button;
     private Button buttonBluetooth;
     private TextView text;
@@ -29,7 +28,7 @@ public class MainActivity extends Form
         text = findViewById(R.id.textView);
         listPicker1 = new ListPicker(this);
         listPicker1.Text("Connect");
-        BluetoothClient1 = new BluetoothClient(this);
+        bluetoothClient1 = new BluetoothClient(this);
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -39,7 +38,7 @@ public class MainActivity extends Form
         buttonBluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonBluethootClicked();
+                buttonBluetoothClicked();
             }
         });
 
@@ -49,12 +48,12 @@ public class MainActivity extends Form
         numbers += 1;
         button.setText("Clicked " + numbers + " time" + listPicker1.Selection());
     }
-    public void buttonBluethootClicked(){
+    public void buttonBluetoothClicked(){
         String macAdress= "00:16:53:61:cb:69 YAO";
-        //BluetoothClient1.AddressesAndNames();
-        //listPicker1.Elements(YailList.makeList(BluetoothClient1.AddressesAndNames()));
-       // BluetoothClient1.Connect(listPicker1.Selection());
-        if (BluetoothClient1.Connect(macAdress)) {
+        //bluetoothClient1.AddressesAndNames();
+        //listPicker1.Elements(YailList.makeList(bluetoothClient1.AddressesAndNames()));
+       // bluetoothClient1.Connect(listPicker1.Selection());
+        if (bluetoothClient1.Connect(macAdress)) {
           buttonBluetooth.setText("Connesso");
         }
         else {
