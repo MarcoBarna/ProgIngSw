@@ -7,6 +7,7 @@ import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Form;
 import com.google.appinventor.components.runtime.ListPicker;
+import com.google.appinventor.components.runtime.TextToSpeech;
 
 
 public class MainActivity extends Form
@@ -52,14 +53,15 @@ public class MainActivity extends Form
         String macAdress= "00:16:53:61:cb:69 YAO";
         //bluetoothClient1.AddressesAndNames();
         //listPicker1.Elements(YailList.makeList(bluetoothClient1.AddressesAndNames()));
-       // bluetoothClient1.Connect(listPicker1.Selection());
+        // bluetoothClient1.Connect(listPicker1.Selection());
+        button.setText(""+bluetoothClient1.AddressesAndNames());
         if (bluetoothClient1.Connect(macAdress)) {
-          buttonBluetooth.setText("Connesso");
+            buttonBluetooth.setText("Connesso");
+            //motor1.BluetoothClient(bluetoothClient1);
         }
         else {
             buttonBluetooth.setText("Non connesso");
-        };
-
+        }
     }
 
 }
