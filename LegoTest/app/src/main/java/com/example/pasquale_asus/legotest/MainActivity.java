@@ -1,4 +1,5 @@
 package com.example.pasquale_asus.legotest;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -46,7 +47,6 @@ public class MainActivity extends Form
                 buttonBluetoothClicked();
             }
         });
-
         motor1 = new Ev3Motors(this);
     }
     public void buttonClicked(){
@@ -60,8 +60,12 @@ public class MainActivity extends Form
             buttonBluetooth.setText("Connesso");
         }
         else {
+            selectPairedBluetooth();
             buttonBluetooth.setText("Non connesso");
         }
     }
-
+    public void selectPairedBluetooth(){
+        Intent intent = new Intent(this, BtPaired.class);
+        startActivity(intent);
+    }
 }
