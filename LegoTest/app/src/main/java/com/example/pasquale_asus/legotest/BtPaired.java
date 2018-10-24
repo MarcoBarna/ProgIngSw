@@ -9,20 +9,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Form;
 import com.google.appinventor.components.runtime.ListPicker;
 
 import java.util.ArrayList;
 
 public class BtPaired extends Form {
+    private BluetoothClient bluetoothClient;
     @Override
     public void $define(){
         setContentView(R.layout.activity_bt_paired);
         final ListView btList= findViewById(R.id.bt_list);
-        final ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("First");
-        arrayList.add("Second");
-        arrayList.add("Third");
+        bluetoothClient = new BluetoothClient(this);
+        final ArrayList<String> arrayList = new ArrayList<>(bluetoothClient.AddressesAndNames());
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         btList.setAdapter(arrayAdapter);
         btList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
