@@ -74,6 +74,6 @@ public class MainActivity extends Form
         super.onActivityResult(requestCode, resultCode, data);
         String bluetoothValue = data.getStringExtra("bluetooth");
         TextView textView = findViewById(R.id.textView);
-        textView.setText("." + bluetoothValue + ".");
+        textView.setText(bluetoothValue);
     }
 }

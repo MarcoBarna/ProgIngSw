@@ -19,7 +19,7 @@ public class BtPaired extends Form {
     public void $define(){
         setContentView(R.layout.activity_bt_paired);
         final ListView btList= findViewById(R.id.bt_list);
-        ArrayList<String> arrayList = new ArrayList<>();
+        final ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("First");
         arrayList.add("Second");
         arrayList.add("Third");
@@ -29,7 +29,7 @@ public class BtPaired extends Form {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent();
-                String string = new String("ciao sono YAO");
+                String string = new String(arrayList.get(i));
                 intent.putExtra("bluetooth", string);
                 setResult(0, intent);
                 finish();
