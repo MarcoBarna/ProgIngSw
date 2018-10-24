@@ -66,7 +66,7 @@ public class MainActivity extends Form
     }
     public void selectPairedBluetooth(){
         Intent intent = new Intent(this, BtPaired.class);
-        startActivity(intent);
+        startActivityForResult(intent, 0);
     }
 
     @Override
