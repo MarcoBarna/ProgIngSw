@@ -65,9 +65,9 @@ public class MainActivity extends Form
         }
     }
     public List<String> deleteDevicePaired(List<String> a){
-        for(int i = 0; i< a.size(); i++){
-            if(bluetoothClient1.IsDevicePaired(a.get(i))){
-                a.remove(i);
+        for(String elem: a){
+            if(bluetoothClient1.IsDevicePaired(elem)){
+                a.remove(elem);
             }
         }
         return a;
