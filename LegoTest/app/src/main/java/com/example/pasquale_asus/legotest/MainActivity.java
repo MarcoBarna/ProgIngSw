@@ -55,22 +55,13 @@ public class MainActivity extends Form
     }
     public void buttonBluetoothClicked(){
         String macAdress= "00:16:53:61:cb:69 YAO";
-        List<String> deviceToChoose = deleteDevicePaired(bluetoothClient1.AddressesAndNames());
-        button.setText("" + deviceToChoose);
+        button.setText("" + bluetoothClient1.AddressesAndNames());
         if (bluetoothClient1.Connect(macAdress)) {
             buttonBluetooth.setText("Connesso");
         }
         else {
             buttonBluetooth.setText("Non connesso");
         }
-    }
-    public List<String> deleteDevicePaired(List<String> a){
-        for(String elem: a){
-            if(bluetoothClient1.IsDevicePaired(elem)){
-                a.remove(elem);
-            }
-        }
-        return a;
     }
 
 }
