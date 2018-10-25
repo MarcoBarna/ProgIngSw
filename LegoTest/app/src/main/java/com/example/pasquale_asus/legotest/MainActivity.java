@@ -1,21 +1,13 @@
 package com.example.pasquale_asus.legotest;
 import android.content.Intent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Form;
 import com.google.appinventor.components.runtime.ListPicker;
-import com.google.appinventor.components.runtime.TextToSpeech;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 
 public class MainActivity extends Form
@@ -25,42 +17,55 @@ public class MainActivity extends Form
     private ListPicker listPicker1;
     private BluetoothClient bluetoothClient1;
     private Button button;
-    private Button buttonBluetooth;
+    private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
     private String bluetoothValue;
     // $define is where you'll create components, initialize properties and make any calls that
     // you'd put in Screen.Initialize of an App Inventor app
     protected void $define()
     {
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.button);
-        buttonBluetooth = findViewById(R.id.buttonBluethoot);
-        buttonBluetooth.setText("Connetti");
+
         listPicker1 = new ListPicker(this);
         listPicker1.Text("Connect");
         bluetoothClient1 = new BluetoothClient(this);
+
+        button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 buttonClicked();
             }
         });
-        buttonBluetooth.setOnClickListener(new View.OnClickListener() {
+
+        buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
+        buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonBluetoothClicked();
+                selectPairedBluetooth();
             }
         });
+
+        buttonBluetoothDisconnect = findViewById(R.id.buttonBluetoothDisconnect);
+        buttonBluetoothDisconnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                disconnectBluetooth();
+            }
+        });
+        buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
+
         motor1 = new Ev3Motors(this);
     }
     public void buttonClicked(){
         numbers += 1;
         button.setText("Clicked " + numbers + " time");
     }
-    public void buttonBluetoothClicked(){
-        selectPairedBluetooth();
-    }
     public void selectPairedBluetooth(){
         Intent intent = new Intent(this, BtPaired.class);
         startActivityForResult(intent, 0);
+    }
+
+    public void disconnectBluetooth(){
+        //Insert what to do when Bluetooth gets disconnected
     }
 
     @Override
@@ -69,12 +74,16 @@ public class MainActivity extends Form
         TextView textView = findViewById(R.id.textView);
         if (resultCode == RESULT_OK) {
             bluetoothValue = data.getStringExtra("bluetooth");
-            textView.setText(bluetoothValue + " è connesso");
-            if(bluetoothClient1.Connect(bluetoothValue)){
-                buttonBluetooth.setText("Disconnetti");
+            //textView.setText(bluetoothValue.subSequence(0,17));
+            if(bluetoothClient1.Connect("" + bluetoothValue.subSequence(0,17))){
+                buttonBluetoothConnect.setVisibility(View.INVISIBLE);
+                buttonBluetoothDisconnect.setVisibility(View.VISIBLE);
+                textView.setText("Connected");
             }
             else{
-                buttonBluetooth.setText("Connetti");
+                buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
+                buttonBluetoothConnect.setVisibility(View.VISIBLE);
+                textView.setText("Disconnected");
             }
         }
         else
