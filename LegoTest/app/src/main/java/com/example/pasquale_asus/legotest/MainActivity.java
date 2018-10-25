@@ -26,6 +26,7 @@ public class MainActivity extends Form
     private BluetoothClient bluetoothClient1;
     private Button button;
     private Button buttonBluetooth;
+    private String bluetoothValue;
     // $define is where you'll create components, initialize properties and make any calls that
     // you'd put in Screen.Initialize of an App Inventor app
     protected void $define()
@@ -33,6 +34,7 @@ public class MainActivity extends Form
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
         buttonBluetooth = findViewById(R.id.buttonBluethoot);
+        buttonBluetooth.setText("Connetti");
         listPicker1 = new ListPicker(this);
         listPicker1.Text("Connect");
         bluetoothClient1 = new BluetoothClient(this);
@@ -54,15 +56,7 @@ public class MainActivity extends Form
         button.setText("Clicked " + numbers + " time");
     }
     public void buttonBluetoothClicked(){
-        String macAdress= "00:16:53:61:cb:69 YAO";
-        button.setText("" + bluetoothClient1.AddressesAndNames());
-        if (bluetoothClient1.Connect(macAdress)) {
-            buttonBluetooth.setText("Connesso");
-        }
-        else {
-            selectPairedBluetooth();
-            buttonBluetooth.setText("Non connesso");
-        }
+        selectPairedBluetooth();
     }
     public void selectPairedBluetooth(){
         Intent intent = new Intent(this, BtPaired.class);
@@ -71,9 +65,18 @@ public class MainActivity extends Form
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        String bluetoothValue = data.getStringExtra("bluetooth");
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(bluetoothValue);
+        if (data != null) {
+            super.onActivityResult(requestCode, resultCode, data);
+            bluetoothValue = data.getStringExtra("bluetooth");
+            TextView textView = findViewById(R.id.textView);
+            textView.setText(bluetoothValue + " è connesso");
+            if(bluetoothClient1.Connect(bluetoothValue)){
+                buttonBluetooth.setText("Disconnetti");
+            }
+            else{
+                buttonBluetooth.setText("Connetti");
+            }
+        }
+
     }
 }
