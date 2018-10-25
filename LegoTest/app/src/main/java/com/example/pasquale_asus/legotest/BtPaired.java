@@ -31,10 +31,17 @@ public class BtPaired extends Form {
                 Intent intent = new Intent();
                 String string = new String(arrayList.get(i));
                 intent.putExtra("bluetooth", string);
-                setResult(0, intent);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
         
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED, intent);
+        finish();
     }
 }

@@ -65,10 +65,10 @@ public class MainActivity extends Form
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (data != null) {
-            super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+        TextView textView = findViewById(R.id.textView);
+        if (resultCode == RESULT_OK) {
             bluetoothValue = data.getStringExtra("bluetooth");
-            TextView textView = findViewById(R.id.textView);
             textView.setText(bluetoothValue + " è connesso");
             if(bluetoothClient1.Connect(bluetoothValue)){
                 buttonBluetooth.setText("Disconnetti");
@@ -77,6 +77,7 @@ public class MainActivity extends Form
                 buttonBluetooth.setText("Connetti");
             }
         }
-
+        else
+            textView.setText("CANCELED");
     }
 }
