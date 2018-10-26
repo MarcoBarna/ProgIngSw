@@ -12,11 +12,7 @@ import com.google.appinventor.components.runtime.ListPicker;
 
 public class MainActivity extends Form
 {
-    private Ev3Motors motor1;
-    private int numbers = 0;
-    private ListPicker listPicker1;
     private BluetoothClient bluetoothClient1;
-    private Button button;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
     private String bluetoothValue;
     // $define is where you'll create components, initialize properties and make any calls that
@@ -24,18 +20,7 @@ public class MainActivity extends Form
     protected void $define()
     {
         setContentView(R.layout.activity_main);
-
-        listPicker1 = new ListPicker(this);
-        listPicker1.Text("Connect");
         bluetoothClient1 = new BluetoothClient(this);
-
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                buttonClicked();
-            }
-        });
-
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,13 +37,8 @@ public class MainActivity extends Form
             }
         });
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
+    }
 
-        motor1 = new Ev3Motors(this);
-    }
-    public void buttonClicked(){
-        numbers += 1;
-        button.setText("Clicked " + numbers + " time");
-    }
     public void selectPairedBluetooth(){
         Intent intent = new Intent(this, BtPaired.class);
         startActivityForResult(intent, 0);
@@ -76,17 +56,23 @@ public class MainActivity extends Form
             bluetoothValue = data.getStringExtra("bluetooth");
             //textView.setText(bluetoothValue.subSequence(0,17));
             if(bluetoothClient1.Connect("" + bluetoothValue.subSequence(0,17))){
-                buttonBluetoothConnect.setVisibility(View.INVISIBLE);
-                buttonBluetoothDisconnect.setVisibility(View.VISIBLE);
+                visibilityBtConnected();
                 textView.setText("Connected");
             }
             else{
-                buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
-                buttonBluetoothConnect.setVisibility(View.VISIBLE);
+                visibilityBtDisconnected();
                 textView.setText("Disconnected");
             }
         }
         else
             textView.setText("CANCELED");
+    }
+    public void visibilityBtConnected(){
+        buttonBluetoothConnect.setVisibility(View.INVISIBLE);
+        buttonBluetoothDisconnect.setVisibility(View.VISIBLE);
+    }
+    public void visibilityBtDisconnected(){
+        buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
+        buttonBluetoothConnect.setVisibility(View.VISIBLE);
     }
 }
