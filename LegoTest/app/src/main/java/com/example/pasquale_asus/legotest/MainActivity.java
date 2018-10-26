@@ -46,6 +46,8 @@ public class MainActivity extends Form
 
     public void disconnectBluetooth(){
         //Insert what to do when Bluetooth gets disconnected
+        bluetoothClient1.Disconnect();
+        visibilityBtDisconnected();
     }
 
     @Override
