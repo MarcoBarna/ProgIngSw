@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyBluetoothTest</string>
+    <string name="askBluetooth">Enable Bluetooth</string>
+    <string name="bluetoothSupported">Bluetooth is Supported.</string>
+    <string name="bluetoothAndEnabled">"\nand it's Enabled"</string>
+    <string name="bluetoothButNotEnabled">"\nbut it's not Enabled</string>
+    <string name="bluetoothNotSupported">Bluetooth is not Supported</string>
+    <string name="bluetoothAsking">Bluetooth is not Enabled, asking...</string>
+    <string name="bluetoothAlreadyEnabled">Bluetooth is already Enabled.</string>
+    <string name="bluetoothHasBeenEnabled">Bluetooth has been Enabled.</string>
+    <string name="bluetoothFailedWTF">Bluetooth not Enabled, WHAT?</string>
+    <string name="bluetoothRequestCANCELED">Bluetooth request has been CANCELED.</string>
+    <string name="bluetoothReceiverON">You have turned Bluetooth ON.</string>
+    <string name="bluetoothReceiverOFF">You have turned Bluetooth OFF</string>
+    <string name="bluetoothReceiverTurningON">Bluetooth is turning ON</string>
+    <string name="bluetoothReceiverTurningOFF">Bluetooth is turning OFF</string>
+
+</resources>
