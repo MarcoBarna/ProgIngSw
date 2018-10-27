@@ -5,16 +5,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.appinventor.components.runtime.BluetoothClient;
+import com.google.appinventor.components.runtime.Ev3Commands;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Form;
-import com.google.appinventor.components.runtime.ListPicker;
 
 
 public class MainActivity extends Form
 {
     private BluetoothClient bluetoothClient1;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
-    private String bluetoothValue;
+    private Ev3Motors ev3Motors;
     // $define is where you'll create components, initialize properties and make any calls that
     // you'd put in Screen.Initialize of an App Inventor app
     protected void $define()
@@ -37,6 +37,8 @@ public class MainActivity extends Form
             }
         });
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
+        ev3Motors = new Ev3Motors(this);
+        ev3Motors.MotorPorts("BC");
     }
 
     public void selectPairedBluetooth(){
@@ -55,11 +57,16 @@ public class MainActivity extends Form
         super.onActivityResult(requestCode, resultCode, data);
         TextView textView = findViewById(R.id.textView);
         if (resultCode == RESULT_OK) {
-            bluetoothValue = data.getStringExtra("bluetooth");
-            //textView.setText(bluetoothValue.subSequence(0,17));
-            if(bluetoothClient1.Connect("" + bluetoothValue.subSequence(0,17))){
+            String userBluetoothDevice = data.getStringExtra("bluetooth");
+            String macAddressToConnect = (userBluetoothDevice.subSequence(0,17)).toString();
+            String uuidToConnect = (userBluetoothDevice.subSequence(18,userBluetoothDevice.length())).toString();
+            //bluetoothClient1.Connect(macAddressToConnect);
+            bluetoothClient1.ConnectWithUUID(macAddressToConnect, uuidToConnect);
+            if(bluetoothClient1.IsConnected()){
                 visibilityBtConnected();
                 textView.setText("Connected");
+                ev3Motors.BluetoothClient(bluetoothClient1);
+                ev3Motors.RotateIndefinitely(10);
             }
             else{
                 visibilityBtDisconnected();
