@@ -6,31 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/bluetoothStatus"
+    <Button
+        android:id="@+id/buttonAskBluetooth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toTopOf="@+id/askBluetooth"
+        android:onClick="askBluetooth"
+        android:text="@string/askBluetooth"
+        app:layout_constraintBottom_toTopOf="@+id/bluetoothStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/askBluetooth"
+    <TextView
+        android:id="@+id/bluetoothStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="askBluetooth"
         android:text="@string/askBluetooth"
-        app:layout_constraintBottom_toTopOf="@+id/connectBluetooth"
+        app:layout_constraintBottom_toTopOf="@+id/buttonShowPairedBluetooth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bluetoothStatus" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAskBluetooth" />
 
     <Button
-        android:id="@+id/connectBluetooth"
+        android:id="@+id/buttonShowPairedBluetooth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="showPairedBluetoothDevice"
@@ -39,17 +39,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/askBluetooth" />
+        app:layout_constraintTop_toBottomOf="@+id/bluetoothStatus" />
 
     <TextView
         android:id="@+id/listOfPairedDevices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/askEnableBluetoothForPairedBluetoothDevices"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConnectBluetooth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonShowPairedBluetooth" />
+
+    <Button
+        android:id="@+id/buttonConnectBluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/connectPairedBluetooth"
+        app:layout_constraintBottom_toTopOf="@+id/connectionStatus"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listOfPairedDevices" />
+
+    <TextView
+        android:id="@+id/connectionStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notConnected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/connectBluetooth" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonConnectBluetooth" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="disconnectBluetooth"
+        android:text="@string/buttonDisconnectBluetooth"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonConnectBluetooth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonConnectBluetooth" />
 
 </android.support.constraint.ConstraintLayout>

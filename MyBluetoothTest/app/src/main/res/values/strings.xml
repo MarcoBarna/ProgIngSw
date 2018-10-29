@@ -9,8 +9,8 @@
 
     <!--checkBluetooth strings-->
     <string name="bluetoothSupported">Bluetooth is Supported.</string>
-    <string name="bluetoothAndEnabled">"\nand it's Enabled"</string>
-    <string name="bluetoothButNotEnabled">"\nbut it's not Enabled</string>
+    <string name="bluetoothAndEnabled">and it\'s Enabled</string>
+    <string name="bluetoothButNotEnabled">but it\'s not Enabled</string>
     <string name="bluetoothNotSupported">Bluetooth is not Supported</string>
 
     <!--askBluetooth strings-->
@@ -19,7 +19,7 @@
 
     <!--onActivityResult:Bluetooth strings-->
     <string name="bluetoothHasBeenEnabled">Bluetooth has been Enabled.</string>
-    <string name="bluetoothFailedWTF">Bluetooth not Enabled, WHAT?</string>
+    <string name="bluetoothFailedWTF">Bluetooth not Enabled WTF.</string>
     <string name="bluetoothRequestCANCELED">Bluetooth request has been CANCELED.</string>
 
     <!--BluetoothReceiver strings-->
@@ -27,6 +27,16 @@
     <string name="bluetoothReceiverOFF">You have turned Bluetooth OFF</string>
     <string name="bluetoothReceiverTurningON">Bluetooth is turning ON</string>
     <string name="bluetoothReceiverTurningOFF">Bluetooth is turning OFF</string>
+
+    <!--connectBluetooth strings-->
+    <string name="connectPairedBluetooth">Connect Paired Device</string>
+    <string name="disconnectBluetooth">Disconnect Bluetooth Device</string>
+    <string name="connected">Connected</string>
+    <string name="notConnected">Not Connected</string>
+
+    <!--disconnectBluetooth-->
+    <string name="buttonDisconnectBluetooth">Disconnect Bluetooth</string>
+    <string name="disconnectedBluetooth">Disconnected</string>
 
 
 </resources>
