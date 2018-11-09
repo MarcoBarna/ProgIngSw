@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_ENABLE_BT = 1;
 
     BluetoothAdapter bluetoothAdapter;
-    MyBluetoothReceiver myBluetoothReceiver = new MyBluetoothReceiver();
+    MyBluetoothReceiver myBluetoothReceiver;
     BluetoothDevice bluetoothDevice;
     BluetoothSocket bluetoothSocket;
 
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         registerForContextMenu(findViewById(R.id.buttonConnectBluetooth));
 
+        myBluetoothReceiver = new MyBluetoothReceiver();
         setupBluetoothReceiver();
 
         checkBluetooth();
@@ -143,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
                 bluetoothSocket.close();
                 textView.setText(getString(R.string.disconnectedBluetooth));
             }
+            else
+                bluetoothSocket = null;
         } catch (IOException e) {
             e.printStackTrace();
         }
