@@ -20,9 +20,6 @@ public class MainActivity extends Form implements Serializable
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect,
             manualMode;
     private Ev3Motors ev3Motors, leftMotor,rightMotor;
-    private BluetoothDevice bdevice;
-    private LegoMindstormsEv3Base legobase;
-
     public static BluetoothClient globalBluetoothClient1;
 
     // $define is where you'll create components, initialize properties and make any calls that
@@ -30,7 +27,7 @@ public class MainActivity extends Form implements Serializable
     protected void $define()
     {
         setContentView(R.layout.activity_main);
-
+        MainActivity.getActiveForm().BackgroundColor(COLOR_BLACK);
         bluetoothClient1 = new BluetoothClient(this);
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +36,6 @@ public class MainActivity extends Form implements Serializable
                 selectPairedBluetooth();
             }
         });
-
         buttonBluetoothDisconnect = findViewById(R.id.buttonBluetoothDisconnect);
         buttonBluetoothDisconnect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +44,6 @@ public class MainActivity extends Form implements Serializable
             }
         });
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
-
         manualMode = findViewById(R.id.manual_button);
         manualMode.setOnClickListener(new View.OnClickListener() {
               @Override
@@ -56,36 +51,37 @@ public class MainActivity extends Form implements Serializable
                   manualModeActivity();
               }
           }
-
         );
-       // manualMode.setVisibility(View.INVISIBLE);
-
+        buttonDisable(manualMode);
         ev3Motors = new Ev3Motors(this);
         rightMotor = new Ev3Motors(this);
         leftMotor = new Ev3Motors(this);
-
         ev3Motors.MotorPorts("BC");
         rightMotor.MotorPorts("C");
         leftMotor.MotorPorts("B");
     }
-
+    private void buttonDisable(Button button){
+        button.setEnabled(false);
+        button.setBackgroundColor(COLOR_GRAY);
+        button.setTextColor(COLOR_LTGRAY);
+    }
+    private void buttonActivate(Button button){
+        button.setEnabled(true);
+        button.setTextColor(COLOR_WHITE);
+    }
     public void selectPairedBluetooth(){
         Intent intent = new Intent(this, BtPaired.class);
         startActivityForResult(intent, 0);
     }
-
     public void disconnectBluetooth(){
         //Insert what to do when Bluetooth gets disconnected
         bluetoothClient1.Disconnect();
         visibilityBtDisconnected();
     }
-
     public void manualModeActivity(){
         Intent intent = new Intent(this, ManualDriveActivity.class);
-        ;
         startActivityForResult(intent, 0);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -93,15 +89,13 @@ public class MainActivity extends Form implements Serializable
         if (resultCode == RESULT_OK) {
             String userBluetoothDevice = data.getStringExtra("bluetooth");
             String macAddressToConnect = (userBluetoothDevice.subSequence(0,17)).toString();
-
-
             bluetoothClient1.Connect(macAddressToConnect);
-
             if(bluetoothClient1.IsConnected()){
+                buttonActivate(manualMode);
+                manualMode.setBackgroundColor(COLOR_RED);
                 globalBluetoothClient1 = bluetoothClient1;
                 visibilityBtConnected();
                 textView.setText("Connected");
-
                 BluetoothConnectionBase bs = bluetoothClient1;
                 bs.IsConnected();
                 textView.setText("connessione" + bs.IsConnected());
@@ -116,20 +110,6 @@ public class MainActivity extends Form implements Serializable
         }
         else
             textView.setText("CANCELED");
-    }
-    public void goForward(View v){
-        ev3Motors.RotateIndefinitely(40);
-    }
-    public void goBackward(View v){
-        ev3Motors.RotateIndefinitely(-20);
-    }
-    public void goLeft(View v){
-        leftMotor.RotateIndefinitely(20);
-        rightMotor.RotateIndefinitely(-20);
-    }
-    public void goRight(View v){
-        leftMotor.RotateIndefinitely(-20);
-        rightMotor.RotateIndefinitely(20);
     }
     public void visibilityBtConnected(){
         buttonBluetoothConnect.setVisibility(View.INVISIBLE);

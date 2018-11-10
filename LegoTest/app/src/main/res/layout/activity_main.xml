@@ -4,7 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#000000"
+    android:theme="@style/Theme.AppCompat.DayNight">
+
+    <Button
+        android:id="@+id/manual_button3"
+        style="@android:style/Widget.Holo.Button.Toggle"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="324dp"
+        android:layout_marginEnd="3dp"
+        android:background="@android:color/darker_gray"
+        android:text="HELP"
+        android:textAppearance="@android:style/TextAppearance.Material.Widget.Button"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -19,45 +39,102 @@
     <Button
         android:id="@+id/buttonBluetoothConnect"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
+        android:layout_width="234dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="139dp"
-        android:layout_marginTop="117dp"
         android:layout_marginEnd="138dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/colourDisconnect"
         android:text="@string/connect"
         android:textSize="18sp"
-        android:background="@color/colourConnect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonBluetoothDisconnect"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="234dp"
+        android:layout_height="49dp"
         android:layout_marginStart="139dp"
-        android:layout_marginTop="117dp"
         android:layout_marginEnd="138dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/colourDisconnect"
         android:text="@string/disconnect"
         android:textSize="18sp"
-        android:background="@color/colourDisconnect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/manual_button"
-        android:layout_width="wrap_content"
+        style="@android:style/Widget.Holo.Button.Toggle"
+        android:layout_width="234dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Guida Manuale"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="3dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="CUSTOM DRIVE"
+        android:textAppearance="@android:style/TextAppearance.Material.Widget.Button"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/manual_button2"
+        style="@android:style/Widget.Holo.Button.Toggle"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="236dp"
+        android:layout_marginEnd="3dp"
+        android:background="@android:color/darker_gray"
+        android:text="Lego in Action"
+        android:textAppearance="@android:style/TextAppearance.Material.Widget.Button"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif"
+        android:text="Lego Mindstorm Control"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="casual"
+        android:text="________________________________"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
