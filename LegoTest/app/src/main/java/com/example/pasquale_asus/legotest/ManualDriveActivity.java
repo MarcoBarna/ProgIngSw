@@ -12,6 +12,7 @@ import com.google.appinventor.components.runtime.Form;
 public class ManualDriveActivity extends Form {
     private Ev3Motors bMotor;
     private Ev3Motors cMotor;
+    private Ev3Motors tempBCMotors;
     private ImageButton up, down;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -20,8 +21,11 @@ public class ManualDriveActivity extends Form {
         setContentView(R.layout.activity_manual_drive);
         bMotor = new Ev3Motors(this);
         cMotor = new Ev3Motors(this);
+        tempBCMotors = new Ev3Motors(this);
         bMotor.MotorPorts("B");
         cMotor.MotorPorts("C");
+        tempBCMotors.MotorPorts("BC");
+        tempBCMotors.BluetoothClient(MainActivity.globalBluetoothClient1);
         bMotor.BluetoothClient(MainActivity.globalBluetoothClient1);
         cMotor.BluetoothClient(MainActivity.globalBluetoothClient1);
 
@@ -35,8 +39,10 @@ public class ManualDriveActivity extends Form {
                         goForward(view);
                         break;
                     case MotionEvent.ACTION_UP:
-                        bMotor.Stop(false);
-                        cMotor.Stop(false);
+                        //bMotor.Stop(false);
+                        //cMotor.Stop(false);
+                        tempBCMotors.Stop(true);
+                        tempBCMotors.Stop(false);
                 }
                 return false;
             }
@@ -52,20 +58,26 @@ public class ManualDriveActivity extends Form {
                         goBackward(view);
                         break;
                     case MotionEvent.ACTION_UP:
-                        bMotor.Stop(false);
-                        cMotor.Stop(false);
+//                        bMotor.Stop(false);
+//                        cMotor.Stop(false);
+                          tempBCMotors.Stop(true);
+                          tempBCMotors.Stop(false);
                 }
                 return false;
             }
         });
     }
     public void goForward(View v){
-        bMotor.RotateIndefinitely(100);
-        cMotor.RotateIndefinitely(100);
+        //bMotor.RotateIndefinitely(100);
+        //cMotor.RotateIndefinitely(100);
+        //tempBCMotors.RotateIndefinitely(100);
+        tempBCMotors.RotateSyncIndefinitely(200,0);
     }
     public void goBackward(View v){
-        bMotor.RotateIndefinitely(-100);
-        cMotor.RotateIndefinitely(-100);
+      //  bMotor.RotateIndefinitely(-100);
+     //   cMotor.RotateIndefinitely(-100);
+    //    tempBCMotors.RotateIndefinitely(-100);
+        tempBCMotors.RotateSyncIndefinitely(-200,0);
     }
 
 

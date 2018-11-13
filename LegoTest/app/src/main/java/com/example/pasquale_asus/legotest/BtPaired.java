@@ -23,8 +23,6 @@ public class BtPaired extends Form {
         final ListView btList= findViewById(R.id.bt_list);
         bluetoothClient = new BluetoothClient(this);
         final ArrayList<String> arrayList = new ArrayList<>(bluetoothClient.AddressesAndNames());
-        arrayList.add("AB-CD-DE-DE-CE-DE YAO");
-        arrayList.add("AB-CD-DE-DE-CE-DE MFAO");
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         btList.setAdapter(arrayAdapter);
         btList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

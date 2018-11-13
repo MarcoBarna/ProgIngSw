@@ -1,34 +1,30 @@
 package com.example.pasquale_asus.legotest;
-import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.BluetoothConnectionBase;
-import com.google.appinventor.components.runtime.Ev3Motors;
-import com.google.appinventor.components.runtime.Form;
-import com.google.appinventor.components.runtime.LegoMindstormsEv3Base;
 
-import java.io.Serializable;
-
-
-public class MainActivity extends Form implements Serializable
+public class MainActivity extends AppCompatActivity
 {
     public BluetoothClient bluetoothClient1;
-    private Button buttonBluetoothConnect, buttonBluetoothDisconnect,
-            manualMode;
-    private Ev3Motors ev3Motors, leftMotor,rightMotor;
+    private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
+    private ImageButton manualMode;
     public static BluetoothClient globalBluetoothClient1;
 
     // $define is where you'll create components, initialize properties and make any calls that
     // you'd put in Screen.Initialize of an App Inventor app
-    protected void $define()
-    {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState); // Always call the superclass first
         setContentView(R.layout.activity_main);
-        MainActivity.getActiveForm().BackgroundColor(COLOR_BLACK);
-        bluetoothClient1 = new BluetoothClient(this);
+        //MainActivity.getActiveForm().BackgroundColor(COLOR_BLACK);
+       // MainActivity.getActiveForm().BackgroundImage();
+        ElementsEV3 libElements = new ElementsEV3();
+        bluetoothClient1 = libElements.bluetoothClient;
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,21 +49,15 @@ public class MainActivity extends Form implements Serializable
           }
         );
         buttonDisable(manualMode);
-        ev3Motors = new Ev3Motors(this);
-        rightMotor = new Ev3Motors(this);
-        leftMotor = new Ev3Motors(this);
-        ev3Motors.MotorPorts("BC");
-        rightMotor.MotorPorts("C");
-        leftMotor.MotorPorts("B");
     }
-    private void buttonDisable(Button button){
-        button.setEnabled(false);
-        button.setBackgroundColor(COLOR_GRAY);
-        button.setTextColor(COLOR_LTGRAY);
+    private void buttonDisable(ImageButton button){
+        //button.setEnabled(false);
+        //button.setBackgroundColor(COLOR_GRAY);
+       // button.setTextColor(COLOR_DKGRAY);
     }
-    private void buttonActivate(Button button){
-        button.setEnabled(true);
-        button.setTextColor(COLOR_WHITE);
+    private void buttonActivate(ImageButton button){
+       // button.setEnabled(true);
+       // button.setTextColor(COLOR_WHITE);
     }
     public void selectPairedBluetooth(){
         Intent intent = new Intent(this, BtPaired.class);
@@ -85,31 +75,22 @@ public class MainActivity extends Form implements Serializable
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        TextView textView = findViewById(R.id.textView);
+
         if (resultCode == RESULT_OK) {
             String userBluetoothDevice = data.getStringExtra("bluetooth");
             String macAddressToConnect = (userBluetoothDevice.subSequence(0,17)).toString();
             bluetoothClient1.Connect(macAddressToConnect);
             if(bluetoothClient1.IsConnected()){
                 buttonActivate(manualMode);
-                manualMode.setBackgroundColor(COLOR_RED);
                 globalBluetoothClient1 = bluetoothClient1;
                 visibilityBtConnected();
-                textView.setText("Connected");
                 BluetoothConnectionBase bs = bluetoothClient1;
                 bs.IsConnected();
-                textView.setText("connessione" + bs.IsConnected());
-                ev3Motors.BluetoothClient(bluetoothClient1);
-                rightMotor.BluetoothClient(bluetoothClient1);
-                leftMotor.BluetoothClient(bluetoothClient1);
             }
             else{
                 visibilityBtDisconnected();
-                textView.setText("Disconnected");
             }
         }
-        else
-            textView.setText("CANCELED");
     }
     public void visibilityBtConnected(){
         buttonBluetoothConnect.setVisibility(View.INVISIBLE);
