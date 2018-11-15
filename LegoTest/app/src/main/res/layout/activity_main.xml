@@ -11,10 +11,8 @@
     <Button
         android:id="@+id/buttonBluetoothConnect"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="377dp"
+        android:layout_width="0dp"
         android:layout_height="68dp"
-        android:layout_marginStart="139dp"
-        android:layout_marginEnd="138dp"
         android:background="@color/colourDisconnect"
         android:text="@string/connect"
         android:textColor="@android:color/white"
@@ -26,10 +24,8 @@
     <Button
         android:id="@+id/buttonBluetoothDisconnect"
         style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
-        android:layout_width="377dp"
+        android:layout_width="0dp"
         android:layout_height="68dp"
-        android:layout_marginStart="139dp"
-        android:layout_marginEnd="138dp"
         android:background="@color/colourDisconnect"
         android:text="@string/disconnect"
         android:textColor="@android:color/white"
@@ -106,13 +102,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
-        android:layout_width="400dp"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/buttonBluetoothDisconnect"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.527"
+        app:layout_constraintVertical_bias="0.518"
         tools:layout_editor_absoluteX="0dp" />
 
     <View
@@ -131,7 +128,7 @@
         app:layout_constraintVertical_bias="0.809" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/statusBattery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

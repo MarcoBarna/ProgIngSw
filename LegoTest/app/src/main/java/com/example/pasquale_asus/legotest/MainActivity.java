@@ -6,30 +6,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.BluetoothConnectionBase;
 import com.google.appinventor.components.runtime.Ev3Commands;
 
 public class MainActivity extends AppCompatActivity
 {
-    public BluetoothClient bluetoothClient1;
+    public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
     private ImageButton manualMode;
-    public static BluetoothClient globalBluetoothClient1;
-    public Ev3Commands commands;
-    public TextView statusLego;
+    public Ev3Commands infoBrick;
+    public TextView statusBattery;
 
-    // $define is where you'll create components, initialize properties and make any calls that
-    // you'd put in Screen.Initialize of an App Inventor app
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState); // Always call the superclass first
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //MainActivity.getActiveForm().BackgroundColor(COLOR_BLACK);
-       // MainActivity.getActiveForm().BackgroundImage();
-        ElementsEV3 libElements = new ElementsEV3();
-        bluetoothClient1 = libElements.bluetoothClient;
-        commands = libElements.commands;
+        initializeLibraryObject();
+
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,41 +30,32 @@ public class MainActivity extends AppCompatActivity
                 selectPairedBluetooth();
             }
         });
+
         buttonBluetoothDisconnect = findViewById(R.id.buttonBluetoothDisconnect);
         buttonBluetoothDisconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                disconnectBluetooth();
+                disconnectBluetooth(bluetoothClient);
             }
         });
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
+
         manualMode = findViewById(R.id.manual_button);
         manualMode.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
                   manualModeActivity();
               }
-          }
-        );
-        buttonDisable(manualMode);
-        statusLego = findViewById(R.id.textView3);
+          });
+        statusBattery = findViewById(R.id.statusBattery);
     }
-    private void buttonDisable(ImageButton button){
-        //button.setEnabled(false);
-        //button.setBackgroundColor(COLOR_GRAY);
-       // button.setTextColor(COLOR_DKGRAY);
-    }
-    private void buttonActivate(ImageButton button){
-       // button.setEnabled(true);
-       // button.setTextColor(COLOR_WHITE);
-    }
+
     public void selectPairedBluetooth(){
         Intent intent = new Intent(this, BtPaired.class);
         startActivityForResult(intent, 0);
     }
-    public void disconnectBluetooth(){
-        //Insert what to do when Bluetooth gets disconnected
-        bluetoothClient1.Disconnect();
+    public void disconnectBluetooth(BluetoothClient bluetoothClientToDisconnect){
+        bluetoothClientToDisconnect.Disconnect();
         visibilityBtDisconnected();
     }
     public void manualModeActivity(){
@@ -81,19 +65,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (resultCode == RESULT_OK) {
             String userBluetoothDevice = data.getStringExtra("bluetooth");
             String macAddressToConnect = (userBluetoothDevice.subSequence(0,17)).toString();
-            bluetoothClient1.Connect(macAddressToConnect);
-            if(bluetoothClient1.IsConnected()){
-                buttonActivate(manualMode);
-                globalBluetoothClient1 = bluetoothClient1;
+            bluetoothClient.Connect(macAddressToConnect);
+            if(bluetoothClient.IsConnected()){
                 visibilityBtConnected();
-                BluetoothConnectionBase bs = bluetoothClient1;
-                bs.IsConnected();
-                commands.BluetoothClient(bluetoothClient1);
-                statusLego.setText("Battery Level " + commands.GetBatteryCurrent());
+                BluetoothConnectionBase bs = bluetoothClient;
+                infoBrick.BluetoothClient(bluetoothClient);
+                statusBattery.setText("Battery Level "+infoBrick.GetBatteryCurrent());
             }
             else{
                 visibilityBtDisconnected();
@@ -107,5 +87,10 @@ public class MainActivity extends AppCompatActivity
     public void visibilityBtDisconnected(){
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
         buttonBluetoothConnect.setVisibility(View.VISIBLE);
+    }
+    private void initializeLibraryObject(){
+        ElementsEV3 libElements = new ElementsEV3();
+        this.bluetoothClient = libElements.bluetoothClient;
+        this.infoBrick = libElements.commands;
     }
 }

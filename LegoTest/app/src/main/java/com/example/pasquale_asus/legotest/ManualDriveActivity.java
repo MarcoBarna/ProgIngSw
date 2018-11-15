@@ -25,9 +25,7 @@ import com.google.appinventor.components.runtime.util.Ev3BinaryParser;
 import com.google.appinventor.components.runtime.util.Ev3Constants;
 
 public class ManualDriveActivity extends Form {
-    private Ev3Motors bMotor;
-    private Ev3Motors cMotor;
-    private Ev3Motors tempBCMotors;
+    private Ev3Motors wheels;
     private ImageButton up, down, left, right;
     private Ev3Sound ev3Sound;
     private Ev3ColorSensor colorSensor;
@@ -36,37 +34,24 @@ public class ManualDriveActivity extends Form {
     private TextView text_gyro;
     private int number_rotation = 0;
     private int tot_number_rotation = 0;
-    private Handler handler;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public void $define(){
         setContentView(R.layout.activity_manual_drive);
         textView = findViewById(R.id.textView);
+
+        /*Declaration elements*/
         ev3Sound = new Ev3Sound(this);
-        ev3GyroSensor = new Ev3GyroSensor(this);
-        bMotor = new Ev3Motors(this);
-        cMotor = new Ev3Motors(this);
         colorSensor = new Ev3ColorSensor(this);
-        tempBCMotors = new Ev3Motors(this);
-        bMotor.MotorPorts("B");
-        cMotor.MotorPorts("C");
-        tempBCMotors.MotorPorts("BC");
-        ev3GyroSensor.SensorPort("2");
-        colorSensor.SensorPort("1");
-        colorSensor.Mode("color");
+        ev3GyroSensor = new Ev3GyroSensor(this);
+        wheels = new Ev3Motors(this);
+        connectPortElements();
+        connectElementsToBluetooth();
+        colorSensor.SetColorMode();
         ev3GyroSensor.SetRateMode();
-
-        tempBCMotors.BluetoothClient(MainActivity.globalBluetoothClient1);
-        bMotor.BluetoothClient(MainActivity.globalBluetoothClient1);
-        cMotor.BluetoothClient(MainActivity.globalBluetoothClient1);
-        ev3Sound.BluetoothClient(MainActivity.globalBluetoothClient1);
-        ev3GyroSensor.BluetoothClient(MainActivity.globalBluetoothClient1);
-        colorSensor.BluetoothClient(MainActivity.globalBluetoothClient1);
-        tempBCMotors.ResetTachoCount();
-
+        wheels.ResetTachoCount();
         text_gyro = findViewById(R.id.textView5);
-        handler = new Handler();
 
         left = findViewById(R.id.imageButton3);
         left.setOnTouchListener(new View.OnTouchListener() {
@@ -77,8 +62,8 @@ public class ManualDriveActivity extends Form {
                         goLeft(view);
                         break;
                     case MotionEvent.ACTION_UP:
-                        tempBCMotors.Stop(true);
-                        tempBCMotors.Stop(false);
+                        wheels.Stop(true);
+                        wheels.Stop(false);
                 }
                 return false;
             }
@@ -93,8 +78,8 @@ public class ManualDriveActivity extends Form {
                         goRight(view);
                         break;
                     case MotionEvent.ACTION_UP:
-                        tempBCMotors.Stop(true);
-                        tempBCMotors.Stop(false);
+                        wheels.Stop(true);
+                        wheels.Stop(false);
                 }
                 return false;
             }
@@ -108,17 +93,17 @@ public class ManualDriveActivity extends Form {
                 switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         goForward(view);
-                        number_rotation = tempBCMotors.GetTachoCount() / 360;
+                        number_rotation = wheels.GetTachoCount() / 360;
                         tot_number_rotation += number_rotation;
                         text_gyro.setText("Number Rotation " + tot_number_rotation);
                         break;
                     case MotionEvent.ACTION_UP:
-                        tempBCMotors.Stop(true);
-                        tempBCMotors.Stop(false);
-                        number_rotation = tempBCMotors.GetTachoCount() / 360;
+                        wheels.Stop(true);
+                        wheels.Stop(false);
+                        number_rotation = wheels.GetTachoCount() / 360;
                         tot_number_rotation += number_rotation;
                         text_gyro.setText("Number Rotation " + tot_number_rotation);
-                        tempBCMotors.ResetTachoCount();
+                        wheels.ResetTachoCount();
                 }
                 return false;
             }
@@ -134,44 +119,48 @@ public class ManualDriveActivity extends Form {
                     case MotionEvent.ACTION_DOWN:
                         goBackward(view);
                         ev3Sound.PlayTone(20,1000,200);
-                        number_rotation = (-tempBCMotors.GetTachoCount() )/ 360;
+                        number_rotation = (-wheels.GetTachoCount() )/ 360;
                         tot_number_rotation += number_rotation;
                         text_gyro.setText("Number Rotation "+tot_number_rotation);
                         break;
                     case MotionEvent.ACTION_UP:
-                        tempBCMotors.Stop(false);
-                        number_rotation = (-tempBCMotors.GetTachoCount() )/ 360;
+                        wheels.Stop(false);
+                        number_rotation = (-wheels.GetTachoCount() )/ 360;
                         tot_number_rotation += number_rotation;
                         text_gyro.setText("Number Rotation "+tot_number_rotation);
-                        tempBCMotors.ResetTachoCount();
+                        wheels.ResetTachoCount();
                 }
                 return false;
             }
         });
-        final Runnable r = new Runnable() {
-            public void run() {
-                text_gyro.setText("Number Rotation "+tot_number_rotation);
-                handler.postDelayed(this, 1000);
-            }
-        };
-        handler.postDelayed(r, 1000);
+
     }
     public void goForward(View v){
-        tempBCMotors.RotateSyncIndefinitely(200,0);
+        wheels.RotateSyncIndefinitely(200,0);
     }
     public void goBackward(View v){
-        tempBCMotors.RotateSyncIndefinitely(-200,0);
+        wheels.RotateSyncIndefinitely(-200,0);
     }
     public  void goLeft(View v){
-        tempBCMotors.RotateSyncIndefinitely(100,-55);
+        wheels.RotateSyncIndefinitely(100,-55);
     }
     public void goRight(View v){
-        tempBCMotors.RotateSyncIndefinitely(100,55);
+        wheels.RotateSyncIndefinitely(100,55);
     }
-
+    public void connectPortElements(){
+        wheels.MotorPorts("BC");
+        ev3GyroSensor.SensorPort("2");
+        colorSensor.SensorPort("1");
+    }
+    public void connectElementsToBluetooth(){
+        wheels.BluetoothClient(MainActivity.bluetoothClient);
+        ev3Sound.BluetoothClient(MainActivity.bluetoothClient);
+        ev3GyroSensor.BluetoothClient(MainActivity.bluetoothClient);
+        colorSensor.BluetoothClient(MainActivity.bluetoothClient);
+    }
     @Override
     public void onBackPressed() {
-        tempBCMotors.Stop(true);
+        wheels.Stop(true);
         Intent intent = new Intent();
         setResult(RESULT_CANCELED, intent);
         finish();
