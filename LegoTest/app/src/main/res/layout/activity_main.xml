@@ -59,7 +59,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonBluetoothDisconnect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.864"
-        app:layout_constraintStart_toEndOf="@+id/manual_button2"
+        app:layout_constraintStart_toEndOf="@+id/automaticmode"
         app:srcCompat="@mipmap/setting0" />
 
     <ImageView
@@ -90,7 +90,7 @@
         app:srcCompat="@mipmap/drive_icon" />
 
     <ImageButton
-        android:id="@+id/manual_button2"
+        android:id="@+id/automaticmode"
         style="@android:style/Widget.Material.ImageButton"
         android:layout_width="144dp"
         android:layout_height="138dp"
@@ -108,9 +108,10 @@
         android:layout_marginBottom="8dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/buttonBluetoothDisconnect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.518"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.518" />
 
     <View
         android:layout_width="1dp"

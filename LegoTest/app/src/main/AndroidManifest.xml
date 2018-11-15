@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".BtPaired" />
         <activity android:name=".ManualDriveActivity"></activity>
+        <activity android:name=".AutomaticDriveActivity"></activity>
+
     </application>
 
 </manifest>

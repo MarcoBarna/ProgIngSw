@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity
 {
     public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
-    private ImageButton manualMode;
+    private ImageButton manualMode, automaticmode;
     public Ev3Commands infoBrick;
     public TextView statusBattery;
 
@@ -47,6 +47,13 @@ public class MainActivity extends AppCompatActivity
                   manualModeActivity();
               }
           });
+        automaticmode = findViewById(R.id.automaticmode);
+        automaticmode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                automaticModeActivity();
+            }
+        });
         statusBattery = findViewById(R.id.statusBattery);
     }
 
@@ -60,6 +67,10 @@ public class MainActivity extends AppCompatActivity
     }
     public void manualModeActivity(){
         Intent intent = new Intent(this, ManualDriveActivity.class);
+        startActivityForResult(intent, 0);
+    }
+    public void automaticModeActivity(){
+        Intent intent = new Intent(this, AutomaticDriveActivity.class);
         startActivityForResult(intent, 0);
     }
     @Override
