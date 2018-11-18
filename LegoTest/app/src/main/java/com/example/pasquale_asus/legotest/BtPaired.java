@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Form;
@@ -17,13 +18,21 @@ import java.util.ArrayList;
 
 public class BtPaired extends Form {
     private BluetoothClient bluetoothClient;
+    private TextView bluetoothoff, title;
     @Override
     public void $define(){
         setContentView(R.layout.activity_bt_paired);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        bluetoothoff = findViewById(R.id.bluetoothoff);
+        title = findViewById(R.id.listTitle);
+        bluetoothoff.setVisibility(View.INVISIBLE);
         final ListView btList= findViewById(R.id.bt_list);
         bluetoothClient = new BluetoothClient(this);
         final ArrayList<String> arrayList = new ArrayList<>(bluetoothClient.AddressesAndNames());
+        if(arrayList.size() == 0) {
+            bluetoothoff.setVisibility(View.VISIBLE);
+            title.setVisibility(View.INVISIBLE);
+        }
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         btList.setAdapter(arrayAdapter);
         btList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

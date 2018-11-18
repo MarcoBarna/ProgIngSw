@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.google.appinventor.components.runtime.BluetoothClient;
-import com.google.appinventor.components.runtime.BluetoothConnectionBase;
 import com.google.appinventor.components.runtime.Ev3Commands;
 
 public class MainActivity extends AppCompatActivity
@@ -25,9 +24,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setWindowAnimations(R.anim.fadein);
-        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         initializeLibraryObject();
-
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +84,6 @@ public class MainActivity extends AppCompatActivity
             bluetoothClient.Connect(macAddressToConnect);
             if(bluetoothClient.IsConnected()){
                 visibilityBtConnected();
-                BluetoothConnectionBase bs = bluetoothClient;
                 infoBrick.BluetoothClient(bluetoothClient);
                 statusBattery.setText("Battery Level "+(int)infoBrick.GetBatteryVoltage() +"%");
                 if((int)infoBrick.GetBatteryVoltage() < 20)
