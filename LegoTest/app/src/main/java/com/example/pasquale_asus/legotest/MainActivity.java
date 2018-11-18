@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity
         });
         statusBattery = findViewById(R.id.statusBattery);
         osfirmware = findViewById(R.id.osfirmware);
+        disableUserSections();
     }
 
     public void selectPairedBluetooth(){
@@ -75,6 +76,14 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, AutomaticDriveActivity.class);
         startActivityForResult(intent, 0);
     }
+    public void activeUserSections(){
+        manualMode.setEnabled(true);
+        automaticmode.setEnabled(true);
+    }
+    public void disableUserSections(){
+        manualMode.setEnabled(false);
+        automaticmode.setEnabled(false);
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -84,9 +93,10 @@ public class MainActivity extends AppCompatActivity
             bluetoothClient.Connect(macAddressToConnect);
             if(bluetoothClient.IsConnected()){
                 visibilityBtConnected();
+                activeUserSections();
                 infoBrick.BluetoothClient(bluetoothClient);
-                statusBattery.setText("Battery Level "+(int)infoBrick.GetBatteryVoltage() +"%");
-                if((int)infoBrick.GetBatteryVoltage() < 20)
+                statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
+                if((int)(infoBrick.GetBatteryCurrent()*100) < 20)
                     statusBattery.setTextColor(Color.RED);
                 osfirmware.setText(infoBrick.GetHardwareVersion());
             }
@@ -102,6 +112,7 @@ public class MainActivity extends AppCompatActivity
     public void visibilityBtDisconnected(){
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
         buttonBluetoothConnect.setVisibility(View.VISIBLE);
+        disableUserSections();
     }
     private void initializeLibraryObject(){
         ElementsEV3 libElements = new ElementsEV3();
