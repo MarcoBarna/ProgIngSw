@@ -4,7 +4,6 @@ import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Commands;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Form;
-import com.google.appinventor.components.runtime.LegoMindstormsEv3Base;
 
 //this class contains the elements for initialize the ev3
 

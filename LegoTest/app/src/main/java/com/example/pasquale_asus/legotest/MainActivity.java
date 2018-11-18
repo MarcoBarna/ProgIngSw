@@ -1,5 +1,7 @@
 package com.example.pasquale_asus.legotest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,11 +18,14 @@ public class MainActivity extends AppCompatActivity
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
     private ImageButton manualMode, automaticmode;
     public Ev3Commands infoBrick;
-    public TextView statusBattery;
+    public TextView statusBattery, osfirmware;
 
+    @SuppressLint("ResourceType")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setWindowAnimations(R.anim.fadein);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         initializeLibraryObject();
 
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
@@ -39,7 +44,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
-
         manualMode = findViewById(R.id.manual_button);
         manualMode.setOnClickListener(new View.OnClickListener() {
               @Override
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
         statusBattery = findViewById(R.id.statusBattery);
+        osfirmware = findViewById(R.id.osfirmware);
     }
 
     public void selectPairedBluetooth(){
@@ -66,7 +71,7 @@ public class MainActivity extends AppCompatActivity
         visibilityBtDisconnected();
     }
     public void manualModeActivity(){
-        Intent intent = new Intent(this, ManualDriveActivity.class);
+        Intent intent = new Intent(this, JoystickActivity.class);
         startActivityForResult(intent, 0);
     }
     public void automaticModeActivity(){
@@ -84,7 +89,10 @@ public class MainActivity extends AppCompatActivity
                 visibilityBtConnected();
                 BluetoothConnectionBase bs = bluetoothClient;
                 infoBrick.BluetoothClient(bluetoothClient);
-                statusBattery.setText("Battery Level "+infoBrick.GetBatteryCurrent());
+                statusBattery.setText("Battery Level "+(int)infoBrick.GetBatteryVoltage() +"%");
+                if((int)infoBrick.GetBatteryVoltage() < 20)
+                    statusBattery.setTextColor(Color.RED);
+                osfirmware.setText(infoBrick.GetHardwareVersion());
             }
             else{
                 visibilityBtDisconnected();

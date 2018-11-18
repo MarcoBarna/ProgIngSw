@@ -20,6 +20,7 @@ public class BtPaired extends Form {
     @Override
     public void $define(){
         setContentView(R.layout.activity_bt_paired);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         final ListView btList= findViewById(R.id.bt_list);
         bluetoothClient = new BluetoothClient(this);
         final ArrayList<String> arrayList = new ArrayList<>(bluetoothClient.AddressesAndNames());
@@ -42,6 +43,7 @@ public class BtPaired extends Form {
     public void onBackPressed() {
         Intent intent = new Intent();
         setResult(RESULT_CANCELED, intent);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         finish();
     }
 }
