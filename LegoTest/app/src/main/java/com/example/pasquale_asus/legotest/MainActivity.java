@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         visibilityBtDisconnected();
     }
     public void manualModeActivity(){
-        Intent intent = new Intent(this, JoystickActivity.class);
+        Intent intent = new Intent(this, ManualDriveActivity.class);
         startActivityForResult(intent, 0);
     }
     public void automaticModeActivity(){
