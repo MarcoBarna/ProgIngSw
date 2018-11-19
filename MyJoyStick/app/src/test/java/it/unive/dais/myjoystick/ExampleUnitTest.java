@@ -1,4 +1,4 @@
-package it.unive.dais.cazodiandroidstudiodimerdachesirompeperilcazzodimerdaandroidcrepa;
+package it.unive.dais.myjoystick;
 
 import org.junit.Test;
 
