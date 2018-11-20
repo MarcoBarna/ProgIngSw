@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Commands;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity 
 {
     public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity
         visibilityBtDisconnected();
     }
     public void manualModeActivity(){
-        Intent intent = new Intent(this, ManualDriveActivity.class);
-        startActivityForResult(intent, 0);
+        Intent intent = new Intent(this, JoystickManualControlActivity.class);
+        startActivity(intent);
     }
     public void automaticModeActivity(){
         Intent intent = new Intent(this, AutomaticDriveActivity.class);
