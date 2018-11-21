@@ -28,11 +28,13 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButton2"
+            style="@style/Base.Animation.AppCompat.Dialog"
             android:layout_width="246dp"
             android:layout_height="310dp"
             android:layout_marginTop="8dp"
             android:clickable="true"
-            app:backgroundTint="#2A424242"
+            app:backgroundTint="#A6323232"
+            app:backgroundTintMode="multiply"
             app:fabCustomSize="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,5 +67,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:color/transparent" />
     </android.support.constraint.ConstraintLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@android:style/Widget.SeekBar"
+        android:layout_width="309dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="28dp"
+        android:max="100"
+        android:progress="50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

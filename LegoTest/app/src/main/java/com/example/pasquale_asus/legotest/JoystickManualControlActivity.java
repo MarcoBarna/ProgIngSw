@@ -20,6 +20,7 @@ import com.google.appinventor.components.runtime.Ev3Motors;
 
 public class JoystickManualControlActivity extends AppCompatActivity{
     private Ev3Motors motors;
+    private FloatingActionButton baseforcursor;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class JoystickManualControlActivity extends AppCompatActivity{
         motors = elementsEV3.leftMotors;
         motors.MotorPorts("BC");
         motors.BluetoothClient(MainActivity.bluetoothClient);
+        baseforcursor = findViewById(R.id.floatingActionButton2);
+        baseforcursor.setEnabled(false);
         final TextView textView = findViewById(R.id.textView);
         final FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnTouchListener(new View.OnTouchListener() {

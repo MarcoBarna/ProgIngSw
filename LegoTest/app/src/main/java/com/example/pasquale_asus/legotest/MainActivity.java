@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Commands;
 
-public class MainActivity extends AppCompatActivity 
+public class MainActivity extends AppCompatActivity
 {
     public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity
         });
         statusBattery = findViewById(R.id.statusBattery);
         osfirmware = findViewById(R.id.osfirmware);
-        disableUserSections();
+        //disableUserSections();
     }
 
     public void selectPairedBluetooth(){
