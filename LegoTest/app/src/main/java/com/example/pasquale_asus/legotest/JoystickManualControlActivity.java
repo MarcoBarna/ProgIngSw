@@ -21,11 +21,14 @@ import com.google.appinventor.components.runtime.Ev3Motors;
 public class JoystickManualControlActivity extends AppCompatActivity{
     private Ev3Motors motors;
     private FloatingActionButton baseforcursor;
+    private Point size = null;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joystick_manual_control);
+        size = new Point();
+        ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
         ElementsEV3 elementsEV3 = new ElementsEV3();
         motors = elementsEV3.leftMotors;
         motors.MotorPorts("BC");
@@ -37,12 +40,7 @@ public class JoystickManualControlActivity extends AppCompatActivity{
         floatingActionButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Context context = v.getContext();
-                WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-                Display display = windowManager.getDefaultDisplay();
-                Point size = new Point();
-                display.getSize(size);
-             //   textView.setText(event.toString() + "\nTr X:" + floatingActionButton.getTranslationX() + "Tr Y:" + floatingActionButton.getTranslationY());
+                //   textView.setText(event.toString() + "\nTr X:" + floatingActionButton.getTranslationX() + "Tr Y:" + floatingActionButton.getTranslationY());
                 double sinTETA = 0; //seno dell'angolo che parte da 0 Math.PI
                 double cosTETA = 0; //coseno dell'angolo che parte da 0 Math.PI
                 double radius = 0; //distanza dal centro al punto di tocco
