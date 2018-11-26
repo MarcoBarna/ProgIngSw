@@ -41,8 +41,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".JoystickManualControlActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            />
 
     </application>
 
