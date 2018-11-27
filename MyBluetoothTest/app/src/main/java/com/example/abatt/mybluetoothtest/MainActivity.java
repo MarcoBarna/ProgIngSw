@@ -46,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         registerForContextMenu(findViewById(R.id.buttonConnectBluetooth));
+        Button bluetoothConnecButton = findViewById(R.id.buttonConnectBluetooth);
+        bluetoothConnecButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.showContextMenu();
+            }
+        });
 
         myBluetoothReceiver = new MyBluetoothReceiver();
         setupBluetoothReceiver();
