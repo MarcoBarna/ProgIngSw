@@ -1,15 +1,26 @@
 package com.example.pasquale_asus.legotest;
 import android.annotation.SuppressLint;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Commands;
+
+import java.util.Set;
+
+
 
 public class MainActivity extends AppCompatActivity
 {
@@ -26,10 +37,12 @@ public class MainActivity extends AppCompatActivity
         getWindow().setWindowAnimations(R.anim.fadein);
         initializeLibraryObject();
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
+        registerForContextMenu(buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectPairedBluetooth();
+                //selectPairedBluetooth();
+                showBtMenu(view);
             }
         });
 
@@ -60,10 +73,60 @@ public class MainActivity extends AppCompatActivity
         //disableUserSections();
     }
 
+    @Override
+    protected void onDestroy() {
+        unregisterForContextMenu(buttonBluetoothConnect);
+        super.onDestroy();
+    }
+
     public void selectPairedBluetooth(){
         Intent intent = new Intent(this, BtPaired.class);
         startActivityForResult(intent, 0);
     }
+    public void showBtMenu(View v){
+        v.showContextMenu();
+    }
+
+    @SuppressLint("ResourceType")
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.setHeaderTitle("Select Bluetooth Device");
+        Set<BluetoothDevice> pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
+        for (BluetoothDevice device : pairedDevices)
+            menu.add(device.getName());
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    @SuppressLint("WrongConstant")
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        String macAddressToConnect = "";
+        Set<BluetoothDevice> pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
+        for (BluetoothDevice pairedDevice : pairedDevices){
+            if(item.getTitle().equals(pairedDevice.getName())){
+                macAddressToConnect = pairedDevice.getAddress();
+            }
+        }
+        bluetoothClient.Connect(macAddressToConnect);
+        if(bluetoothClient.IsConnected()){
+            visibilityBtConnected();
+            activeUserSections();
+            infoBrick.BluetoothClient(bluetoothClient);
+            statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
+            if((int)(infoBrick.GetBatteryCurrent()*100) < 20)
+                statusBattery.setTextColor(Color.RED);
+            osfirmware.setText(infoBrick.GetHardwareVersion());
+            Toast.makeText(this, "Bluetooth Connected", Toast.LENGTH_LONG);
+        }
+        else{
+            visibilityBtDisconnected();
+            Toast.makeText(this, "Bluetooth not Connected", Toast.LENGTH_LONG);
+        }
+        return true;
+    }
+
     public void disconnectBluetooth(BluetoothClient bluetoothClientToDisconnect){
         bluetoothClientToDisconnect.Disconnect();
         visibilityBtDisconnected();
