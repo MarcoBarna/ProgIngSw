@@ -3,4 +3,5 @@
     <string name="text">Text</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
+    <string name="JoyBackDescr">analogimage</string>
 </resources>
