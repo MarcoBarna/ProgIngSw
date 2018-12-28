@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 selectPairedBluetooth();
-                //showBtMenu(view);
+                /*showBtMenu(view);*/
             }
         });
 
@@ -82,49 +82,6 @@ public class MainActivity extends AppCompatActivity
     public void selectPairedBluetooth(){
         Intent intent = new Intent(this, BtPaired.class);
         startActivityForResult(intent, 0);
-    }
-    public void showBtMenu(View v){
-        v.showContextMenu();
-    }
-
-    @SuppressLint("ResourceType")
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        menu.setHeaderTitle("Select Bluetooth Device");
-        Set<BluetoothDevice> pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
-        for (BluetoothDevice device : pairedDevices)
-            menu.add(device.getName());
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu, menu);
-    }
-
-    @SuppressLint("WrongConstant")
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        String macAddressToConnect = "";
-        Set<BluetoothDevice> pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
-        for (BluetoothDevice pairedDevice : pairedDevices){
-            if(item.getTitle().equals(pairedDevice.getName())){
-                macAddressToConnect = pairedDevice.getAddress();
-            }
-        }
-        bluetoothClient.Connect(macAddressToConnect);
-        if(bluetoothClient.IsConnected()){
-            visibilityBtConnected();
-            activeUserSections();
-            infoBrick.BluetoothClient(bluetoothClient);
-            statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
-            if((int)(infoBrick.GetBatteryCurrent()*100) < 20)
-                statusBattery.setTextColor(Color.RED);
-            osfirmware.setText(infoBrick.GetHardwareVersion());
-            Toast.makeText(this, "Bluetooth Connected", Toast.LENGTH_LONG);
-        }
-        else{
-            visibilityBtDisconnected();
-            Toast.makeText(this, "Bluetooth not Connected", Toast.LENGTH_LONG);
-        }
-        return true;
     }
 
     public void disconnectBluetooth(BluetoothClient bluetoothClientToDisconnect){
@@ -182,4 +139,49 @@ public class MainActivity extends AppCompatActivity
         this.bluetoothClient = libElements.bluetoothClient;
         this.infoBrick = libElements.commands;
     }
+    /*
+    public void showBtMenu(View v){
+        v.showContextMenu();
+    }
+
+    @SuppressLint("ResourceType")
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.setHeaderTitle("Select Bluetooth Device");
+        Set<BluetoothDevice> pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
+        for (BluetoothDevice device : pairedDevices)
+            menu.add(device.getName());
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    @SuppressLint("WrongConstant")
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        String macAddressToConnect = "";
+        Set<BluetoothDevice> pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
+        for (BluetoothDevice pairedDevice : pairedDevices){
+            if(item.getTitle().equals(pairedDevice.getName())){
+                macAddressToConnect = pairedDevice.getAddress();
+            }
+        }
+        bluetoothClient.Connect(macAddressToConnect);
+        if(bluetoothClient.IsConnected()){
+            visibilityBtConnected();
+            activeUserSections();
+            infoBrick.BluetoothClient(bluetoothClient);
+            statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
+            if((int)(infoBrick.GetBatteryCurrent()*100) < 20)
+                statusBattery.setTextColor(Color.RED);
+            osfirmware.setText(infoBrick.GetHardwareVersion());
+            Toast.makeText(this, "Bluetooth Connected", Toast.LENGTH_LONG);
+        }
+        else{
+            visibilityBtDisconnected();
+            Toast.makeText(this, "Bluetooth not Connected", Toast.LENGTH_LONG);
+        }
+        return true;
+    }
+    */
 }
