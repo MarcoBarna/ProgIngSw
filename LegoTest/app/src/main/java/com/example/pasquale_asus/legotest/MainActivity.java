@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //selectPairedBluetooth();
-                showBtMenu(view);
+                selectPairedBluetooth();
+                //showBtMenu(view);
             }
         });
 
