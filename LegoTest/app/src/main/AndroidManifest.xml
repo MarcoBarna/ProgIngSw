@@ -18,9 +18,7 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
-           
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BtPaired"
             android:configChanges="orientation"
@@ -38,15 +36,24 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity android:name=".JoystickManualControlActivity" />
-
+        <activity
+            android:name=".HelpActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity android:name=".SplashScreen">
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".popwindows"
+            android:label="@string/title_activity_popwindows"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Credits"></activity>
     </application>
 
 </manifest>

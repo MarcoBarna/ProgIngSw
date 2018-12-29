@@ -1,34 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@mipmap/background1"
     android:layout_height="match_parent"
+    android:background="@mipmap/background1"
+    android:configChanges="orientation"
+    android:screenOrientation="portrait"
+    android:theme="@style/ThemeOverlay.AppCompat"
     tools:context=".HelpActivity">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/buttonCredits"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:text="CREDITI"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonContacts" />
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/buttonContacts"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:theme="@style/AppBarOverlay">
+        android:text="CONTATTI"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCredits"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGuide" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/PopupOverlay" />
+    <Button
+        android:id="@+id/buttonGuide"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="GUIDA"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonContacts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFAQ" />
 
-    </android.support.design.widget.AppBarLayout>
+    <Button
+        android:id="@+id/buttonFAQ"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="FAQ"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGuide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <include layout="@layout/content_help" />
-
-</android.support.design.widget.CoordinatorLayout>
+</android.support.constraint.ConstraintLayout>
