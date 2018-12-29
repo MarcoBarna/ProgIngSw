@@ -49,7 +49,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Credits"></activity>
+        <activity android:name=".Credits" />
+        <activity android:name=".FAQActivity" />
+        <activity android:name=".GuideActivity"></activity>
     </application>
 
 </manifest>
