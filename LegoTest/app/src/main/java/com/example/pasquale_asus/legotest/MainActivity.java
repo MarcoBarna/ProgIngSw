@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
 {
     public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
-    private ImageButton manualMode, automaticmode, helpmode;
+    private ImageButton manualMode, automaticmode, helpmode, settingsmode;
     public Ev3Commands infoBrick;
     public TextView statusBattery, osfirmware;
 
@@ -77,6 +77,14 @@ public class MainActivity extends AppCompatActivity
                 helpModeActivity();
             }
         } );
+        settingsmode = findViewById(R.id.settings_button);
+        settingsmode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                settingsmodeActivity();
+            }
+        });
+
         statusBattery = findViewById(R.id.statusBattery);
         osfirmware = findViewById(R.id.osfirmware);
         //disableUserSections();
@@ -109,6 +117,11 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this,HelpActivity.class);
         startActivity(intent);
     }
+    public void settingsmodeActivity(){
+        Intent intent = new Intent(this,SettingsActivity.class);
+        startActivity(intent);
+    }
+
     public void activeUserSections(){
         manualMode.setEnabled(true);
         automaticmode.setEnabled(true);
