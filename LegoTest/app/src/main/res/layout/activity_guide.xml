@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background1"
+    android:configChanges="orientation"
+    android:screenOrientation="portrait"
+    android:theme="@style/ThemeOverlay.AppCompat"
+    tools:context=".GuideActivity">
+    
+    <Button
+        android:id="@+id/buttonGuide1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="buttonGuide1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGuide2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <Button
+        android:id="@+id/buttonGuide2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="buttonGuide2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGuide3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGuide1" />
+    
+    <Button
+        android:id="@+id/buttonGuide3"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="buttonGuide3"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGuide4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGuide2" />
+    
+    <Button
+        android:id="@+id/buttonGuide4"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="buttonGuide4"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGuide3" />
+
+</android.support.constraint.ConstraintLayout>

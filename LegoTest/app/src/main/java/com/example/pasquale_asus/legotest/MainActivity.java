@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity
 {
     public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
-    private ImageButton manualMode, automaticmode;
+    private ImageButton manualMode, automaticmode, helpmode;
     public Ev3Commands infoBrick;
     public TextView statusBattery, osfirmware;
 
@@ -68,6 +69,14 @@ public class MainActivity extends AppCompatActivity
                 automaticModeActivity();
             }
         });
+        helpmode = findViewById(R.id.help_button);
+        helpmode.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                helpModeActivity();
+            }
+        } );
         statusBattery = findViewById(R.id.statusBattery);
         osfirmware = findViewById(R.id.osfirmware);
         //disableUserSections();
@@ -95,6 +104,10 @@ public class MainActivity extends AppCompatActivity
     public void automaticModeActivity(){
         Intent intent = new Intent(this, AutomaticDriveActivity.class);
         startActivityForResult(intent, 0);
+    }
+    public void helpModeActivity(){
+        Intent intent = new Intent(this,HelpActivity.class);
+        startActivity(intent);
     }
     public void activeUserSections(){
         manualMode.setEnabled(true);
