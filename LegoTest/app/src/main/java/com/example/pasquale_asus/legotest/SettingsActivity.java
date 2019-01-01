@@ -2,7 +2,10 @@ package com.example.pasquale_asus.legotest;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -13,9 +16,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.nio.charset.MalformedInputException;
@@ -25,6 +30,7 @@ import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class SettingsActivity extends AppCompatActivity {
     private Button set_ports_button;
+    private Switch switch_bluetooth;
     private ImageView closePopup;
     boolean isSpinnerTouched = false;
 
@@ -39,6 +45,27 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onButtonsetPortsClick(view);
+            }
+        });
+        switch_bluetooth = findViewById(R.id.switch_bluetooth);
+        switch_bluetooth.setChecked((BluetoothAdapter.getDefaultAdapter() == null) ? false : BluetoothAdapter.getDefaultAdapter().isEnabled());
+        switch_bluetooth.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                if(bluetoothAdapter == null)
+                    Toast.makeText(getApplicationContext(), "Bluetooth is not present", Toast.LENGTH_LONG).show();
+                else{
+                    boolean isEnabled = bluetoothAdapter.isEnabled();
+                    if (isChecked && !isEnabled) {
+                        Intent intentBtEnabled = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                        startActivityForResult(intentBtEnabled, 1);
+                        Toast.makeText(getApplicationContext(), "Bluetooth enabled", Toast.LENGTH_LONG).show();
+                    }
+                    else if(!isChecked && isEnabled){
+                        bluetoothAdapter.disable();
+                        Toast.makeText(getApplicationContext(), "Bluetooth disabled", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
     }
@@ -82,7 +109,6 @@ public class SettingsActivity extends AppCompatActivity {
         final ArrayAdapter<String> adapter_letters = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items_letters);
         adapter_letters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-
         motor1.setAdapter(adapter_letters);
         motor2.setAdapter(adapter_letters);
         color_sensor.setAdapter(adapter_numbers);
@@ -94,7 +120,6 @@ public class SettingsActivity extends AppCompatActivity {
         color_sensor.setSelection(items_string_numbers.indexOf(MainActivity.color_sensor_port));
         gyro_sensor.setSelection(items_string_numbers.indexOf(MainActivity.gyro_sensor_port));
         touch_sensor.setSelection(items_string_numbers.indexOf(MainActivity.touch_sensor_port));
-
 
         motor1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -164,8 +189,6 @@ public class SettingsActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
-
-
 
     /*
     * public void onButtonContactsClick(View v){
