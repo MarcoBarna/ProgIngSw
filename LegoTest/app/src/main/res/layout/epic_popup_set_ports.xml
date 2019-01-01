@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         app:cardCornerRadius="15dp"
-        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardBackgroundColor="#848484"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -33,29 +33,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20sp" />
 
             <TextView
-                        android:id="@+id/motor1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25sp"
-                        android:layout_marginRight="20sp"
-                        android:text="Motor1"
-                        android:textAlignment="inherit"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-
+                android:id="@+id/motor1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25sp"
+                android:layout_marginRight="20sp"
+                android:text="Motor1"
+                android:textAlignment="inherit"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="20sp" />
-
-
 
                     <TextView
                         android:id="@+id/motor2"
@@ -68,12 +63,9 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="20sp" />
-
-
 
                     <TextView
                         android:id="@+id/color_sensor"
@@ -86,13 +78,9 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-
-
-
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="20sp" />
-
 
                     <TextView
                         android:id="@+id/gyro_sensor"
@@ -105,13 +93,9 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-
-
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="20sp" />
-
-
 
                     <TextView
                         android:id="@+id/touch_sensor"
@@ -124,12 +108,10 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-
-
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="200sp"
+            android:layout_width="250sp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 

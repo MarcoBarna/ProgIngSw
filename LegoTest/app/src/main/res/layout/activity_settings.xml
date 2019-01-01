@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+    tools:context=".SettingsActivity"
+    android:background="@mipmap/background1" >
 
     <Button
         android:id="@+id/set_ports_button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="182dp"
+        android:layout_width="279dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="96dp"
