@@ -4,38 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/background1"
     tools:context=".SettingsActivity"
-    android:background="@mipmap/background1" >
+    tools:layout_editor_absoluteY="25dp">
 
     <Button
         android:id="@+id/set_ports_button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="279dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="12dp"
-        android:background="@android:color/transparent"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/background_dark"
         android:text="Set Port"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/review2" />
+
+    <Button
+        android:id="@+id/review"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/background_dark"
+        android:text="Review App"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/review2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="382dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:background="#6a848484"
+        android:text="SETTINGS"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="279dp"
-        android:layout_height="181dp"
+        android:layout_height="54dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="212dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/set_ports_button"
-        app:layout_constraintVertical_bias="0.026">
+        app:layout_constraintVertical_bias="0.373">
 
         <Button
             android:id="@+id/set_bluetooth_connection"
@@ -44,16 +76,31 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:text="Bluetooth Connection"
-            android:textAlignment="viewStart"
+            android:textAlignment="textEnd"
             tools:layout_editor_absoluteX="34dp"
             tools:layout_editor_absoluteY="341dp" />
 
         <Switch
             android:id="@+id/switch_bluetooth"
-            android:layout_width="wrap_content"
+            android:layout_width="53dp"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="276dp"
             tools:layout_editor_absoluteY="172dp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/home_setting"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:text="home"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text=" home" />
 
 </android.support.constraint.ConstraintLayout>

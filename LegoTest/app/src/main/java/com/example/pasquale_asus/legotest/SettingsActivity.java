@@ -5,13 +5,11 @@ import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,13 +21,10 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import java.nio.charset.MalformedInputException;
-import java.util.Arrays;
-
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class SettingsActivity extends AppCompatActivity {
-    private Button set_ports_button;
+    private Button set_ports_button, home_setting;
     private Switch switch_bluetooth;
     private ImageView closePopup;
     boolean isSpinnerTouched = false;
@@ -39,6 +34,14 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        home_setting = findViewById(R.id.home_setting);
+        home_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
 
         set_ports_button = findViewById(R.id.set_ports_button);
         set_ports_button.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +72,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
     }
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    @SuppressLint("WrongConstant")
+
     public void onButtonsetPortsClick(View v){
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.epic_popup_set_ports);
@@ -189,26 +191,4 @@ public class SettingsActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
-
-    /*
-    * public void onButtonContactsClick(View v){
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.epic_popup_custom_contacts);
-        closePopup = (ImageView) dialog.findViewById(R.id.closePopup);
-        titlePopup = (TextView) dialog.findViewById(R.id.titlePopup);
-        textView1 = (TextView) dialog.findViewById(R.id.email);
-        textView2 = (TextView) dialog.findViewById(R.id.phone);
-        textView3 = (TextView) dialog.findViewById(R.id.address);
-        textView4 = (TextView) dialog.findViewById(R.id.website);
-
-        closePopup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
-    }
-    * */
 }
