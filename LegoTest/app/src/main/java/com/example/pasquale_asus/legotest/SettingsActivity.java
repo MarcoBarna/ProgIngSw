@@ -57,31 +57,43 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        final Spinner motor1 = dialog.findViewById(spinner_motor1);
-        final Spinner motor2 = dialog.findViewById(R.id.spinner_motor2);
+        Spinner motor1 = dialog.findViewById(spinner_motor1);
+        Spinner motor2 = dialog.findViewById(R.id.spinner_motor2);
         Spinner color_sensor = dialog.findViewById(R.id.spinner_color_sensor);
         Spinner gyro_sensor = dialog.findViewById(R.id.spinner_gyro_sensor);
         Spinner touch_sensor = dialog.findViewById(R.id.spinner_touch_sensor);
 
-        String[] items = new String[]{"1", "2", "3", "4", "A", "B", "C", "D"};
-        String items_string = "";
-        for(String item: items)
-            items_string += item;
-        items_string = items_string.replace(",","");
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        String[] items_numbers = new String[]{"1", "2", "3", "4"};
+        String[] items_letters = new String[]{"A", "B", "C", "D"};
 
-        motor1.setAdapter(adapter);
-        motor2.setAdapter(adapter);
-        color_sensor.setAdapter(adapter);
-        gyro_sensor.setAdapter(adapter);
-        touch_sensor.setAdapter(adapter);
+        String items_string_numbers = "";
+        for(String item: items_numbers)
+            items_string_numbers += item;
+        items_string_numbers = items_string_numbers.replace(",","");
 
-        motor1.setSelection(items_string.indexOf(MainActivity.motor1_port));
-        motor2.setSelection(items_string.indexOf(MainActivity.motor2_port));
-        color_sensor.setSelection(items_string.indexOf(MainActivity.color_sensor_port));
-        gyro_sensor.setSelection(items_string.indexOf(MainActivity.gyro_sensor_port));
-        touch_sensor.setSelection(items_string.indexOf(MainActivity.touch_sensor_port));
+        String items_string_letters = "";
+        for(String item: items_letters)
+            items_string_letters += item;
+        items_string_letters = items_string_letters.replace(",","");
+
+        final ArrayAdapter<String> adapter_numbers = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items_numbers);
+        adapter_numbers.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        final ArrayAdapter<String> adapter_letters = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items_letters);
+        adapter_letters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+        motor1.setAdapter(adapter_letters);
+        motor2.setAdapter(adapter_letters);
+        color_sensor.setAdapter(adapter_numbers);
+        gyro_sensor.setAdapter(adapter_numbers);
+        touch_sensor.setAdapter(adapter_numbers);
+
+        motor1.setSelection(items_string_letters.indexOf(MainActivity.motor1_port));
+        motor2.setSelection(items_string_letters.indexOf(MainActivity.motor2_port));
+        color_sensor.setSelection(items_string_numbers.indexOf(MainActivity.color_sensor_port));
+        gyro_sensor.setSelection(items_string_numbers.indexOf(MainActivity.gyro_sensor_port));
+        touch_sensor.setSelection(items_string_numbers.indexOf(MainActivity.touch_sensor_port));
 
 
         motor1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -148,11 +160,6 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
-
-
-
-
-
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();

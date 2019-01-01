@@ -165,11 +165,11 @@ public class MainActivity extends AppCompatActivity
         ElementsEV3 libElements = new ElementsEV3();
         this.bluetoothClient = libElements.bluetoothClient;
         this.infoBrick = libElements.commands;
-        motor1_port = "A";
-        gyro_sensor_port = "A";
-        color_sensor_port = "B";
-        motor2_port = "C";
-        touch_sensor_port = "2";
+        motor1_port = "C";
+        gyro_sensor_port = "3";
+        color_sensor_port = "2";
+        motor2_port = "B";
+        touch_sensor_port = "1";
     }
     /*
     public void showBtMenu(View v){
