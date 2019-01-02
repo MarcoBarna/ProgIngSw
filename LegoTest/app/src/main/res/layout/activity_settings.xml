@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/review2" />
+        app:layout_constraintTop_toBottomOf="@+id/label_setting" />
 
     <Button
         android:id="@+id/review"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <Button
-        android:id="@+id/review2"
+        android:id="@+id/label_setting"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="382dp"
         android:layout_height="58dp"
@@ -52,6 +52,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/home_setting"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:text="home"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text=" home" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -87,20 +102,5 @@
             tools:layout_editor_absoluteX="276dp"
             tools:layout_editor_absoluteY="172dp" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/home_setting"
-        android:layout_width="92dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        android:text="home"
-        android:textAlignment="textStart"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text=" home" />
 
 </android.support.constraint.ConstraintLayout>

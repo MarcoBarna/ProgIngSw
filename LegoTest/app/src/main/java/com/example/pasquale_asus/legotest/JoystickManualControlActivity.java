@@ -3,6 +3,7 @@ package com.example.pasquale_asus.legotest;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class JoystickManualControlActivity extends AppCompatActivity{
     private Ev3Motors motors;
     private FloatingActionButton baseforcursor;
     private Point size = null;
+    private Button home_test_motor;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,16 @@ public class JoystickManualControlActivity extends AppCompatActivity{
         setContentView(R.layout.activity_joystick_manual_control);
         size = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
+
+        home_test_motor = findViewById(R.id.home_test_motor);
+        home_test_motor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(JoystickManualControlActivity.this, MainActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
         ElementsEV3 elementsEV3 = new ElementsEV3();
         motors = elementsEV3.leftMotors;
         motors.MotorPorts("BC");
