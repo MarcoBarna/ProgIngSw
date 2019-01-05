@@ -51,7 +51,7 @@
         </activity>
 
         <activity android:name=".Credits" />
-        <activity android:name=".FAQActivity" />
+        <activity android:name=".FAQsActivity" />
         <activity android:name=".GuideActivity" />
         <activity android:name=".SettingsActivity"></activity>
     </application>
