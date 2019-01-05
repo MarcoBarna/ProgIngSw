@@ -8,7 +8,7 @@
     android:configChanges="orientation"
     android:screenOrientation="portrait"
     android:theme="@style/ThemeOverlay.AppCompat"
-    tools:context=".FAQActivity">
+    tools:context=".FAQsActivity">
 
     <Button
         android:id="@+id/buttonFAQ1"
