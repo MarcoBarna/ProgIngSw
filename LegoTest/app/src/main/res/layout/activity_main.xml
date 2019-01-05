@@ -51,7 +51,7 @@
         app:srcCompat="@mipmap/faq_icon" />
 
     <ImageButton
-        android:id="@+id/help_button2"
+        android:id="@+id/settings_button"
         android:layout_width="141dp"
         android:layout_height="141dp"
         android:layout_marginStart="8dp"
