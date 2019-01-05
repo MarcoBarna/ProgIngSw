@@ -12,51 +12,50 @@ package com.example.pasquale_asus.legotest;
         import android.widget.ImageView;
         import android.widget.TextView;
 
-public class GuideActivity extends AppCompatActivity {
+public class FAQsActivity extends AppCompatActivity {
     Resources resources;
-    TypedArray  GuideButtonsIDs,
-                GuideProblems,
-                GuideSolutions;
-
+    TypedArray  FAQsButtonsIDs,
+                FAQsQuestions,
+                FAQsAnswers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         resources = getResources();
-        setContentView(R.layout.activity_guide);
+        setContentView(R.layout.activity_faq);
 
-        GuideButtonsIDs = resources.obtainTypedArray(R.array.GuideButtonsIDs);
-        GuideProblems = resources.obtainTypedArray(R.array.GuideProblems);
-        GuideSolutions = resources.obtainTypedArray(R.array.GuideSolutions);
+        FAQsButtonsIDs = resources.obtainTypedArray(R.array.FAQsButtonsIDs);
+        FAQsQuestions = resources.obtainTypedArray(R.array.FAQsQuestions);
+        FAQsAnswers = resources.obtainTypedArray(R.array.FAQsAnswers);
 
-        for(Integer i = 0; i < GuideButtonsIDs.length(); i++) {
+        for(Integer i = 0; i < FAQsButtonsIDs.length(); i++) {
             final Integer index = i;
 
-            Button questionButton = findViewById(GuideButtonsIDs.getResourceId(index, View.NO_ID));
+            Button questionButton = findViewById(FAQsButtonsIDs.getResourceId(index, View.NO_ID));
 
-            questionButton.setText(GuideProblems.getString(i));
+            questionButton.setText(FAQsQuestions.getString(i));
 
             questionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onProblemClick(view, index);
+                    onQuestionClick(view, index);
                 }
             });
         }
     }
 
-    public void onProblemClick(View v, Integer index){
-        String problemText = GuideProblems.getString(index);
-        String solutionText = GuideSolutions.getString(index);
+    public void onQuestionClick(View v, Integer index){
+        String questionText = FAQsQuestions.getString(index);
+        String answerText = FAQsAnswers.getString(index);
 
         final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.epic_popup_custom_guide);
+        dialog.setContentView(R.layout.epic_popup_custom_faq);
 
-        TextView problemBody = dialog.findViewById(R.id.guideProblemPopup);
-        problemBody.setText(problemText);
+        TextView questionBody = dialog.findViewById(R.id.FAQquestionPopup);
+        questionBody.setText(questionText);
 
-        TextView solutionBody = dialog.findViewById(R.id.guideSolutionPopup);
-        solutionBody.setText(solutionText);
+        TextView answerBody = dialog.findViewById(R.id.FAQanswerPopup);
+        answerBody.setText(answerText);
 
         ImageView closePopup = dialog.findViewById(R.id.closePopup);
         closePopup.setOnClickListener(new View.OnClickListener() {
@@ -68,4 +67,8 @@ public class GuideActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
+
+
+
+
 }

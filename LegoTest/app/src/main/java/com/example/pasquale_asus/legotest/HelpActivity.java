@@ -1,6 +1,7 @@
 package com.example.pasquale_asus.legotest;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -49,10 +50,14 @@ public class HelpActivity extends AppCompatActivity {
 
     public void onButtonFAQClick(View v){
         //TODO activity and startActivity
+        Intent FAQsIntent = new Intent(this, FAQsActivity.class);
+        startActivity(FAQsIntent);
     }
 
     public void onButtonGuideClick(View v){
         //TODO activity and startActivity
+        Intent GuideIntent = new Intent(this, GuideActivity.class);
+        startActivity(GuideIntent);
     }
 
     public void onButtonContactsClick(View v){

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="FAQsButtonsIDs">
+        <item>@+id/buttonFAQ1</item>
+        <item>@+id/buttonFAQ2</item>
+        <item>@+id/buttonFAQ3</item>
+        <item>@+id/buttonFAQ4</item>
+
+    </array>
+
+
+    <array name="FAQsQuestions">
+        <item>Come faccio a connettermi al mio legoev3?</item>
+        <item>Come fa Pasquale a comprare il giornale?</item>
+        <item>Question 3</item>
+        <item>Question 4</item>
+
+    </array>
+    <array name="FAQsAnswers">
+        <item>Cliccare su connetti nella home dell app lego test</item>
+        <item>Semplice, va in edicola :D :D :D :D</item>
+        <item>Answer 3</item>
+        <item>Answer 4</item>
+
+    </array>
+
+    <array name="GuideButtonsIDs">
+        <item>@+id/buttonGuide1</item>
+        <item>@+id/buttonGuide2</item>
+        <item>@+id/buttonGuide3</item>
+        <item>@+id/buttonGuide4</item>
+
+    </array>
+
+
+    <array name="GuideProblems">
+        <item>Problem 1</item>
+        <item>Problem 2</item>
+        <item>Problem 3</item>
+        <item>Problem 4</item>
+
+    </array>
+    <array name="GuideSolutions">
+        <item>Solution 1</item>
+        <item>Solution 2</item>
+        <item>Solution 3</item>
+        <item>Solution 4</item>
+
+    </array>
+
+</resources>
