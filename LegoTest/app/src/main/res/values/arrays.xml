@@ -5,6 +5,7 @@
         <item>@+id/buttonFAQ2</item>
         <item>@+id/buttonFAQ3</item>
         <item>@+id/buttonFAQ4</item>
+
     </array>
 
 
@@ -28,6 +29,7 @@
         <item>@+id/buttonGuide2</item>
         <item>@+id/buttonGuide3</item>
         <item>@+id/buttonGuide4</item>
+
     </array>
 
 

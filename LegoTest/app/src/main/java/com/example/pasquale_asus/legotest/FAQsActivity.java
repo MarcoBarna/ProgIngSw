@@ -42,7 +42,7 @@ public class FAQsActivity extends AppCompatActivity {
                 }
             });
         }
-}
+    }
 
     public void onQuestionClick(View v, Integer index){
         String questionText = FAQsQuestions.getString(index);

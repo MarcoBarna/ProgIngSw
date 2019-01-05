@@ -18,6 +18,7 @@
         android:elevation="5dp"
         android:layout_alignParentEnd="true"
         android:contentDescription="@string/closeDescription" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
