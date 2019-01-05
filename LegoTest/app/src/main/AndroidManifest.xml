@@ -38,6 +38,7 @@
         <activity android:name=".JoystickManualControlActivity" />
         <activity
             android:name=".HelpActivity"
+            android:parentActivityName=".MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity android:name=".SplashScreen">
@@ -50,7 +51,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Credits" />
         <activity android:name=".FAQsActivity" />
         <activity android:name=".GuideActivity" />
         <activity android:name=".SettingsActivity"></activity>

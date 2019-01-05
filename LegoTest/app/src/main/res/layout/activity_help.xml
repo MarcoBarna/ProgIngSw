@@ -10,6 +10,15 @@
     android:theme="@style/ThemeOverlay.AppCompat"
     tools:context=".HelpActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/helpToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#6a848484"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <Button
         android:id="@+id/buttonFAQ4"
         android:layout_width="200dp"
@@ -50,12 +59,13 @@
         android:id="@+id/buttonFAQ1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="FAQ"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonFAQ2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/helpToolbar" />
 
 </android.support.constraint.ConstraintLayout>

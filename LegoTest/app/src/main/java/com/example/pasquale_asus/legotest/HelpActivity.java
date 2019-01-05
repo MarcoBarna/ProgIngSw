@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 
 public class HelpActivity extends AppCompatActivity {
     Dialog dialog;
@@ -46,6 +47,10 @@ public class HelpActivity extends AppCompatActivity {
             }
         });
 
+        Toolbar toolbar = findViewById(R.id.helpToolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void onButtonFAQClick(View v){
