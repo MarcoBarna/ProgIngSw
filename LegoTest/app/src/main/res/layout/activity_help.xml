@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background1"
+    android:configChanges="orientation"
+    android:screenOrientation="portrait"
+    android:theme="@style/ThemeOverlay.AppCompat"
+    tools:context=".HelpActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/helpToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#6a848484"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <Button
+        android:id="@+id/buttonFAQ4"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="CREDITI"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFAQ3" />
+
+    <Button
+        android:id="@+id/buttonFAQ3"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="CONTATTI"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonFAQ4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFAQ2" />
+
+    <Button
+        android:id="@+id/buttonFAQ2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="GUIDA"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonFAQ3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFAQ1" />
+
+    <Button
+        android:id="@+id/buttonFAQ1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="FAQ"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonFAQ2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpToolbar" />
+
+</android.support.constraint.ConstraintLayout>

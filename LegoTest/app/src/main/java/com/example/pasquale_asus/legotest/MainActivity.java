@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -24,9 +25,10 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity
 {
+    public static String motor1_port, motor2_port, color_sensor_port, gyro_sensor_port, touch_sensor_port;
     public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
-    private ImageButton manualMode, automaticmode;
+    private ImageButton manualMode, automaticmode, helpmode, settingsmode;
     public Ev3Commands infoBrick;
     public TextView statusBattery, osfirmware;
 
@@ -41,8 +43,8 @@ public class MainActivity extends AppCompatActivity
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //selectPairedBluetooth();
-                showBtMenu(view);
+                selectPairedBluetooth();
+                /*showBtMenu(view);*/
             }
         });
 
@@ -68,6 +70,22 @@ public class MainActivity extends AppCompatActivity
                 automaticModeActivity();
             }
         });
+        helpmode = findViewById(R.id.help_button);
+        helpmode.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                helpModeActivity();
+            }
+        } );
+        settingsmode = findViewById(R.id.settings_button);
+        settingsmode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                settingsmodeActivity();
+            }
+        });
+
         statusBattery = findViewById(R.id.statusBattery);
         osfirmware = findViewById(R.id.osfirmware);
         //disableUserSections();
@@ -83,6 +101,77 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, BtPaired.class);
         startActivityForResult(intent, 0);
     }
+
+    public void disconnectBluetooth(BluetoothClient bluetoothClientToDisconnect){
+        bluetoothClientToDisconnect.Disconnect();
+        visibilityBtDisconnected();
+    }
+    public void manualModeActivity(){
+        Intent intent = new Intent(this, JoystickManualControlActivity.class);
+        startActivity(intent);
+    }
+    public void automaticModeActivity(){
+        Intent intent = new Intent(this, AutomaticDriveActivity.class);
+        startActivityForResult(intent, 0);
+    }
+    public void helpModeActivity(){
+        Intent intent = new Intent(this,HelpActivity.class);
+        startActivity(intent);
+    }
+    public void settingsmodeActivity(){
+        Intent intent = new Intent(this,SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void activeUserSections(){
+        manualMode.setEnabled(true);
+        automaticmode.setEnabled(true);
+    }
+    public void disableUserSections(){
+        manualMode.setEnabled(false);
+        automaticmode.setEnabled(false);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            String userBluetoothDevice = data.getStringExtra("bluetooth");
+            String macAddressToConnect = (userBluetoothDevice.subSequence(0,17)).toString();
+            bluetoothClient.Connect(macAddressToConnect);
+            if(bluetoothClient.IsConnected()){
+                visibilityBtConnected();
+                activeUserSections();
+                infoBrick.BluetoothClient(bluetoothClient);
+                statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
+                if((int)(infoBrick.GetBatteryCurrent()*100) < 20)
+                    statusBattery.setTextColor(Color.RED);
+                osfirmware.setText(infoBrick.GetHardwareVersion());
+            }
+            else{
+                visibilityBtDisconnected();
+            }
+        }
+    }
+    public void visibilityBtConnected(){
+        buttonBluetoothConnect.setVisibility(View.INVISIBLE);
+        buttonBluetoothDisconnect.setVisibility(View.VISIBLE);
+    }
+    public void visibilityBtDisconnected(){
+        buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
+        buttonBluetoothConnect.setVisibility(View.VISIBLE);
+        disableUserSections();
+    }
+    private void initializeLibraryObject(){
+        ElementsEV3 libElements = new ElementsEV3();
+        this.bluetoothClient = libElements.bluetoothClient;
+        this.infoBrick = libElements.commands;
+        motor1_port = "C";
+        gyro_sensor_port = "3";
+        color_sensor_port = "2";
+        motor2_port = "B";
+        touch_sensor_port = "1";
+    }
+    /*
     public void showBtMenu(View v){
         v.showContextMenu();
     }
@@ -126,60 +215,5 @@ public class MainActivity extends AppCompatActivity
         }
         return true;
     }
-
-    public void disconnectBluetooth(BluetoothClient bluetoothClientToDisconnect){
-        bluetoothClientToDisconnect.Disconnect();
-        visibilityBtDisconnected();
-    }
-    public void manualModeActivity(){
-        Intent intent = new Intent(this, JoystickManualControlActivity.class);
-        startActivity(intent);
-    }
-    public void automaticModeActivity(){
-        Intent intent = new Intent(this, AutomaticDriveActivity.class);
-        startActivityForResult(intent, 0);
-    }
-    public void activeUserSections(){
-        manualMode.setEnabled(true);
-        automaticmode.setEnabled(true);
-    }
-    public void disableUserSections(){
-        manualMode.setEnabled(false);
-        automaticmode.setEnabled(false);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            String userBluetoothDevice = data.getStringExtra("bluetooth");
-            String macAddressToConnect = (userBluetoothDevice.subSequence(0,17)).toString();
-            bluetoothClient.Connect(macAddressToConnect);
-            if(bluetoothClient.IsConnected()){
-                visibilityBtConnected();
-                activeUserSections();
-                infoBrick.BluetoothClient(bluetoothClient);
-                statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
-                if((int)(infoBrick.GetBatteryCurrent()*100) < 20)
-                    statusBattery.setTextColor(Color.RED);
-                osfirmware.setText(infoBrick.GetHardwareVersion());
-            }
-            else{
-                visibilityBtDisconnected();
-            }
-        }
-    }
-    public void visibilityBtConnected(){
-        buttonBluetoothConnect.setVisibility(View.INVISIBLE);
-        buttonBluetoothDisconnect.setVisibility(View.VISIBLE);
-    }
-    public void visibilityBtDisconnected(){
-        buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
-        buttonBluetoothConnect.setVisibility(View.VISIBLE);
-        disableUserSections();
-    }
-    private void initializeLibraryObject(){
-        ElementsEV3 libElements = new ElementsEV3();
-        this.bluetoothClient = libElements.bluetoothClient;
-        this.infoBrick = libElements.commands;
-    }
+    */
 }
