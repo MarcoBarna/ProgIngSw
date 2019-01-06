@@ -8,6 +8,25 @@
     android:theme="@style/Theme.AppCompat.NoActionBar"
     tools:context=".JoystickManualControlActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/manualToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#6a848484"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:id="@+id/manual_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Motors"
+            android:layout_gravity="center"
+            style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+
+    </android.support.v7.widget.Toolbar>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -25,36 +44,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/label_test_motor"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="382dp"
-            android:layout_height="58dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            android:background="#6a848484"
-            android:text="Test Motor"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/home_test_motor"
-            android:layout_width="92dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/transparent"
-            android:text="home"
-            android:textAlignment="textStart"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text=" home" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButton2"

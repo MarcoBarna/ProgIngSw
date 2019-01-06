@@ -10,6 +10,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +25,7 @@ import android.widget.Toast;
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class SettingsActivity extends AppCompatActivity {
-    private Button set_ports_button, home_setting;
+    private Button set_ports_button;
     private Switch switch_bluetooth;
     private ImageView closePopup;
     boolean isSpinnerTouched = false;
@@ -34,14 +35,6 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-        home_setting = findViewById(R.id.home_setting);
-        home_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-                startActivityForResult(intent, 0);
-            }
-        });
 
         set_ports_button = findViewById(R.id.set_ports_button);
         set_ports_button.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +64,12 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Toolbar toolbar = findViewById(R.id.settingsToolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     public void onButtonsetPortsClick(View v){

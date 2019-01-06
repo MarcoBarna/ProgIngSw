@@ -8,6 +8,7 @@ import android.graphics.Point;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,15 +32,6 @@ public class JoystickManualControlActivity extends AppCompatActivity{
         setContentView(R.layout.activity_joystick_manual_control);
         size = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
-
-        home_test_motor = findViewById(R.id.home_test_motor);
-        home_test_motor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(JoystickManualControlActivity.this, MainActivity.class);
-                startActivityForResult(intent, 0);
-            }
-        });
 
         ElementsEV3 elementsEV3 = new ElementsEV3();
         motors = elementsEV3.leftMotors;
@@ -113,5 +105,11 @@ public class JoystickManualControlActivity extends AppCompatActivity{
                 return false;
             }
         });
+
+        Toolbar toolbar = findViewById(R.id.manualToolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 }
