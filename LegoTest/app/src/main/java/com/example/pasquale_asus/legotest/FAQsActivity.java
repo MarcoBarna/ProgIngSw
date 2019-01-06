@@ -24,6 +24,7 @@ public class FAQsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         resources = getResources();
         setContentView(R.layout.activity_faq);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         FAQsButtonsIDs = resources.obtainTypedArray(R.array.FAQsButtonsIDs);
         FAQsQuestions = resources.obtainTypedArray(R.array.FAQsQuestions);

@@ -25,6 +25,7 @@ public class GuideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         resources = getResources();
         setContentView(R.layout.activity_guide);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         GuideButtonsIDs = resources.obtainTypedArray(R.array.GuideButtonsIDs);
         GuideProblems = resources.obtainTypedArray(R.array.GuideProblems);

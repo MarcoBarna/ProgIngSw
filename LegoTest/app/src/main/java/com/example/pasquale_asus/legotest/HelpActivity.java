@@ -21,6 +21,7 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         findViewById(R.id.buttonFAQ1).setOnClickListener(new View.OnClickListener() {
             @Override
