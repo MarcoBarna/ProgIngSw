@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/background1"
     android:theme="@style/Theme.AppCompat.NoActionBar"
-    tools:context=".AutomaticDriveActivity"
-    >
+    tools:context=".AutomaticDriveActivity">
 
     <TextView
         android:id="@+id/textView3"
