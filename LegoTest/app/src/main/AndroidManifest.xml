@@ -37,7 +37,8 @@
             android:name=".JoystickActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".JoystickManualControlActivity" />
+        <activity android:name=".JoystickManualControlActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".HelpActivity"
             android:parentActivityName=".MainActivity"
