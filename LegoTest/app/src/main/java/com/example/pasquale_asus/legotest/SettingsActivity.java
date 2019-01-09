@@ -2,6 +2,7 @@ package com.example.pasquale_asus.legotest;
 
 import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class SettingsActivity extends AppCompatActivity {
+    private static final int REQUEST_ENABLE_BT = 1;
     private Button set_ports_button;
     private Switch switch_bluetooth;
     private ImageView closePopup;
@@ -52,11 +54,13 @@ public class SettingsActivity extends AppCompatActivity {
                 else{
                     boolean isEnabled = bluetoothAdapter.isEnabled();
                     if (isChecked && !isEnabled) {
+                        switch_bluetooth.setEnabled(false);
                         Intent intentBtEnabled = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                        startActivityForResult(intentBtEnabled, 1);
+                        startActivityForResult(intentBtEnabled, REQUEST_ENABLE_BT);
                         //Toast.makeText(getApplicationContext(), "Bluetooth enabled", Toast.LENGTH_LONG).show();
                     }
                     else if(!isChecked && isEnabled){
+                        switch_bluetooth.setEnabled(false);
                         bluetoothAdapter.disable();
                         //Toast.makeText(getApplicationContext(), "Bluetooth disabled", Toast.LENGTH_LONG).show();
                     }
@@ -64,12 +68,14 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        //Sets up the Toolbar
         Toolbar toolbar = findViewById(R.id.settingsToolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        //Prepares the BluetoothReceiver (BroadcastReceiver) to receive changes in the Bluetooth states
         bluetoothReceiver = new BluetoothReceiver() {
             @Override
             protected void stateOn() {
@@ -226,5 +232,19 @@ public class SettingsActivity extends AppCompatActivity {
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_ENABLE_BT) {
+            if (resultCode == RESULT_OK)
+                switch_bluetooth.setEnabled(true);
+            else
+                if (resultCode == RESULT_CANCELED) {
+                    switch_bluetooth.setChecked(false);
+                    switch_bluetooth.setEnabled(true);
+                }
+        }
     }
 }
