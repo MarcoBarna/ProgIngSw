@@ -1,13 +1,12 @@
 package com.example.pasquale_asus.legotest;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -29,6 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Switch switch_bluetooth;
     private ImageView closePopup;
     boolean isSpinnerTouched = false;
+    BluetoothReceiver bluetoothReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +54,11 @@ public class SettingsActivity extends AppCompatActivity {
                     if (isChecked && !isEnabled) {
                         Intent intentBtEnabled = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                         startActivityForResult(intentBtEnabled, 1);
-                        Toast.makeText(getApplicationContext(), "Bluetooth enabled", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "Bluetooth enabled", Toast.LENGTH_LONG).show();
                     }
                     else if(!isChecked && isEnabled){
                         bluetoothAdapter.disable();
-                        Toast.makeText(getApplicationContext(), "Bluetooth disabled", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "Bluetooth disabled", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -70,6 +69,44 @@ public class SettingsActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        bluetoothReceiver = new BluetoothReceiver() {
+            @Override
+            protected void stateOn() {
+                switch_bluetooth.setChecked(true);
+                switch_bluetooth.setEnabled(true);
+                Toast.makeText(getApplicationContext(), "Bluetooth enabled", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected void stateOff() {
+                switch_bluetooth.setChecked(false);
+                switch_bluetooth.setEnabled(true);
+                Toast.makeText(getApplicationContext(), "Bluetooth disabled", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected void stateTurningOn() {
+                switch_bluetooth.setEnabled(false);
+                Toast.makeText(getApplicationContext(), "enabling Bluetooth", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            protected void stateTurningOff() {
+                switch_bluetooth.setEnabled(false);
+                Toast.makeText(getApplicationContext(), "disabling Bluetooth", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        IntentFilter bluetoothFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+        bluetoothFilter.addAction(BluetoothAdapter.EXTRA_STATE);
+        registerReceiver(bluetoothReceiver, bluetoothFilter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(bluetoothReceiver);
     }
 
     public void onButtonsetPortsClick(View v){
