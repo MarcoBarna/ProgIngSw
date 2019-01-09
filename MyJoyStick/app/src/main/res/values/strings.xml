@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">MyJoyStick</string>
-    <string name="JoyBackDescr">JoyStick backgorund image</string>
-    <string name="JoyButtonText">JoyStick</string>
-</resources>
