@@ -1,6 +1,6 @@
 # Progetto di ingegneria del software AS 2018/2019
 
-In questa repository trovere il necessario per controllare il Brick della Lego Mindstorm Ev3 Edu
+In questa repository troverete il necessario per controllare il Brick della Lego Mindstorm Ev3 Edu
 
 # Documentation
 
