@@ -25,26 +25,28 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ManualDriveActivity"
-            android:parentActivityName=".MainActivity"
             android:configChanges="orientation"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AutomaticDriveActivity"
-            android:parentActivityName=".MainActivity"
             android:configChanges="orientation"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".JoystickActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".JoystickManualControlActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".JoystickManualControlActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".HelpActivity"
-            android:parentActivityName=".MainActivity"
             android:configChanges="orientation"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".SplashScreen"
+        <activity
+            android:name=".SplashScreen"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -53,13 +55,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".FAQsActivity"
-            android:parentActivityName=".HelpActivity"/>
-        <activity android:name=".GuideActivity"
-            android:parentActivityName=".HelpActivity"/>
-        <activity android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".FAQsActivity"
+            android:parentActivityName=".HelpActivity" />
+        <activity
+            android:name=".GuideActivity"
+            android:parentActivityName=".HelpActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".TestSensors2Activity"></activity>
     </application>
 
 </manifest>
