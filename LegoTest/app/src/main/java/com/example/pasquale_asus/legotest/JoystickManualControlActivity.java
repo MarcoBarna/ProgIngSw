@@ -80,8 +80,8 @@ public class JoystickManualControlActivity extends AppCompatActivity{
                             floatingActionButton.setTranslationX(floatingActionButton.getTranslationX() + eventX);
                             floatingActionButton.setTranslationY(floatingActionButton.getTranslationY() + eventY);
                         }
-                        power = - (int) (floatingActionButton.getTranslationY() *200 / maxRadius);
-                        turnratio = (int) (floatingActionButton.getTranslationX() *200 / maxRadius);
+                        power = - (int) (floatingActionButton.getTranslationY() *100 / maxRadius);
+                        turnratio = (int) (floatingActionButton.getTranslationX() *100 / maxRadius);
                         if(power != cache_power && turnratio != cache_turnratio) {
                             motors.RotateSyncIndefinitely(power, turnratio);
                             cache_power = power;

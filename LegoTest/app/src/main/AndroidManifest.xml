@@ -64,7 +64,8 @@
         <activity
             android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".TestSensorsActivity"
+        <activity
+            android:name=".TestSensorsActivity"
             android:parentActivityName=".JoystickManualControlActivity"/>
     </application>
 

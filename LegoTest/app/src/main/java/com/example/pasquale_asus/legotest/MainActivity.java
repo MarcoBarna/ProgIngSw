@@ -163,7 +163,8 @@ public class MainActivity extends AppCompatActivity
     }
     private void initializeLibraryObject(){
         ElementsEV3 libElements = new ElementsEV3();
-        this.bluetoothClient = libElements.bluetoothClient;
+        if (bluetoothClient ==null)
+            this.bluetoothClient = libElements.bluetoothClient;
         this.infoBrick = libElements.commands;
         motor1_port = "C";
         gyro_sensor_port = "3";
