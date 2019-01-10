@@ -21,7 +21,8 @@
             android:id="@+id/manual_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test Motors"
+            android:text="TEST"
+            android:textColor="@color/colorwhite"
             android:layout_gravity="center"
             style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 

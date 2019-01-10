@@ -23,7 +23,8 @@
             android:id="@+id/guide_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Guida"
+            android:text="GUIDE"
+            android:textColor="@color/colorwhite"
             android:layout_gravity="center"
             style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
@@ -31,11 +32,13 @@
 
     <Button
         android:id="@+id/buttonGuide1"
-        android:layout_width="200dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="buttonGuide1"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/buttonGuide2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -44,10 +47,12 @@
     
     <Button
         android:id="@+id/buttonGuide2"
-        android:layout_width="200dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:text="buttonGuide2"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/buttonGuide3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -56,10 +61,12 @@
     
     <Button
         android:id="@+id/buttonGuide3"
-        android:layout_width="200dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:text="buttonGuide3"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/buttonGuide4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -68,10 +75,12 @@
     
     <Button
         android:id="@+id/buttonGuide4"
-        android:layout_width="200dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:text="buttonGuide4"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

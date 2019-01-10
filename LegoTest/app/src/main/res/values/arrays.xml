@@ -10,17 +10,17 @@
 
 
     <array name="FAQsQuestions">
-        <item>Come faccio a connettermi al mio legoev3?</item>
-        <item>Come fa Pasquale a comprare il giornale?</item>
-        <item>Question 3</item>
-        <item>Question 4</item>
+        <item>How do I connect to my LegoEv3?</item>
+        <item>How do I control LegoEv3?</item>
+        <item>Does it support IOS?</item>
+        <item>Can I configure the robot ports?</item>
 
     </array>
     <array name="FAQsAnswers">
-        <item>Cliccare su connetti nella home dell app lego test</item>
-        <item>Semplice, va in edicola :D :D :D :D</item>
-        <item>Answer 3</item>
-        <item>Answer 4</item>
+        <item>To connect to LegoEv3, you need to click on connect in the home view</item>
+        <item>To control the LegoEv3 you have to go to the home and select Test, otherwise if you plan to perform functions, you have to go to Advanced Actions</item>
+        <item>No, compatibility with the IOS system is not available at the moment.</item>
+        <item>Yes, by default we have inserted a configuration to control the robot, but at will they can be replaced with your own configurations</item>
 
     </array>
 
@@ -34,17 +34,17 @@
 
 
     <array name="GuideProblems">
-        <item>Problem 1</item>
-        <item>Problem 2</item>
-        <item>Problem 3</item>
-        <item>Problem 4</item>
+        <item>TEST</item>
+        <item>ADVANCED ACTIONS</item>
+        <item>SETTINGS</item>
+        <item>HELP</item>
 
     </array>
     <array name="GuideSolutions">
-        <item>Solution 1</item>
-        <item>Solution 2</item>
-        <item>Solution 3</item>
-        <item>Solution 4</item>
+        <item>In this section you can test the various sensor, to check if your robot works correctly without any problems</item>
+        <item>In this section you can activate the various functions that the robot can do</item>
+        <item>In this section you can set the port to the sensor you are using so that it will work correctly. The motors can be configured from Port A to D, and the sensors from Port 1 to 4. You can also check the Bluetooth connection and review the app</item>
+        <item>In this section you can find help with the Faqs to common question you may have and our contacts and who developed this :) </item>
 
     </array>
 

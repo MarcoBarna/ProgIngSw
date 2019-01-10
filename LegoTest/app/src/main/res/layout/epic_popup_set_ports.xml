@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         app:cardCornerRadius="15dp"
-        app:cardBackgroundColor="#848484"
+        app:cardBackgroundColor="#FFFFFF"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -46,7 +46,8 @@
                 android:text="Motor1"
                 android:textAlignment="inherit"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -61,7 +62,8 @@
                         android:text="Motor2"
                         android:textAlignment="inherit"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -76,7 +78,8 @@
                         android:text="Color Sensor"
                         android:textAlignment="inherit"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -91,7 +94,8 @@
                         android:text="Gyro Sensor"
                         android:textAlignment="inherit"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -106,7 +110,8 @@
                         android:text="Touch Sensor"
                         android:textAlignment="inherit"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"/>
 
         </LinearLayout>
 
@@ -122,7 +127,7 @@
             <Spinner
                 android:id="@+id/spinner_motor1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
             <Space
                 android:layout_width="match_parent"
