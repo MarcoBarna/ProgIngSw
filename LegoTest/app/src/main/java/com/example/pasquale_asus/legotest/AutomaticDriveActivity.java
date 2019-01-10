@@ -19,6 +19,7 @@ public class AutomaticDriveActivity extends Form {
     private android.widget.Button firstaction;
     private Ev3Motors motors;
     private Ev3UltrasonicSensor ultrasonicSensor;
+    private boolean interruptAction;
 
     @Override
     public void $define(){
@@ -29,7 +30,13 @@ public class AutomaticDriveActivity extends Form {
         firstaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firstActionAlgorithm();
+                interruptAction = false;
+                new Thread(){
+                    @Override
+                    public void run() {
+                        firstActionAlgorithm();
+                    }
+                }.start();
             }
         });
 
@@ -44,18 +51,19 @@ public class AutomaticDriveActivity extends Form {
         ultrasonicSensor.BluetoothClient(MainActivity.bluetoothClient);
     }
     synchronized public void firstActionAlgorithm(){
-        boolean flag = true;
-        motors.RotateIndefinitely(50);
-        while(flag) {
-            if (ultrasonicSensor.GetDistance() < 15) {
-                motors.Stop(true);
-                flag = false;
+        final int OBSTACLE_DISTANCE = 20;
+        try {
+            while(interruptAction == false){
+                motors.RotateSyncIndefinitely(50, 0);
+                if (ultrasonicSensor.GetDistance() < 20 && ultrasonicSensor.GetDistance() > 3) {
+                    motors.Stop(false);
+                    motors.RotateSyncInDuration(-50, 400, -90, false);
+                    wait(500);
+                }
+                wait(200);
             }
-            try {
-                wait(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
