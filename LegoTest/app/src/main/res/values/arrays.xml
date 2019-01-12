@@ -8,7 +8,6 @@
 
     </array>
 
-
     <array name="FAQsQuestions">
         <item>How do I connect to my LegoEv3?</item>
         <item>How do I control LegoEv3?</item>
@@ -31,7 +30,6 @@
         <item>@+id/buttonGuide4</item>
 
     </array>
-
 
     <array name="GuideProblems">
         <item>TEST</item>

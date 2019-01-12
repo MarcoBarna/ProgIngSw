@@ -94,6 +94,33 @@
                 android:layout_gravity="start">
 
                 <TextView
+                    android:id="@+id/motor3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20sp"
+                    android:text="Motor3"
+                    android:textAlignment="inherit"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"/>
+
+                <Spinner
+                    android:id="@+id/spinner_motor3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="150dp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:layout_gravity="start">
+
+                <TextView
                     android:id="@+id/color_sensor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
