@@ -57,6 +57,7 @@ public class TestSensorsActivity extends AppCompatActivity {
         Spinner color_sensor = dialog.findViewById(R.id.spinner_color_sensor);
         Spinner gyro_sensor = dialog.findViewById(R.id.spinner_gyro_sensor);
         Spinner touch_sensor = dialog.findViewById(R.id.spinner_touch_sensor);
+        Spinner proximity_sensor = dialog.findViewById(R.id.spinner_proximity_sensor);
 
         String[] items_numbers = new String[]{"1", "2", "3", "4"};
         String[] items_letters = new String[]{"A", "B", "C", "D"};
@@ -82,12 +83,14 @@ public class TestSensorsActivity extends AppCompatActivity {
         color_sensor.setAdapter(adapter_numbers);
         gyro_sensor.setAdapter(adapter_numbers);
         touch_sensor.setAdapter(adapter_numbers);
+        proximity_sensor.setAdapter(adapter_numbers);
 
         motor1.setSelection(items_string_letters.indexOf(MainActivity.motor1_port));
         motor2.setSelection(items_string_letters.indexOf(MainActivity.motor2_port));
         color_sensor.setSelection(items_string_numbers.indexOf(MainActivity.color_sensor_port));
         gyro_sensor.setSelection(items_string_numbers.indexOf(MainActivity.gyro_sensor_port));
         touch_sensor.setSelection(items_string_numbers.indexOf(MainActivity.touch_sensor_port));
+        proximity_sensor.setSelection(items_string_numbers.indexOf(MainActivity.proximity_sensor_port));
 
         motor1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -147,6 +150,19 @@ public class TestSensorsActivity extends AppCompatActivity {
                 String item = (String) adapterView.getItemAtPosition(i);
                 if(MainActivity.touch_sensor_port != item) {
                     MainActivity.touch_sensor_port = item;
+                    Toast.makeText(getApplicationContext(), "Changed TouchSensor port: " + item, Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
+        proximity_sensor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = (String) adapterView.getItemAtPosition(i);
+                if(MainActivity.proximity_sensor_port != item) {
+                    MainActivity.proximity_sensor_port = item;
                     Toast.makeText(getApplicationContext(), "Changed TouchSensor port: " + item, Toast.LENGTH_LONG).show();
                 }
             }
