@@ -25,7 +25,7 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity
 {
-    public static String motor1_port, motor2_port, color_sensor_port, gyro_sensor_port, touch_sensor_port;
+    public static String motor1_port, motor2_port, color_sensor_port, gyro_sensor_port, touch_sensor_port = "";
     public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
     private ImageButton manualMode, automaticmode, helpmode, settingsmode;
@@ -164,14 +164,14 @@ public class MainActivity extends AppCompatActivity
     }
     private void initializeLibraryObject(){
         ElementsEV3 libElements = new ElementsEV3();
-        if (bluetoothClient ==null)
+        if (bluetoothClient == null)
             this.bluetoothClient = libElements.bluetoothClient;
         this.infoBrick = libElements.commands;
-        motor1_port = "C";
-        gyro_sensor_port = "3";
-        color_sensor_port = "2";
-        motor2_port = "B";
-        touch_sensor_port = "1";
+        motor1_port = (motor1_port == null) ? "C" : motor1_port;
+        gyro_sensor_port = (gyro_sensor_port == null) ? "3" : gyro_sensor_port;
+        color_sensor_port = (color_sensor_port == null) ? "2" : color_sensor_port;
+        motor2_port = (motor2_port == null) ? "B" : motor2_port;
+        touch_sensor_port = (touch_sensor_port == null) ? "1" : touch_sensor_port;
     }
     /*
     public void showBtMenu(View v){
