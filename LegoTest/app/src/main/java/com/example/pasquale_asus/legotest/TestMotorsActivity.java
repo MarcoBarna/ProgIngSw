@@ -1,28 +1,21 @@
 package com.example.pasquale_asus.legotest;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Point;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Motors;
 
-public class JoystickManualControlActivity extends AppCompatActivity{
+public class TestMotorsActivity extends AppCompatActivity{
     private Ev3Motors motors, submotor;
     private FloatingActionButton baseforcursor;
     private Point size = null;
@@ -31,7 +24,7 @@ public class JoystickManualControlActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_joystick_manual_control);
+        setContentView(R.layout.activity_test_motors);
         size = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
 

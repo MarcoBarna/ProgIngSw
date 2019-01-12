@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#282828"
     android:theme="@style/Theme.AppCompat.NoActionBar"
-    tools:context=".JoystickManualControlActivity">
+    tools:context=".TestMotorsActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/manualToolbar"
