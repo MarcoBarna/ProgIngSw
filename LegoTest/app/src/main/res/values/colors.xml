@@ -13,4 +13,5 @@
     <color name="colorBlack">#000000</color>
     <color name="greyToolbar">#6a848484</color>
     <color name="greyButton">#6a848484</color>
+    <color name="greyBackground">#282828</color>
 </resources>
