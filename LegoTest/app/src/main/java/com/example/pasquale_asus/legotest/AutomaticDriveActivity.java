@@ -15,14 +15,15 @@ import com.google.appinventor.components.runtime.Form;
 import java.nio.charset.MalformedInputException;
 import java.text.Normalizer;
 
-public class AutomaticDriveActivity extends Form {
+public class AutomaticDriveActivity extends AppCompatActivity {
     private android.widget.Button firstaction;
     private Ev3Motors motors;
     private Ev3UltrasonicSensor ultrasonicSensor;
     private boolean interruptAction;
 
-    @Override
-    public void $define(){
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_automatic_drive);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         initializeMotors();
@@ -40,13 +41,14 @@ public class AutomaticDriveActivity extends Form {
             }
         });
 
-
     }
+
     public void initializeMotors(){
-        motors = new Ev3Motors(this);
-        motors.MotorPorts("BC");
+        ElementsEV3 elementsEV3 = new ElementsEV3();
+        motors = elementsEV3.leftMotors;
+        motors.MotorPorts(MainActivity.motor1_port + MainActivity.motor2_port);
         motors.BluetoothClient(MainActivity.bluetoothClient);
-        ultrasonicSensor = new Ev3UltrasonicSensor(this);
+        ultrasonicSensor = elementsEV3.ultrasonicSensor;
         ultrasonicSensor.SensorPort(MainActivity.gyro_sensor_port);
         ultrasonicSensor.BluetoothClient(MainActivity.bluetoothClient);
     }
