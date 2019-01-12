@@ -42,7 +42,7 @@
 
     <LinearLayout
         android:layout_width="368dp"
-        android:layout_height="429dp"
+        android:layout_height="354dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -50,35 +50,37 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_port_sensor">
+        app:layout_constraintTop_toBottomOf="@+id/set_port_sensor"
+        app:layout_constraintVertical_bias="0.077">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/touch_sensor_test"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Touch Sensor"
-                    android:textColor="@color/colorWhite"/>
+            <TextView
+                android:id="@+id/touch_sensor_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Touch Sensor"
+                android:textColor="@color/colorWhite" />
 
-                <TextView
-                    android:id="@+id/touch_sensor_state"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="released"
-                    android:textSize="20sp"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/touch_sensor_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="released"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -104,8 +106,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -131,8 +133,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -156,5 +158,30 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_test_sensors_sensors"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@color/greyBackground"
+        android:text="Test Sensors"
+        android:textColor="@android:color/white"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_test_sensors_motors"
+        app:layout_constraintEnd_toStartOf="@+id/button_test_sensors_motors"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_test_sensors_motors"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@color/greyButton"
+        android:text="Test Motors"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_test_sensors_sensors" />
 
 </android.support.constraint.ConstraintLayout>

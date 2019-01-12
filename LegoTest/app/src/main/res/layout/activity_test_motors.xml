@@ -23,20 +23,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="TEST"
+            android:text="Test Motors"
             android:textColor="@color/colorWhite" />
 
     </android.support.v7.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="480dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -119,20 +109,20 @@
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_test_motors_sensors"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:background="@color/greyToolbar"
+        android:background="@color/greyButton"
         android:text="Test Sensors"
         android:textColor="@android:color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button3"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_test_motors_motors"
+        app:layout_constraintEnd_toStartOf="@+id/button_test_motors_motors"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button_test_motors_motors"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:background="@color/greyBackground"
@@ -141,6 +131,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button2" />
+        app:layout_constraintStart_toEndOf="@+id/button_test_motors_sensors" />
 
 </android.support.constraint.ConstraintLayout>

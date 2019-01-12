@@ -1,6 +1,7 @@
 package com.example.pasquale_asus.legotest;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import static com.example.pasquale_asus.legotest.R.id.button_test_sensors_motors;
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class TestSensorsActivity extends AppCompatActivity {
@@ -38,6 +40,19 @@ public class TestSensorsActivity extends AppCompatActivity {
                 onButtonsetPortsClick(view);
             }
         });
+
+        Button buttonTestMotors = findViewById(R.id.button_test_sensors_motors);
+        buttonTestMotors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               onButtonTestMotors(view);
+            }
+        });
+    }
+
+    public void onButtonTestMotors(View v){
+        Intent intent = new Intent(this, TestMotorsActivity.class);
+        startActivity(intent);
     }
 
     public void onButtonsetPortsClick(View v){
