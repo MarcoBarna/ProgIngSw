@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/background1"
     android:theme="@style/Theme.AppCompat.NoActionBar"
-    tools:context=".JoystickManualControlActivity">
+    tools:context=".TestMotorsActivity">
 
     <TextView
         android:id="@+id/textView"
