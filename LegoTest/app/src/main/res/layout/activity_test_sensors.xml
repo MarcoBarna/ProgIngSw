@@ -13,7 +13,7 @@
         android:id="@+id/testSensorsToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#6a848484"
+        android:background="@color/greyToolbar"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -33,7 +33,7 @@
         android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="#6a848484"
+        android:background="@color/greyButton"
         android:text="Imposta porte sensori"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Touch Sensor"
-                    android:textColor="@color/colorwhite"/>
+                    android:textColor="@color/colorWhite"/>
 
                 <TextView
                     android:id="@+id/touch_sensor_state"

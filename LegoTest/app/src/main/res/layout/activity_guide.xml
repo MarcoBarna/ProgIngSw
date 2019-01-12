@@ -14,7 +14,7 @@
         android:id="@+id/GuideToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#6a848484"
+        android:background="@color/greyToolbar"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GUIDE"
-            android:textColor="@color/colorwhite"
+            android:textColor="@color/colorWhite"
             android:layout_gravity="center"
             style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 

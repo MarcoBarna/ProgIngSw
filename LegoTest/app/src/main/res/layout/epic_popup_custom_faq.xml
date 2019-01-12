@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             app:cardCornerRadius="15dp"
-            app:cardBackgroundColor="@color/colorwhite"
+            app:cardBackgroundColor="@color/colorWhite"
             android:layout_marginBottom="20sp">
 
                 <TextView
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             app:cardCornerRadius="15dp"
-            app:cardBackgroundColor="@color/colorwhite">
+            app:cardBackgroundColor="@color/colorWhite">
 
             <TextView
                 android:id="@+id/FAQanswerPopup"

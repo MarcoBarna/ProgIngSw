@@ -5,10 +5,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorwhite">#FFFFFF</color>
+    <color name="colorWhite">#FFFFFF</color>
     <color name="colorRed">#FF0000</color>
     <color name="colorGreen">#00FF00</color>
     <color name="colorBlue">#0000FF</color>
     <color name="colorYellow">#FFFF00</color>
     <color name="colorBlack">#000000</color>
+    <color name="greyToolbar">#6a848484</color>
+    <color name="greyButton">#6a848484</color>
 </resources>

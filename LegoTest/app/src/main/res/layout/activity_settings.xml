@@ -12,7 +12,7 @@
         android:id="@+id/settingsToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#6a848484"
+        android:background="@color/greyToolbar"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="SETTINGS"
-            android:textColor="@color/colorwhite"/>
+            android:textColor="@color/colorWhite"/>
 
     </android.support.v7.widget.Toolbar>
 
@@ -36,7 +36,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="8dp"
-        android:background="#6a848484"
+        android:background="@color/greyButton"
         android:text="Set Port"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
-        android:background="#6a848484"
+        android:background="@color/greyButton"
         android:text="Review App"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
