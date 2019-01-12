@@ -121,4 +121,32 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="201dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:background="@color/greyToolbar"
+        android:text="Test Sensors"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="201"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="183dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/greyBackground"
+        android:text="Test Motors"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.96" />
+
 </android.support.constraint.ConstraintLayout>
