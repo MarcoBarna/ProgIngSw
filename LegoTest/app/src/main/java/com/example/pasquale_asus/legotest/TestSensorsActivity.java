@@ -54,6 +54,7 @@ public class TestSensorsActivity extends AppCompatActivity {
 
         Spinner motor1 = dialog.findViewById(spinner_motor1);
         Spinner motor2 = dialog.findViewById(R.id.spinner_motor2);
+        Spinner motor3 = dialog.findViewById(R.id.spinner_motor3);
         Spinner color_sensor = dialog.findViewById(R.id.spinner_color_sensor);
         Spinner gyro_sensor = dialog.findViewById(R.id.spinner_gyro_sensor);
         Spinner touch_sensor = dialog.findViewById(R.id.spinner_touch_sensor);
@@ -80,6 +81,7 @@ public class TestSensorsActivity extends AppCompatActivity {
 
         motor1.setAdapter(adapter_letters);
         motor2.setAdapter(adapter_letters);
+        motor3.setAdapter(adapter_letters);
         color_sensor.setAdapter(adapter_numbers);
         gyro_sensor.setAdapter(adapter_numbers);
         touch_sensor.setAdapter(adapter_numbers);
@@ -87,6 +89,7 @@ public class TestSensorsActivity extends AppCompatActivity {
 
         motor1.setSelection(items_string_letters.indexOf(MainActivity.motor1_port));
         motor2.setSelection(items_string_letters.indexOf(MainActivity.motor2_port));
+        motor3.setSelection(items_string_letters.indexOf(MainActivity.motor3_port));
         color_sensor.setSelection(items_string_numbers.indexOf(MainActivity.color_sensor_port));
         gyro_sensor.setSelection(items_string_numbers.indexOf(MainActivity.gyro_sensor_port));
         touch_sensor.setSelection(items_string_numbers.indexOf(MainActivity.touch_sensor_port));
@@ -112,6 +115,19 @@ public class TestSensorsActivity extends AppCompatActivity {
                 if(MainActivity.motor2_port != item) {
                     MainActivity.motor2_port = item;
                     Toast.makeText(getApplicationContext(), "Changed Motor2 port: " + item, Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
+        motor3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = (String) adapterView.getItemAtPosition(i);
+                if(MainActivity.motor3_port != item) {
+                    MainActivity.motor3_port = item;
+                    Toast.makeText(getApplicationContext(), "Changed Motor3 port: " + item, Toast.LENGTH_LONG).show();
                 }
             }
             @Override

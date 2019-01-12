@@ -25,7 +25,7 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity
 {
-    public static String motor1_port, motor2_port, color_sensor_port, gyro_sensor_port, touch_sensor_port, proximity_sensor_port = null;
+    public static String motor1_port, motor2_port, motor3_port, color_sensor_port, gyro_sensor_port, touch_sensor_port, proximity_sensor_port = null;
     public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
     private ImageButton manualMode, automaticmode, helpmode, settingsmode;
@@ -168,9 +168,10 @@ public class MainActivity extends AppCompatActivity
             this.bluetoothClient = libElements.bluetoothClient;
         this.infoBrick = libElements.commands;
         motor1_port = (motor1_port == null) ? "C" : motor1_port;
+        motor2_port = (motor2_port == null) ? "B" : motor2_port;
+        motor3_port = (motor3_port == null) ? "D" : motor3_port;
         gyro_sensor_port = (gyro_sensor_port == null) ? "3" : gyro_sensor_port;
         color_sensor_port = (color_sensor_port == null) ? "2" : color_sensor_port;
-        motor2_port = (motor2_port == null) ? "B" : motor2_port;
         touch_sensor_port = (touch_sensor_port == null) ? "1" : touch_sensor_port;
         proximity_sensor_port = (proximity_sensor_port == null) ? "4" : proximity_sensor_port;
     }
