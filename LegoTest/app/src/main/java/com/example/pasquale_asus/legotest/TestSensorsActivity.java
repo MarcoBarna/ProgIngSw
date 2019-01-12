@@ -52,6 +52,7 @@ public class TestSensorsActivity extends AppCompatActivity {
 
     public void onButtonTestMotors(View v){
         Intent intent = new Intent(this, TestMotorsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
 

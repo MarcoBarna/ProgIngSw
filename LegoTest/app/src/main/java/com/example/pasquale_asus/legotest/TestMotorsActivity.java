@@ -26,6 +26,8 @@ public class TestMotorsActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_motors);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+
         size = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
 
@@ -151,8 +153,8 @@ public class TestMotorsActivity extends AppCompatActivity{
 
     private void onButtonTestSensors(View view) {
         Intent intent = new Intent(this, TestSensorsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
-
     }
 
     public void goForward(View v){

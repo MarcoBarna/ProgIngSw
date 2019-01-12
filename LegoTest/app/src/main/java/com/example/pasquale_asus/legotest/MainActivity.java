@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity
     public void manualModeActivity(){
         //TestMotorsActivity
         Intent intent = new Intent(this, TestMotorsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
     public void automaticModeActivity(){
