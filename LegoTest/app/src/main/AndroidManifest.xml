@@ -31,7 +31,7 @@
         <activity
             android:name=".AutomaticDriveActivity"
             android:configChanges="orientation"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".TestMotorsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".JoystickActivity"
@@ -43,7 +43,7 @@
         <activity
             android:name=".HelpActivity"
             android:configChanges="orientation"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".TestMotorsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
@@ -57,13 +57,13 @@
         </activity>
         <activity
             android:name=".FAQsActivity"
-            android:parentActivityName=".HelpActivity" />
+            android:parentActivityName=".TestMotorsActivity" />
         <activity
             android:name=".GuideActivity"
             android:parentActivityName=".HelpActivity" />
         <activity
             android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".TestMotorsActivity" />
         <activity
             android:name=".TestSensorsActivity"
             android:parentActivityName=".TestMotorsActivity"/>

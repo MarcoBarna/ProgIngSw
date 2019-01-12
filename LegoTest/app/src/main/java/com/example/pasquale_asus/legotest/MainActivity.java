@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity
                 /*showBtMenu(view);*/
             }
         });
-
         buttonBluetoothDisconnect = findViewById(R.id.buttonBluetoothDisconnect);
         buttonBluetoothDisconnect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,11 +88,6 @@ public class MainActivity extends AppCompatActivity
         statusBattery = findViewById(R.id.statusBattery);
         osfirmware = findViewById(R.id.osfirmware);
         //disableUserSections();
-
-        if (bluetoothClient.IsConnected())
-            visibilityBtConnected();
-        else
-            visibilityBtDisconnected();
     }
 
     @Override
@@ -165,7 +159,7 @@ public class MainActivity extends AppCompatActivity
     public void visibilityBtDisconnected(){
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
         buttonBluetoothConnect.setVisibility(View.VISIBLE);
-        disableUserSections();
+        //disableUserSections();
     }
     private void initializeLibraryObject(){
         ElementsEV3 libElements = new ElementsEV3();
@@ -225,4 +219,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
     */
+    public void onResume() {
+        super.onResume();
+    }
 }
