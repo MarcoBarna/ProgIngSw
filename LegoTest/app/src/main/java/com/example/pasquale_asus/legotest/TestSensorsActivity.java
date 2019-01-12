@@ -69,9 +69,15 @@ public class TestSensorsActivity extends AppCompatActivity {
             synchronized  public void run() {
                 while (stopThread == false){
                     //TODO codice sensori
+                    final String res = ev3TouchSensor.IsPressed() ? "PRESSED" : "RELEASED";
 
-                    TextView textView = findViewById(R.id.touch_sensor_state);
-                    textView.setText(ev3TouchSensor.IsPressed() ? "PRESSED" : "RELEASED");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView textView = findViewById(R.id.touch_sensor_state);
+                            textView.setText(res);
+                        }
+                    });
 
                     try {
                         wait(1000);
