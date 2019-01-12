@@ -24,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="FAQs"
+            android:textColor="@color/colorwhite"
             android:layout_gravity="center"
             style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
@@ -31,11 +32,14 @@
 
     <Button
         android:id="@+id/buttonFAQ1"
-        android:layout_width="200dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:padding="15sp"
         android:text="buttonFAQ1"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/buttonFAQ2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -44,10 +48,13 @@
 
     <Button
         android:id="@+id/buttonFAQ2"
-        android:layout_width="200dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:text="buttonFAQ2"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:padding="15sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/buttonFAQ3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -56,10 +63,13 @@
 
     <Button
         android:id="@+id/buttonFAQ3"
-        android:layout_width="200dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:text="buttonFAQ3"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:padding="15sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/buttonFAQ4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -68,10 +78,13 @@
 
     <Button
         android:id="@+id/buttonFAQ4"
-        android:layout_width="200dp"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:text="buttonFAQ4"
         android:textSize="20sp"
+        android:padding="15sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
