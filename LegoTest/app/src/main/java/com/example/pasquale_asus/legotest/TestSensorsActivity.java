@@ -13,7 +13,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.appinventor.components.runtime.Ev3TouchSensor;
 
 import static com.example.pasquale_asus.legotest.R.id.button_test_sensors_motors;
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
@@ -21,6 +24,11 @@ import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 public class TestSensorsActivity extends AppCompatActivity {
     private Button set_ports_button;
     private ImageView closePopup;
+    private Boolean stopThread;
+    private  ElementsEV3 elementsEV3;
+    private Ev3TouchSensor ev3TouchSensor;
+    Thread readSensors;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +56,38 @@ public class TestSensorsActivity extends AppCompatActivity {
                onButtonTestMotors(view);
             }
         });
+
+        stopThread = false;
+
+        elementsEV3 = new ElementsEV3();
+        ev3TouchSensor = elementsEV3.touchSensor;
+        ev3TouchSensor.SensorPort(MainActivity.touch_sensor_port);
+        ev3TouchSensor.BluetoothClient(MainActivity.bluetoothClient);
+
+        readSensors = new Thread(){
+            @Override
+            synchronized  public void run() {
+                while (stopThread == false){
+                    //TODO codice sensori
+
+                    TextView textView = findViewById(R.id.touch_sensor_state);
+                    textView.setText(ev3TouchSensor.IsPressed() ? "PRESSED" : "RELEASED");
+
+                    try {
+                        wait(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        readSensors.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        stopThread = true;
+        super.onDestroy();
     }
 
     public void onButtonTestMotors(View v){
