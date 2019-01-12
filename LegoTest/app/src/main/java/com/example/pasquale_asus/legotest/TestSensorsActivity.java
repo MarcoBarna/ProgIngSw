@@ -16,7 +16,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.appinventor.components.runtime.Ev3ColorSensor;
+import com.google.appinventor.components.runtime.Ev3GyroSensor;
 import com.google.appinventor.components.runtime.Ev3TouchSensor;
+import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 
 import static com.example.pasquale_asus.legotest.R.id.button_test_sensors_motors;
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
@@ -25,8 +28,10 @@ public class TestSensorsActivity extends AppCompatActivity {
     private Button set_ports_button;
     private ImageView closePopup;
     private Boolean stopThread;
-    private  ElementsEV3 elementsEV3;
     private Ev3TouchSensor ev3TouchSensor;
+    private Ev3UltrasonicSensor ev3UltrasonicSensor;
+    private Ev3GyroSensor ev3GyroSensor;
+    private Ev3ColorSensor ev3ColorSensor;
     Thread readSensors;
 
     @Override
@@ -58,27 +63,35 @@ public class TestSensorsActivity extends AppCompatActivity {
         });
 
         stopThread = false;
+        ElementsEV3 elementsEV3 = new ElementsEV3();
 
-        elementsEV3 = new ElementsEV3();
         ev3TouchSensor = elementsEV3.touchSensor;
         ev3TouchSensor.SensorPort(MainActivity.touch_sensor_port);
         ev3TouchSensor.BluetoothClient(MainActivity.bluetoothClient);
+
+        ev3UltrasonicSensor = elementsEV3.ultrasonicSensor;
+        ev3UltrasonicSensor.SensorPort(MainActivity.proximity_sensor_port);
+        ev3UltrasonicSensor.BluetoothClient(MainActivity.bluetoothClient);
+
+        ev3ColorSensor = elementsEV3.colorSensor;
+        ev3ColorSensor.SensorPort(MainActivity.color_sensor_port);
+        ev3ColorSensor.BluetoothClient(MainActivity.bluetoothClient);
 
         readSensors = new Thread(){
             @Override
             synchronized  public void run() {
                 while (stopThread == false){
-                    //TODO codice sensori
-                    final String res = ev3TouchSensor.IsPressed() ? "PRESSED" : "RELEASED";
-
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView textView = findViewById(R.id.touch_sensor_state);
-                            textView.setText(res);
+                            TextView text_color_value = findViewById(R.id.light_sensor_value);
+                            TextView text_sensor_state = findViewById(R.id.touch_sensor_state);
+                            TextView text_proximity_sensor_value = findViewById(R.id.proximity_sensor_value);
+                            text_color_value.setText(ev3ColorSensor.GetColorName());
+                            text_sensor_state.setText(ev3TouchSensor.IsPressed() + "");
+                            text_proximity_sensor_value.setText(ev3UltrasonicSensor.GetDistance() + "");
                         }
                     });
-
                     try {
                         wait(1000);
                     } catch (InterruptedException e) {
@@ -94,6 +107,11 @@ public class TestSensorsActivity extends AppCompatActivity {
     protected void onDestroy() {
         stopThread = true;
         super.onDestroy();
+    }
+    @Override
+    public void onBackPressed() {
+        stopThread = true;
+        finish();
     }
 
     public void onButtonTestMotors(View v){

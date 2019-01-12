@@ -36,7 +36,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 new Thread(){
                     @Override
                     public void run() {
-                        firstActionAlgorithm();
+                        //firstActionAlgorithm();
                     }
                 }.start();
             }
@@ -60,6 +60,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         ultrasonicSensor.SensorPort(MainActivity.gyro_sensor_port);
         ultrasonicSensor.BluetoothClient(MainActivity.bluetoothClient);
     }
+    /*
     synchronized public void firstActionAlgorithm(){
         final int OBSTACLE_DISTANCE = 20;
         try {
@@ -75,5 +76,5 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

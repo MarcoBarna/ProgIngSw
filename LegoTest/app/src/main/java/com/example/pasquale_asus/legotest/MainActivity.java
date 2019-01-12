@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity
     public Ev3Commands infoBrick;
     public TextView statusBattery, osfirmware;
 
+
     @SuppressLint("ResourceType")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,10 +171,10 @@ public class MainActivity extends AppCompatActivity
         motor1_port = (motor1_port == null) ? "C" : motor1_port;
         motor2_port = (motor2_port == null) ? "B" : motor2_port;
         motor3_port = (motor3_port == null) ? "D" : motor3_port;
-        gyro_sensor_port = (gyro_sensor_port == null) ? "3" : gyro_sensor_port;
-        color_sensor_port = (color_sensor_port == null) ? "2" : color_sensor_port;
-        touch_sensor_port = (touch_sensor_port == null) ? "1" : touch_sensor_port;
-        proximity_sensor_port = (proximity_sensor_port == null) ? "4" : proximity_sensor_port;
+        gyro_sensor_port = (gyro_sensor_port == null) ? "4" : gyro_sensor_port;
+        color_sensor_port = (color_sensor_port == null) ? "1" : color_sensor_port;
+        touch_sensor_port = (touch_sensor_port == null) ? "2" : touch_sensor_port;
+        proximity_sensor_port = (proximity_sensor_port == null) ? "3" : proximity_sensor_port;
     }
     /*
     public void showBtMenu(View v){
