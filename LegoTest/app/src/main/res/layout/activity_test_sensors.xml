@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/background1"
+    android:background="#282828"
     android:theme="@style/Theme.AppCompat.NoActionBar"
     tools:context=".TestSensorsActivity">
 
@@ -29,11 +29,13 @@
     </android.support.v7.widget.Toolbar>
 
     <Button
-        android:id="@+id/setPortsButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/set_port_sensor"
+        android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="#6a848484"
         android:text="Imposta porte sensori"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setPortsButton">
+        app:layout_constraintTop_toBottomOf="@+id/set_port_sensor">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,7 +90,8 @@
                     android:id="@+id/proximity_sensor_test"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Proximity Sensor" />
+                    android:text="Proximity Sensor"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/proximity_sensor_value"
@@ -114,7 +117,8 @@
                     android:id="@+id/light_sensor_test"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Light Sensor" />
+                    android:text="Light Sensor"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/light_sensor_value"
@@ -140,7 +144,8 @@
                     android:id="@+id/gyro_sensor_test"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Gyro Sensor" />
+                    android:text="Gyro Sensor"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/gyro_sensor_value"

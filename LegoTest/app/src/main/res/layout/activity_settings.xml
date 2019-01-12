@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/background1"
+    android:background="#282828"
     tools:context=".SettingsActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -36,7 +36,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="8dp"
-        android:background="@android:color/background_dark"
+        android:background="#6a848484"
         android:text="Set Port"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
-        android:background="@android:color/background_dark"
+        android:background="#6a848484"
         android:text="Review App"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"

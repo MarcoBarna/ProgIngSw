@@ -107,7 +107,8 @@ public class MainActivity extends AppCompatActivity
         visibilityBtDisconnected();
     }
     public void manualModeActivity(){
-        Intent intent = new Intent(this, JoystickManualControlActivity.class);
+        //JoystickManualControlActivity
+        Intent intent = new Intent(this, TestSensorsActivity.class);
         startActivity(intent);
     }
     public void automaticModeActivity(){

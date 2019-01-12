@@ -15,16 +15,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Motors;
 
 public class JoystickManualControlActivity extends AppCompatActivity{
-    private Ev3Motors motors;
+    private Ev3Motors motors, submotor;
     private FloatingActionButton baseforcursor;
     private Point size = null;
-    private Button home_test_motor;
+    private ImageButton motorup, motordown;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,12 @@ public class JoystickManualControlActivity extends AppCompatActivity{
         motors = elementsEV3.leftMotors;
         motors.MotorPorts("BC");
         motors.BluetoothClient(MainActivity.bluetoothClient);
+
+        submotor = elementsEV3.rightMotors;
+        submotor.MotorPorts("AD");
+        submotor.BluetoothClient(MainActivity.bluetoothClient);
+
+
         baseforcursor = findViewById(R.id.floatingActionButton2);
         baseforcursor.setEnabled(false);
         final TextView textView = findViewById(R.id.textView);
@@ -111,5 +119,45 @@ public class JoystickManualControlActivity extends AppCompatActivity{
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        motorup = findViewById(R.id.test_motor_up);
+        motordown = findViewById(R.id.test_motor_down);
+
+        /*Button UP (change id button)*/
+
+        motorup.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        goForward(view);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        submotor.Stop(true);
+                        submotor.Stop(false);
+                }
+                return false;
+            }
+        });
+
+        motordown.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        goBackward(view);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        submotor.Stop(false);
+                }
+                return false;
+            }
+        });
+
+    }
+    public void goForward(View v){
+        submotor.RotateSyncIndefinitely(200,0);
+    }
+    public void goBackward(View v){
+        submotor.RotateSyncIndefinitely(-200,0);
     }
 }
