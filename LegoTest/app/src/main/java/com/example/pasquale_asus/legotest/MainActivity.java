@@ -89,7 +89,11 @@ public class MainActivity extends AppCompatActivity
         statusBattery = findViewById(R.id.statusBattery);
         osfirmware = findViewById(R.id.osfirmware);
         //disableUserSections();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (bluetoothClient.IsConnected())
             visibilityBtConnected();
         else
