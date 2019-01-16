@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     private ImageButton manualMode, automaticmode, helpmode, settingsmode;
     public Ev3Commands infoBrick;
     public TextView statusBattery, osfirmware;
+    public static String MacAddress;
 
 
     @SuppressLint("ResourceType")
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         getWindow().setWindowAnimations(R.anim.fadein);
         initializeLibraryObject();
         statusBattery = findViewById(R.id.statusBattery);
+
         statusBattery.setText((TestSensorsActivity.readSensors != null && TestSensorsActivity.readSensors.isAlive()) + "");
 
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
@@ -144,6 +146,7 @@ public class MainActivity extends AppCompatActivity
         if (resultCode == RESULT_OK) {
             String userBluetoothDevice = data.getStringExtra("bluetooth");
             String macAddressToConnect = (userBluetoothDevice.subSequence(0,17)).toString();
+            MacAddress = macAddressToConnect;
             bluetoothClient.Connect(macAddressToConnect);
             if(bluetoothClient.IsConnected()){
                 visibilityBtConnected();
@@ -228,7 +231,6 @@ public class MainActivity extends AppCompatActivity
     */
     public void onResume() {
         super.onResume();
-        statusBattery.setText((TestSensorsActivity.readSensors != null && TestSensorsActivity.readSensors.isAlive()) + "");
-
+       statusBattery.setText((TestSensorsActivity.readSensors != null && TestSensorsActivity.readSensors.isAlive()) + "");
     }
 }

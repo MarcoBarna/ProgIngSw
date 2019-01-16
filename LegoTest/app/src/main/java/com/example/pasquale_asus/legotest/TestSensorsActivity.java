@@ -99,7 +99,7 @@ public class TestSensorsActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }
+               }
             }
         };
         readSensors.start();
@@ -113,8 +113,8 @@ public class TestSensorsActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        readSensors.interrupt();
         stopThread = true;
+        readSensors.interrupt();
         finish();
     }
 
