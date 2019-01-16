@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,18 +24,21 @@ import com.google.appinventor.components.runtime.Ev3GyroSensor;
 import com.google.appinventor.components.runtime.Ev3TouchSensor;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 
+import org.w3c.dom.Text;
+
 import static com.example.pasquale_asus.legotest.R.id.button_test_sensors_motors;
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class TestSensorsActivity extends AppCompatActivity {
     private Button set_ports_button;
     private ImageView closePopup;
-    private Boolean stopThread;
     private Ev3TouchSensor ev3TouchSensor;
     private Ev3UltrasonicSensor ev3UltrasonicSensor;
     private Ev3GyroSensor ev3GyroSensor;
     private Ev3ColorSensor ev3ColorSensor;
-    public static Thread readSensors;
+    public static Handler readSensorsHandler;
+    private Runnable readSensorsRunnable;
+    private boolean readSensorsStop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +68,7 @@ public class TestSensorsActivity extends AppCompatActivity {
             }
         });
 
-        stopThread = false;
-        ElementsEV3 elementsEV3 = new ElementsEV3();
+        final ElementsEV3 elementsEV3 = new ElementsEV3();
 
         ev3TouchSensor = elementsEV3.touchSensor;
         ev3TouchSensor.SensorPort(MainActivity.touch_sensor_port);
@@ -78,44 +82,31 @@ public class TestSensorsActivity extends AppCompatActivity {
         ev3ColorSensor.SensorPort(MainActivity.color_sensor_port);
         ev3ColorSensor.BluetoothClient(MainActivity.bluetoothClient);
 
-
-        readSensors = new Thread(){
+        readSensorsStop = false;
+        readSensorsHandler = new Handler();
+        readSensorsRunnable = new Runnable() {
             @Override
-            synchronized  public void run() {
-                while (stopThread == false){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            TextView text_color_value = findViewById(R.id.light_sensor_value);
-                            TextView text_sensor_state = findViewById(R.id.touch_sensor_state);
-                            TextView text_proximity_sensor_value = findViewById(R.id.proximity_sensor_value);
-                            text_color_value.setText(ev3ColorSensor.GetColorName());
-                            text_sensor_state.setText(ev3TouchSensor.IsPressed() + "");
-                            text_proximity_sensor_value.setText(ev3UltrasonicSensor.GetDistance() + "");
-                        }
-                    });
-                    try {
-                        wait(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-               }
+            public void run() {
+                TextView touch, prox, color;
+                touch = findViewById(R.id.touch_sensor_state);
+                prox = findViewById(R.id.proximity_sensor_value);
+                color = findViewById(R.id.light_sensor_value);
+                touch.setText(elementsEV3.touchSensor.IsPressed()+"");
+                prox.setText(elementsEV3.ultrasonicSensor.GetDistance()+"");
+                color.setText(elementsEV3.colorSensor.GetColorName());
+                if (readSensorsStop == false)
+                    readSensorsHandler.postDelayed(readSensorsRunnable, 1000);
             }
         };
-        readSensors.start();
+        readSensorsHandler.post(readSensorsRunnable);
+
     }
 
     @Override
-    protected void onDestroy() {
-        stopThread = true;
-        readSensors.interrupt();
-        super.onDestroy();
-    }
-    @Override
-    public void onBackPressed() {
-        stopThread = true;
-        readSensors.interrupt();
-        finish();
+    protected void onPause() {
+        readSensorsStop = true;
+        readSensorsHandler.removeCallbacks(readSensorsRunnable);
+        super.onPause();
     }
 
     public void onButtonTestMotors(View v){

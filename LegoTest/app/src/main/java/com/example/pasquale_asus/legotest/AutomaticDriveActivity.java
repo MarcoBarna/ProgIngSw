@@ -27,7 +27,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     private TextView debug;
     Handler handler;
     private boolean handlerStop;
-     Runnable r = null;
+    Runnable r = null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +72,13 @@ public class AutomaticDriveActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 handler.removeCallbacks(r);
-                handler.postDelayed(r, 5000);
+                handlerStop = true;
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        motors.Stop(false);
+                    }
+                }, 500);
             }
         });
 

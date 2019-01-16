@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity
         initializeLibraryObject();
         statusBattery = findViewById(R.id.statusBattery);
 
-        statusBattery.setText((TestSensorsActivity.readSensors != null && TestSensorsActivity.readSensors.isAlive()) + "");
-
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
         registerForContextMenu(buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
@@ -229,8 +227,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
     */
-    public void onResume() {
-        super.onResume();
-       statusBattery.setText((TestSensorsActivity.readSensors != null && TestSensorsActivity.readSensors.isAlive()) + "");
-    }
 }
