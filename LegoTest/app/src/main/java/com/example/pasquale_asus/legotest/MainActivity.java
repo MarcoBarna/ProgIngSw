@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Commands;
 
+import junit.framework.Test;
+
 import java.util.Set;
 
 
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         getWindow().setWindowAnimations(R.anim.fadein);
         initializeLibraryObject();
+        statusBattery = findViewById(R.id.statusBattery);
+        statusBattery.setText((TestSensorsActivity.readSensors != null && TestSensorsActivity.readSensors.isAlive()) + "");
+
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
         registerForContextMenu(buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +91,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        statusBattery = findViewById(R.id.statusBattery);
+
         osfirmware = findViewById(R.id.osfirmware);
         //disableUserSections();
     }
@@ -144,9 +149,9 @@ public class MainActivity extends AppCompatActivity
                 visibilityBtConnected();
                 activeUserSections();
                 infoBrick.BluetoothClient(bluetoothClient);
-                statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
+                //statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
                 if((int)(infoBrick.GetBatteryCurrent()*100) < 20)
-                    statusBattery.setTextColor(Color.RED);
+                  //  statusBattery.setTextColor(Color.RED);
                 osfirmware.setText(infoBrick.GetHardwareVersion());
             }
             else{
@@ -223,5 +228,7 @@ public class MainActivity extends AppCompatActivity
     */
     public void onResume() {
         super.onResume();
+        statusBattery.setText((TestSensorsActivity.readSensors != null && TestSensorsActivity.readSensors.isAlive()) + "");
+
     }
 }

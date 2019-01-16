@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,7 +33,7 @@ public class TestSensorsActivity extends AppCompatActivity {
     private Ev3UltrasonicSensor ev3UltrasonicSensor;
     private Ev3GyroSensor ev3GyroSensor;
     private Ev3ColorSensor ev3ColorSensor;
-    Thread readSensors;
+    public static Thread readSensors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class TestSensorsActivity extends AppCompatActivity {
         ev3ColorSensor.SensorPort(MainActivity.color_sensor_port);
         ev3ColorSensor.BluetoothClient(MainActivity.bluetoothClient);
 
+
         readSensors = new Thread(){
             @Override
             synchronized  public void run() {
@@ -106,10 +108,12 @@ public class TestSensorsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         stopThread = true;
+        readSensors.interrupt();
         super.onDestroy();
     }
     @Override
     public void onBackPressed() {
+        readSensors.interrupt();
         stopThread = true;
         finish();
     }
