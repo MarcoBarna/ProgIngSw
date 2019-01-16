@@ -23,16 +23,21 @@ public class GuideActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        resources = getResources();
         setContentView(R.layout.activity_guide);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
+        initializeGuide();
+        setupToolbar();
+    }
+
+    private void initializeGuide(){
+        resources = getResources();
         GuideButtonsIDs = resources.obtainTypedArray(R.array.GuideButtonsIDs);
         GuideProblems = resources.obtainTypedArray(R.array.GuideProblems);
         GuideSolutions = resources.obtainTypedArray(R.array.GuideSolutions);
 
-        for(Integer i = 0; i < GuideButtonsIDs.length(); i++) {
-            final Integer index = i;
+        for(int i = 0; i < GuideButtonsIDs.length(); i++) {
+            final Integer index = new Integer(i);
 
             Button questionButton = findViewById(GuideButtonsIDs.getResourceId(index, View.NO_ID));
 
@@ -45,15 +50,16 @@ public class GuideActivity extends AppCompatActivity {
                 }
             });
         }
+    }
 
+    private void setupToolbar(){
         Toolbar toolbar = findViewById(R.id.GuideToolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    public void onProblemClick(View v, Integer index){
+    private void onProblemClick(View v, Integer index){
         String problemText = GuideProblems.getString(index);
         String solutionText = GuideSolutions.getString(index);
 

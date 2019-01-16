@@ -23,6 +23,11 @@ public class HelpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_help);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
+        setupButtons();
+        setupToolbar();
+    }
+
+    private void setupButtons(){
         findViewById(R.id.buttonFAQ1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,27 +52,26 @@ public class HelpActivity extends AppCompatActivity {
                 onButtonCreditsClick(view);
             }
         });
+    }
 
+    private void setupToolbar(){
         Toolbar toolbar = findViewById(R.id.helpToolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    public void onButtonFAQClick(View v){
-        //TODO activity and startActivity
+    private void onButtonFAQClick(View v){
         Intent FAQsIntent = new Intent(this, FAQsActivity.class);
         startActivity(FAQsIntent);
     }
 
-    public void onButtonGuideClick(View v){
-        //TODO activity and startActivity
+    private void onButtonGuideClick(View v){
         Intent GuideIntent = new Intent(this, GuideActivity.class);
         startActivity(GuideIntent);
     }
 
-    public void onButtonContactsClick(View v){
+    private void onButtonContactsClick(View v){
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.epic_popup_custom_contacts);
         closePopup = (ImageView) dialog.findViewById(R.id.closePopup);
@@ -87,7 +91,7 @@ public class HelpActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void onButtonCreditsClick(View v){
+    private void onButtonCreditsClick(View v){
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.epic_popup_custom_credits);
         closePopup = (ImageView) dialog.findViewById(R.id.closePopup);

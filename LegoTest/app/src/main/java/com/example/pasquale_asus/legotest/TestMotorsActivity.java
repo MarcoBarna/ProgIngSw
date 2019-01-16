@@ -2,6 +2,7 @@ package com.example.pasquale_asus.legotest;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.google.appinventor.components.runtime.Ev3Motors;
 
@@ -25,6 +26,8 @@ public class TestMotorsActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_motors);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+
         size = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
 
@@ -40,12 +43,10 @@ public class TestMotorsActivity extends AppCompatActivity{
 
         baseforcursor = findViewById(R.id.floatingActionButton2);
         baseforcursor.setEnabled(false);
-        final TextView textView = findViewById(R.id.textView);
         final FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                //   textView.setText(event.toString() + "\nTr X:" + floatingActionButton.getTranslationX() + "Tr Y:" + floatingActionButton.getTranslationY());
                 double sinTETA = 0; //seno dell'angolo che parte da 0 Math.PI
                 double cosTETA = 0; //coseno dell'angolo che parte da 0 Math.PI
                 double radius = 0; //distanza dal centro al punto di tocco
@@ -97,21 +98,12 @@ public class TestMotorsActivity extends AppCompatActivity{
                     default:
                         break;
                 }
-              //  textView.setText(textView.getText() +
-              //          "\n" + size +
-              //          "\npower:" +power + "\nturnratio:" + turnratio +
-                        //"\nsin: " + sinTETA + "\ncos: " + cosTETA +
-                        //"\nradius: " + radius + "\nmaxRadius: " + maxRadius +
-             //           "\n(radius < maxRadius) ? " + (radius < maxRadius));
                 return false;
             }
         });
 
-        Toolbar toolbar = findViewById(R.id.manualToolbar);
-        setSupportActionBar(toolbar);
+        setupToolbar();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         motorup = findViewById(R.id.test_motor_up);
         motordown = findViewById(R.id.test_motor_down);
 
@@ -146,7 +138,29 @@ public class TestMotorsActivity extends AppCompatActivity{
             }
         });
 
+        Button buttonTestMotors = findViewById(R.id.button_test_motors_sensors);
+        buttonTestMotors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onButtonTestSensors(view);
+            }
+        });
+
     }
+
+    private void setupToolbar(){
+        Toolbar toolbar = findViewById(R.id.manualToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    private void onButtonTestSensors(View view) {
+        Intent intent = new Intent(this, TestSensorsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+    }
+
     public void goForward(View v){
         submotor.RotateSyncIndefinitely(200,0);
     }

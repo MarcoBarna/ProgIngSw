@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3Commands;
 
+import junit.framework.Test;
+
 import java.util.Set;
 
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity
     private ImageButton manualMode, automaticmode, helpmode, settingsmode;
     public Ev3Commands infoBrick;
     public TextView statusBattery, osfirmware;
+    public static String MacAddress;
+
 
     @SuppressLint("ResourceType")
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         getWindow().setWindowAnimations(R.anim.fadein);
         initializeLibraryObject();
+        statusBattery = findViewById(R.id.statusBattery);
+
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
         registerForContextMenu(buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +53,6 @@ public class MainActivity extends AppCompatActivity
                 /*showBtMenu(view);*/
             }
         });
-
         buttonBluetoothDisconnect = findViewById(R.id.buttonBluetoothDisconnect);
         buttonBluetoothDisconnect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,18 +91,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        statusBattery = findViewById(R.id.statusBattery);
+
         osfirmware = findViewById(R.id.osfirmware);
         //disableUserSections();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (bluetoothClient.IsConnected())
-            visibilityBtConnected();
-        else
-            visibilityBtDisconnected();
     }
 
     @Override
@@ -117,7 +113,8 @@ public class MainActivity extends AppCompatActivity
     }
     public void manualModeActivity(){
         //TestMotorsActivity
-        Intent intent = new Intent(this, TestSensorsActivity.class);
+        Intent intent = new Intent(this, TestMotorsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
     public void automaticModeActivity(){
@@ -147,14 +144,15 @@ public class MainActivity extends AppCompatActivity
         if (resultCode == RESULT_OK) {
             String userBluetoothDevice = data.getStringExtra("bluetooth");
             String macAddressToConnect = (userBluetoothDevice.subSequence(0,17)).toString();
+            MacAddress = macAddressToConnect;
             bluetoothClient.Connect(macAddressToConnect);
             if(bluetoothClient.IsConnected()){
                 visibilityBtConnected();
                 activeUserSections();
                 infoBrick.BluetoothClient(bluetoothClient);
-                statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
+                //statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
                 if((int)(infoBrick.GetBatteryCurrent()*100) < 20)
-                    statusBattery.setTextColor(Color.RED);
+                  //  statusBattery.setTextColor(Color.RED);
                 osfirmware.setText(infoBrick.GetHardwareVersion());
             }
             else{
@@ -169,7 +167,7 @@ public class MainActivity extends AppCompatActivity
     public void visibilityBtDisconnected(){
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
         buttonBluetoothConnect.setVisibility(View.VISIBLE);
-        disableUserSections();
+        //disableUserSections();
     }
     private void initializeLibraryObject(){
         ElementsEV3 libElements = new ElementsEV3();
@@ -179,10 +177,10 @@ public class MainActivity extends AppCompatActivity
         motor1_port = (motor1_port == null) ? "C" : motor1_port;
         motor2_port = (motor2_port == null) ? "B" : motor2_port;
         motor3_port = (motor3_port == null) ? "D" : motor3_port;
-        gyro_sensor_port = (gyro_sensor_port == null) ? "3" : gyro_sensor_port;
-        color_sensor_port = (color_sensor_port == null) ? "2" : color_sensor_port;
-        touch_sensor_port = (touch_sensor_port == null) ? "1" : touch_sensor_port;
-        proximity_sensor_port = (proximity_sensor_port == null) ? "4" : proximity_sensor_port;
+        gyro_sensor_port = (gyro_sensor_port == null) ? "4" : gyro_sensor_port;
+        color_sensor_port = (color_sensor_port == null) ? "1" : color_sensor_port;
+        touch_sensor_port = (touch_sensor_port == null) ? "2" : touch_sensor_port;
+        proximity_sensor_port = (proximity_sensor_port == null) ? "3" : proximity_sensor_port;
     }
     /*
     public void showBtMenu(View v){

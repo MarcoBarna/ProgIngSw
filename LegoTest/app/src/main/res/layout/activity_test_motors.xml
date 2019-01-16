@@ -19,24 +19,14 @@
 
         <TextView
             android:id="@+id/manual_toolbar_title"
+            style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TEST"
-            android:textColor="@color/colorWhite"
             android:layout_gravity="center"
-            style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+            android:text="Test Motors"
+            android:textColor="@color/colorWhite" />
 
     </android.support.v7.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="480dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -94,31 +84,53 @@
         android:id="@+id/test_motor_down"
         android:layout_width="97dp"
         android:layout_height="66dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/greyButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/test_motor_up"
-        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.174"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
     <ImageButton
         android:id="@+id/test_motor_up"
         android:layout_width="97dp"
         android:layout_height="66dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/greyButton"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/test_motor_down"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/test_motor_down"
+        app:layout_constraintTop_toTopOf="@+id/test_motor_down"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <Button
+        android:id="@+id/button_test_motors_sensors"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@color/greyButton"
+        android:text="Test Sensors"
+        android:textColor="@android:color/white"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_test_motors_motors"
+        app:layout_constraintEnd_toStartOf="@+id/button_test_motors_motors"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_test_motors_motors"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@color/greyBackground"
+        android:text="Test Motors"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_test_motors_sensors" />
 
 </android.support.constraint.ConstraintLayout>

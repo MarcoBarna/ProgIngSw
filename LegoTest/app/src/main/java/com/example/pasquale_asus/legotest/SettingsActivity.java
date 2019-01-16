@@ -69,11 +69,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         //Sets up the Toolbar
-        Toolbar toolbar = findViewById(R.id.settingsToolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        setupToolbar();
 
         //Prepares the BluetoothReceiver (BroadcastReceiver) to receive changes in the Bluetooth states
         bluetoothReceiver = new BluetoothReceiver() {
@@ -107,6 +103,13 @@ public class SettingsActivity extends AppCompatActivity {
         IntentFilter bluetoothFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
         bluetoothFilter.addAction(BluetoothAdapter.EXTRA_STATE);
         registerReceiver(bluetoothReceiver, bluetoothFilter);
+    }
+
+    private void setupToolbar(){
+        Toolbar toolbar = findViewById(R.id.settingsToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     @Override

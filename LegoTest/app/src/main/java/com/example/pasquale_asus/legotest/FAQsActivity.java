@@ -22,16 +22,21 @@ public class FAQsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        resources = getResources();
         setContentView(R.layout.activity_faq);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
+        initializeFAQs();
+        setupToolbar();
+    }
+
+    private void initializeFAQs(){
+        resources = getResources();
         FAQsButtonsIDs = resources.obtainTypedArray(R.array.FAQsButtonsIDs);
         FAQsQuestions = resources.obtainTypedArray(R.array.FAQsQuestions);
         FAQsAnswers = resources.obtainTypedArray(R.array.FAQsAnswers);
 
-        for(Integer i = 0; i < FAQsButtonsIDs.length(); i++) {
-            final Integer index = i;
+        for(int i = 0; i < FAQsButtonsIDs.length(); i++) {
+            final Integer index = new Integer(i);
 
             Button questionButton = findViewById(FAQsButtonsIDs.getResourceId(index, View.NO_ID));
 
@@ -44,15 +49,16 @@ public class FAQsActivity extends AppCompatActivity {
                 }
             });
         }
+    }
 
+    private void setupToolbar(){
         Toolbar toolbar = findViewById(R.id.FAQsToolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    public void onQuestionClick(View v, Integer index){
+    private void onQuestionClick(View v, Integer index){
         String questionText = FAQsQuestions.getString(index);
         String answerText = FAQsAnswers.getString(index);
 
