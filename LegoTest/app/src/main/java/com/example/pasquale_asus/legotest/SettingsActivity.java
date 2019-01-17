@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -67,7 +66,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         //Sets up the Toolbar
-        setupToolbar();
+        Utility.setupToolbar(this, R.id.settingsToolbar);
 
         //Prepares the BluetoothReceiver (BroadcastReceiver) to receive changes in the Bluetooth states
         bluetoothReceiver = new BluetoothReceiver() {
@@ -101,13 +100,6 @@ public class SettingsActivity extends AppCompatActivity {
         IntentFilter bluetoothFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
         bluetoothFilter.addAction(BluetoothAdapter.EXTRA_STATE);
         registerReceiver(bluetoothReceiver, bluetoothFilter);
-    }
-
-    private void setupToolbar(){
-        Toolbar toolbar = findViewById(R.id.settingsToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     @Override

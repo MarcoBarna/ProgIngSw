@@ -7,7 +7,6 @@ import android.graphics.Point;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -101,7 +100,7 @@ public class TestMotorsActivity extends AppCompatActivity{
             }
         });
 
-        setupToolbar();
+        Utility.setupToolbar(this, R.id.manualToolbar);
 
         motorup = findViewById(R.id.test_motor_up);
         motordown = findViewById(R.id.test_motor_down);
@@ -145,13 +144,6 @@ public class TestMotorsActivity extends AppCompatActivity{
             }
         });
 
-    }
-
-    private void setupToolbar(){
-        Toolbar toolbar = findViewById(R.id.manualToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void onButtonTestSensors(View view) {

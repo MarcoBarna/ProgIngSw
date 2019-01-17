@@ -9,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.appinventor.components.runtime.BluetoothClient;
-import com.google.appinventor.components.runtime.Ev3Commands;
 
 
 public class MainActivity extends AppCompatActivity
@@ -135,9 +134,9 @@ public class MainActivity extends AppCompatActivity
                 visibilityBtConnected();
                 activeUserSections();
                 //statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
-                if((int)(ev3.utility.commands.GetBatteryCurrent()*100) < 20)
+                if((int)(ev3.extra.commands.GetBatteryCurrent()*100) < 20)
                   //  statusBattery.setTextColor(Color.RED);
-                osfirmware.setText(ev3.utility.commands.GetHardwareVersion());
+                osfirmware.setText(ev3.extra.commands.GetHardwareVersion());
             }
             else{
                 visibilityBtDisconnected();

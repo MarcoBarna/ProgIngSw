@@ -7,7 +7,6 @@ package com.example.pasquale_asus.legotest;
         import android.graphics.drawable.ColorDrawable;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.Toolbar;
         import android.view.View;
         import android.widget.Button;
         import android.widget.ImageView;
@@ -27,7 +26,7 @@ public class GuideActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         initializeGuide();
-        setupToolbar();
+        Utility.setupToolbar(this, R.id.GuideToolbar);
     }
 
     private void initializeGuide(){
@@ -50,13 +49,6 @@ public class GuideActivity extends AppCompatActivity {
                 }
             });
         }
-    }
-
-    private void setupToolbar(){
-        Toolbar toolbar = findViewById(R.id.GuideToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void onProblemClick(View v, Integer index){

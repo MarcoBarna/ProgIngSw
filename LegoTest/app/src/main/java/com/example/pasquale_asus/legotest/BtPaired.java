@@ -1,6 +1,8 @@
 package com.example.pasquale_asus.legotest;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,23 +18,27 @@ import com.google.appinventor.components.runtime.ListPicker;
 
 import java.util.ArrayList;
 
-public class BtPaired extends Form {
+public class BtPaired extends AppCompatActivity {
     private BluetoothClient bluetoothClient;
     private TextView bluetoothoff, title;
+
     @Override
-    public void $define(){
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bt_paired);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         bluetoothoff = findViewById(R.id.bluetoothoff);
-        title = findViewById(R.id.listTitle);
+//        title = findViewById(R.id.listTitle);
         bluetoothoff.setVisibility(View.INVISIBLE);
         final ListView btList= findViewById(R.id.bt_list);
-        bluetoothClient = new BluetoothClient(this);
+        bluetoothClient = MainActivity.ev3.bluetoothClient;
         final ArrayList<String> arrayList = new ArrayList<>(bluetoothClient.AddressesAndNames());
         if(arrayList.size() == 0) {
             bluetoothoff.setVisibility(View.VISIBLE);
-            title.setVisibility(View.INVISIBLE);
+            btList.setVisibility(View.INVISIBLE);
         }
+        for (int i = 0; i < 10; i++)
+            arrayList.add("bloatAddress"+(i+1));
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         btList.setAdapter(arrayAdapter);
         btList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -45,7 +51,8 @@ public class BtPaired extends Form {
                 finish();
             }
         });
-        
+
+        Utility.setupToolbar(this, R.id.BTPairedToolbar);
     }
 
     @Override

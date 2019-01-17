@@ -2,22 +2,12 @@ package com.example.pasquale_asus.legotest;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.appinventor.components.runtime.Button;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
-import com.google.appinventor.components.runtime.Form;
-
-import java.nio.charset.MalformedInputException;
-import java.text.Normalizer;
-import java.time.chrono.MinguoChronology;
 
 public class AutomaticDriveActivity extends AppCompatActivity {
     private android.widget.Button firstaction, stopButton;
@@ -83,14 +73,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
             }
         });
 
-        setupToolbar();
-    }
-
-    private void setupToolbar(){
-        Toolbar toolbar = findViewById(R.id.automaticDriveToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Utility.setupToolbar(this, R.id.automaticDriveToolbar);
     }
 
     @Override

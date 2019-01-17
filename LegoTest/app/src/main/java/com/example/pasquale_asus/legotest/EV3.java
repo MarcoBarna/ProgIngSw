@@ -44,7 +44,7 @@ public class EV3 {
         Ev3UltrasonicSensor ultrasonicSensor;
         Ev3GyroSensor gyroSensor;
     }
-    public class Utility{
+    public class Extra {
         Ev3Commands commands;
     }
     private class ElementsEV3 extends Form {}
@@ -54,16 +54,16 @@ public class EV3 {
     public Ports ports;
     public Inputs inputs;
     public Outputs outputs;
-    public Utility utility;
+    public Extra extra;
 
     public EV3(){
         ports = new Ports();
         inputs = new Inputs();
         outputs = new Outputs();
-        utility = new Utility();
+        extra = new Extra();
         elementsEV3 = new ElementsEV3();
 
-        utility.commands = new Ev3Commands(elementsEV3);
+        extra.commands = new Ev3Commands(elementsEV3);
         outputs.leftMotors = new Ev3Motors(elementsEV3);
         outputs.rightMotors = new Ev3Motors(elementsEV3);
         inputs.touchSensor = new Ev3TouchSensor(elementsEV3);

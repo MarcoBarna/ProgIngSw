@@ -5,11 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,9 +21,6 @@ import com.google.appinventor.components.runtime.Ev3GyroSensor;
 import com.google.appinventor.components.runtime.Ev3TouchSensor;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 
-import org.w3c.dom.Text;
-
-import static com.example.pasquale_asus.legotest.R.id.button_test_sensors_motors;
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class TestSensorsActivity extends AppCompatActivity {
@@ -92,14 +86,7 @@ public class TestSensorsActivity extends AppCompatActivity {
         };
         readSensorsHandler.post(readSensorsRunnable);
 
-        setupToolbar();
-    }
-
-    private void setupToolbar(){
-        Toolbar toolbar = findViewById(R.id.testSensorsToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Utility.setupToolbar(this, R.id.testSensorsToolbar);
     }
 
     @Override

@@ -7,7 +7,6 @@ package com.example.pasquale_asus.legotest;
         import android.graphics.drawable.ColorDrawable;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.Toolbar;
         import android.view.View;
         import android.widget.Button;
         import android.widget.ImageView;
@@ -26,7 +25,7 @@ public class FAQsActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         initializeFAQs();
-        setupToolbar();
+        Utility.setupToolbar(this, R.id.FAQsToolbar);
     }
 
     private void initializeFAQs(){
@@ -49,13 +48,6 @@ public class FAQsActivity extends AppCompatActivity {
                 }
             });
         }
-    }
-
-    private void setupToolbar(){
-        Toolbar toolbar = findViewById(R.id.FAQsToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void onQuestionClick(View v, Integer index){

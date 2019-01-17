@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
 
 public class HelpActivity extends AppCompatActivity {
     Dialog dialog;
@@ -24,7 +23,7 @@ public class HelpActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         setupButtons();
-        setupToolbar();
+        Utility.setupToolbar(this, R.id.helpToolbar);
     }
 
     private void setupButtons(){
@@ -52,13 +51,6 @@ public class HelpActivity extends AppCompatActivity {
                 onButtonCreditsClick(view);
             }
         });
-    }
-
-    private void setupToolbar(){
-        Toolbar toolbar = findViewById(R.id.helpToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void onButtonFAQClick(View v){
