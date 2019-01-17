@@ -31,14 +31,13 @@ public class TestMotorsActivity extends AppCompatActivity{
         size = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
 
-        ElementsEV3 elementsEV3 = new ElementsEV3();
-        motors = elementsEV3.leftMotors;
+        motors = MainActivity.ev3.outputs.leftMotors;
         motors.MotorPorts("BC");
-        motors.BluetoothClient(MainActivity.bluetoothClient);
+        motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
-        submotor = elementsEV3.rightMotors;
+        submotor = MainActivity.ev3.outputs.rightMotors;
         submotor.MotorPorts("AD");
-        submotor.BluetoothClient(MainActivity.bluetoothClient);
+        submotor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
 
         baseforcursor = findViewById(R.id.floatingActionButton2);

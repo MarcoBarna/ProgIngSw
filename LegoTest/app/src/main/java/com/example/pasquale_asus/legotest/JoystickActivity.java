@@ -11,9 +11,8 @@ public class JoystickActivity extends AppCompatActivity implements JoystickView.
     private Ev3Motors motors;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); // Always call the superclass first
-        ElementsEV3 elementsEV3 = new ElementsEV3();
-        motors = elementsEV3.rightMotors;
-        motors.BluetoothClient(MainActivity.bluetoothClient);
+        motors = MainActivity.ev3.outputs.rightMotors;
+        motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
         motors.MotorPorts("BC");
         JoystickView joystick = new JoystickView(this);
 //      setContentView(R.layout.activity_main);

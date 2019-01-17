@@ -17,6 +17,7 @@ import com.google.appinventor.components.runtime.Form;
 
 import java.nio.charset.MalformedInputException;
 import java.text.Normalizer;
+import java.time.chrono.MinguoChronology;
 
 public class AutomaticDriveActivity extends AppCompatActivity {
     private android.widget.Button firstaction, stopButton;
@@ -117,13 +118,12 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     }
 
     public void initializeMotors(){
-        ElementsEV3 elementsEV3 = new ElementsEV3();
-        motors = elementsEV3.leftMotors;
+        motors = MainActivity.ev3.outputs.leftMotors;
         motors.MotorPorts("BC");
-        motors.BluetoothClient(MainActivity.bluetoothClient);
-        ultrasonicSensor = elementsEV3.ultrasonicSensor;
+        motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
+        ultrasonicSensor = MainActivity.ev3.inputs.ultrasonicSensor;
         ultrasonicSensor.SensorPort("3");
-        ultrasonicSensor.BluetoothClient(MainActivity.bluetoothClient);
+        ultrasonicSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
     }
 
 
