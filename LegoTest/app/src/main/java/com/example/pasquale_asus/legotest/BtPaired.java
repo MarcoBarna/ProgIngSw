@@ -37,8 +37,8 @@ public class BtPaired extends AppCompatActivity {
             bluetoothoff.setVisibility(View.VISIBLE);
             btList.setVisibility(View.INVISIBLE);
         }
-        for (int i = 0; i < 10; i++)
-            arrayList.add("bloatAddress"+(i+1));
+//        for (int i = 0; i < 10; i++)
+//            arrayList.add("bloatAddress"+(i+1));
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         btList.setAdapter(arrayAdapter);
         btList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -48,6 +48,7 @@ public class EV3 {
         Ev3Commands commands;
     }
     private class ElementsEV3 extends Form {}
+    private static EV3 ev3 = null;
 
     public BluetoothClient bluetoothClient;
     private ElementsEV3 elementsEV3;
@@ -56,7 +57,7 @@ public class EV3 {
     public Outputs outputs;
     public Extra extra;
 
-    public EV3(){
+    private EV3(){
         ports = new Ports();
         inputs = new Inputs();
         outputs = new Outputs();
@@ -73,5 +74,11 @@ public class EV3 {
         bluetoothClient = new BluetoothClient(elementsEV3);
 
 
+    }
+
+    public static EV3 getEV3(){
+        if (ev3 == null)
+            ev3 = new EV3();
+        return ev3;
     }
 }

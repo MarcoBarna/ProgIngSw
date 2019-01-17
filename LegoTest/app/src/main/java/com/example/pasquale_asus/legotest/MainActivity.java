@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ev3 = new EV3();
+        ev3 = EV3.getEV3();
         getWindow().setWindowAnimations(R.anim.fadein);
         statusBattery = findViewById(R.id.statusBattery);
 
