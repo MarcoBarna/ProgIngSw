@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,13 +40,13 @@ public class BtPaired extends AppCompatActivity {
         }
 //        for (int i = 0; i < 10; i++)
 //            arrayList.add("bloatAddress"+(i+1));
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
         btList.setAdapter(arrayAdapter);
         btList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent();
-                String string = new String(arrayList.get(i));
+                String string = arrayList.get(i);
                 intent.putExtra("bluetooth", string);
                 setResult(RESULT_OK, intent);
                 finish();

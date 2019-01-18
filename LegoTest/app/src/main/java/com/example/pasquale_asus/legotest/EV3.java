@@ -10,8 +10,13 @@ import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 import com.google.appinventor.components.runtime.Form;
 
 public class EV3 {
+    public interface PortAccess {
+        public void setPort(String newPort);
+        public String getPort();
+    }
+
     public static class Ports {
-        public static String[]
+        public final static String[]
                 input_ports = {"1", "2", "3", "4"},
                 output_ports = {"A", "B", "C", "D"};
 
