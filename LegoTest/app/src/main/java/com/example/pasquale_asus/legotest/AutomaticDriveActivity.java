@@ -69,6 +69,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
             public void onClick(View view) {
                 handler.removeCallbacks(r);
                 handlerStop = true;
+                threadStop = true;
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
