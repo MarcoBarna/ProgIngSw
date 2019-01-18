@@ -21,6 +21,8 @@ import com.google.appinventor.components.runtime.Ev3GyroSensor;
 import com.google.appinventor.components.runtime.Ev3TouchSensor;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 
+import java.util.Locale;
+
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class TestSensorsActivity extends AppCompatActivity {
@@ -77,10 +79,10 @@ public class TestSensorsActivity extends AppCompatActivity {
                 touch = findViewById(R.id.touch_sensor_state);
                 prox = findViewById(R.id.proximity_sensor_value);
                 color = findViewById(R.id.light_sensor_value);
-                touch.setText(MainActivity.ev3.inputs.touchSensor.IsPressed()+"");
-                prox.setText(MainActivity.ev3.inputs.ultrasonicSensor.GetDistance()+"");
+                touch.setText(String.format("%b", MainActivity.ev3.inputs.touchSensor.IsPressed()));
+                prox.setText(String.format(Locale.ENGLISH,"%.2f", MainActivity.ev3.inputs.ultrasonicSensor.GetDistance()));
                 color.setText(MainActivity.ev3.inputs.colorSensor.GetColorName());
-                if (readSensorsStop == false)
+                if (!readSensorsStop)
                     readSensorsHandler.postDelayed(readSensorsRunnable, 1000);
             }
         };
