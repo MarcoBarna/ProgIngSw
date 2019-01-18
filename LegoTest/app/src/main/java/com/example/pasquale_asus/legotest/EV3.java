@@ -1,5 +1,7 @@
 package com.example.pasquale_asus.legotest;
 
+import android.os.Handler;
+
 import com.google.appinventor.components.runtime.BluetoothClient;
 import com.google.appinventor.components.runtime.Ev3ColorSensor;
 import com.google.appinventor.components.runtime.Ev3Commands;
@@ -8,6 +10,9 @@ import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Ev3TouchSensor;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 import com.google.appinventor.components.runtime.Form;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
 
 public class EV3 {
     public interface PortAccess {
@@ -48,6 +53,25 @@ public class EV3 {
         Ev3ColorSensor colorSensor;
         Ev3UltrasonicSensor ultrasonicSensor;
         Ev3GyroSensor gyroSensor;
+
+        public FutureTask<Boolean> readTouchSensor(){
+           Callable<Boolean> readSensor = new Callable<Boolean>(){
+               @Override
+               public Boolean call() throws Exception {
+                   return touchSensor.IsPressed();
+               }
+           };
+           return new FutureTask<Boolean>(readSensor);
+        }
+        public FutureTask<Double> readProximitySensor(){
+            Callable<Double> readSensor = new Callable<Double>(){
+                @Override
+                public Double call() throws Exception {
+                    return ultrasonicSensor.GetDistance();
+                }
+            };
+            return new FutureTask<Double>(readSensor);
+        }
     }
     public class Extra {
         Ev3Commands commands;
@@ -61,6 +85,7 @@ public class EV3 {
     public Inputs inputs;
     public Outputs outputs;
     public Extra extra;
+    public Handler handler;
 
     private EV3(){
         ports = new Ports();
@@ -68,6 +93,7 @@ public class EV3 {
         outputs = new Outputs();
         extra = new Extra();
         elementsEV3 = new ElementsEV3();
+        handler = new Handler();
 
         extra.commands = new Ev3Commands(elementsEV3);
         outputs.leftMotors = new Ev3Motors(elementsEV3);

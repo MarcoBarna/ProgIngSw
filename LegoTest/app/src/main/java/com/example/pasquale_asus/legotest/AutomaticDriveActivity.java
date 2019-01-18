@@ -9,6 +9,10 @@ import android.widget.TextView;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 public class AutomaticDriveActivity extends AppCompatActivity {
     private android.widget.Button firstaction, stopButton;
     private Ev3Motors motors;
@@ -17,7 +21,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     public static Thread readSensors;
     private TextView debug;
     Handler handler;
-    private boolean handlerStop;
+    private boolean handlerStop, threadStop;
     Runnable r = null;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +40,25 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 debug.setText("Cliccato");
                 handlerStop = true;
 
-                r = new Runnable() {
-                    public void run() {
-                        debug.setText(ultrasonicSensor.GetDistance() + "");
-                        if(ultrasonicSensor.GetDistance() > 20){
-                            motors.RotateSyncIndefinitely(100, 0);
-                        }
-                        else {
-                            motors.Stop(false);
-                            motors.RotateSyncIndefinitely(-50,90);
-                            //motors.RotateSyncInTachoCounts(-50, 2, 90, false);
-                        }
-                        if (handlerStop == false)
-                            handler.postDelayed(this, 200);
-                    }
-                };
-                handlerStop = false;
-                handler.postDelayed(r, 500);
+                avoidObstacles();
 
+//                r = new Runnable() {
+//                    public void run() {
+//                        debug.setText(ultrasonicSensor.GetDistance() + "");
+//                        if(ultrasonicSensor.GetDistance() > 20){
+//                            motors.RotateSyncIndefinitely(100, 0);
+//                        }
+//                        else {
+//                            motors.Stop(false);
+//                            motors.RotateSyncIndefinitely(-50,90);
+//                            //motors.RotateSyncInTachoCounts(-50, 2, 90, false);
+//                        }
+//                        if (handlerStop == false)
+//                            handler.postDelayed(this, 200);
+//                    }
+//                };
+//                handlerStop = false;
+//                handler.postDelayed(r, 500);
             }
 
 
@@ -109,7 +114,42 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         ultrasonicSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
     }
 
+    public void avoidObstacles(){
+        threadStop = false;
+        Thread algorithm = new Thread() {
+            Handler handler = MainActivity.ev3.handler;
+            @Override
+            public void run() {
+                double distance = 0;
+                try {
+                    while(!threadStop){
+                        distance = MainActivity.ev3.inputs.readProximitySensor().get();
+                        if (distance > 0 && distance < 20) {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    motors.RotateSyncIndefinitely(-50, 100);
+                                }
+                            });
+                        }
+                        else{
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    motors.RotateSyncIndefinitely(50, 0);
+                                }
+                            });
+                        }
 
+                        sleep(500);
+                    }
+                } catch (InterruptedException | ExecutionException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        algorithm.start();
+    }
 
 
 
