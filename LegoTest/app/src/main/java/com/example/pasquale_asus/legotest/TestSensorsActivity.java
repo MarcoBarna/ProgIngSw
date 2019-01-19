@@ -1,20 +1,13 @@
 package com.example.pasquale_asus.legotest;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.appinventor.components.runtime.Ev3ColorSensor;
 import com.google.appinventor.components.runtime.Ev3GyroSensor;
@@ -24,8 +17,6 @@ import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
-
-import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class TestSensorsActivity extends AppCompatActivity {
     private Button set_ports_button;
@@ -81,7 +72,7 @@ public class TestSensorsActivity extends AppCompatActivity {
                 touchTask.run();
                 FutureTask<Double> proximityTask = MainActivity.ev3.inputs.readProximitySensor();
                 proximityTask.run();
-                FutureTask<String> colorTask = MainActivity.ev3.inputs.readColorSensor();
+                FutureTask<String> colorTask = MainActivity.ev3.inputs.readColorNameSensor();
                 colorTask.run();
                 TextView touch, prox, color;
                 touch = findViewById(R.id.touch_sensor_state);

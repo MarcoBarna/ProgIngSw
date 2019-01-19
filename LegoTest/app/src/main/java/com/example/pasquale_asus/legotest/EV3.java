@@ -64,11 +64,12 @@ public class EV3 {
            };
            return new FutureTask<Boolean>(readSensor);
         }
-        public FutureTask<String> readColorSensor(){
+        public FutureTask<String> readColorNameSensor(){
             Callable<String> readSensor = new Callable<String>(){
                 @Override
                 public String call() throws Exception {
                     //TODO find correct names of the modes to properly call the Get methods
+                    //TODO after first step rename method with a more generic name
                     /*switch (colorSensor.Mode()){
                         case "colorName":
                             return colorSensor.GetColorName();
