@@ -81,6 +81,9 @@ public class EV3 {
                             break;
                     }
                     return "modalità non supportata";*/
+                    //TODO may be useful to throw an Exeption if the sensor doesn't have the correct mode
+                    /*if (colorSensor.Mode() != "colorName")
+                        throw Exception;*/
 
                     //temporary output
                     return colorSensor.GetColorName();
