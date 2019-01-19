@@ -81,6 +81,8 @@ public class TestSensorsActivity extends AppCompatActivity {
                 touchTask.run();
                 FutureTask<Double> proximityTask = MainActivity.ev3.inputs.readProximitySensor();
                 proximityTask.run();
+                FutureTask<String> colorTask = MainActivity.ev3.inputs.readColorSensor();
+                colorTask.run();
                 TextView touch, prox, color;
                 touch = findViewById(R.id.touch_sensor_state);
                 prox = findViewById(R.id.proximity_sensor_value);
@@ -89,10 +91,10 @@ public class TestSensorsActivity extends AppCompatActivity {
                 try {
                     touch.setText(String.format("%b", touchTask.get()));
                     prox.setText(String.format(Locale.ENGLISH,"%.2f", proximityTask.get()));
+                    color.setText(colorTask.get());
                 } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
                 }
-                color.setText(MainActivity.ev3.inputs.colorSensor.GetColorName());
                 if (!readSensorsStop)
                     readSensorsHandler.postDelayed(readSensorsRunnable, 1000);
             }

@@ -11,6 +11,7 @@ import com.google.appinventor.components.runtime.Ev3TouchSensor;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 import com.google.appinventor.components.runtime.Form;
 
+import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
@@ -62,6 +63,29 @@ public class EV3 {
                }
            };
            return new FutureTask<Boolean>(readSensor);
+        }
+        public FutureTask<String> readColorSensor(){
+            Callable<String> readSensor = new Callable<String>(){
+                @Override
+                public String call() throws Exception {
+                    //TODO find correct names of the modes to properly call the Get methods
+                    /*switch (colorSensor.Mode()){
+                        case "colorName":
+                            return colorSensor.GetColorName();
+                        case "colorCode":
+                            return String.format(Locale.ENGLISH, "%d", colorSensor.GetColorCode());
+                        case "light":
+                            return String.format(Locale.ENGLISH, "%d", colorSensor.GetLightLevel());
+                        default:
+                            break;
+                    }
+                    return "modalità non supportata";*/
+
+                    //temporary output
+                    return colorSensor.GetColorName();
+                }
+            };
+            return new FutureTask<String>(readSensor);
         }
         public FutureTask<Double> readProximitySensor(){
             Callable<Double> readSensor = new Callable<Double>(){
