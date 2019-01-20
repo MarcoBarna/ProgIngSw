@@ -157,11 +157,11 @@ public class ManualDriveActivity extends Form {
         sensordirection.MotorPorts("AD");
     }
     public void connectSensorsToBluetooth(){
-        wheels.BluetoothClient(MainActivity.bluetoothClient);
-        ev3Sound.BluetoothClient(MainActivity.bluetoothClient);
-        ev3GyroSensor.BluetoothClient(MainActivity.bluetoothClient);
-        colorSensor.BluetoothClient(MainActivity.bluetoothClient);
-        sensordirection.BluetoothClient(MainActivity.bluetoothClient);
+        wheels.BluetoothClient(MainActivity.ev3.bluetoothClient);
+        ev3Sound.BluetoothClient(MainActivity.ev3.bluetoothClient);
+        ev3GyroSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
+        colorSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
+        sensordirection.BluetoothClient(MainActivity.ev3.bluetoothClient);
     }
     @Override
     public void onBackPressed() {

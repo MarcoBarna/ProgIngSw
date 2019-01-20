@@ -5,43 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colourDisconnect"
+    android:screenOrientation="portrait"
     android:theme="@style/Theme.AppCompat.NoActionBar"
-    tools:context=".BtPaired"
-    android:screenOrientation="portrait">
+    tools:context=".BtPaired">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/BTPairedToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/greyToolbar"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:id="@+id/btpaired_toolbar_title"
+            style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Select a Bluetooth device"
+            android:textColor="@android:color/white" />
+
+    </android.support.v7.widget.Toolbar>
 
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/bt_list"
         android:layout_width="match_parent"
-        android:layout_height="411dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="15dp"
-        android:background="@color/colourDisconnect"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="16dp"
+        android:background="@color/colorWhite"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHeight_max="0dp"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/BTPairedToolbar" />
 
 
-    <TextView
-        android:id="@+id/listTitle"
-        android:layout_width="371dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Select a Bluetooth device"
-        android:textAlignment="center"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--<TextView-->
+    <!--android:id="@+id/listTitle"-->
+    <!--android:layout_width="371dp"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:text="Select a Bluetooth device"-->
+    <!--android:textAlignment="center"-->
+    <!--android:textColor="@android:color/darker_gray"-->
+    <!--android:textSize="25sp"-->
+    <!--android:textStyle="bold"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.333"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/bluetoothoff"
@@ -59,6 +78,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/BTPairedToolbar"
         app:layout_constraintVertical_bias="0.498" />
 </android.support.constraint.ConstraintLayout>

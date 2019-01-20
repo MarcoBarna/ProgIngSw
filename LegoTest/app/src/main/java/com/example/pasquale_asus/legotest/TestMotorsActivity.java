@@ -7,7 +7,6 @@ import android.graphics.Point;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -31,14 +30,13 @@ public class TestMotorsActivity extends AppCompatActivity{
         size = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
 
-        ElementsEV3 elementsEV3 = new ElementsEV3();
-        motors = elementsEV3.leftMotors;
+        motors = MainActivity.ev3.outputs.leftMotors;
         motors.MotorPorts("BC");
-        motors.BluetoothClient(MainActivity.bluetoothClient);
+        motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
-        submotor = elementsEV3.rightMotors;
+        submotor = MainActivity.ev3.outputs.rightMotors;
         submotor.MotorPorts("AD");
-        submotor.BluetoothClient(MainActivity.bluetoothClient);
+        submotor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
 
         baseforcursor = findViewById(R.id.floatingActionButton2);
@@ -102,11 +100,8 @@ public class TestMotorsActivity extends AppCompatActivity{
             }
         });
 
-        Toolbar toolbar = findViewById(R.id.manualToolbar);
-        setSupportActionBar(toolbar);
+        Utility.setupToolbar(this, R.id.manualToolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         motorup = findViewById(R.id.test_motor_up);
         motordown = findViewById(R.id.test_motor_down);
 
