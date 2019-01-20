@@ -1,21 +1,37 @@
 package com.example.pasquale_asus.legotest;
 import android.annotation.SuppressLint;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.appinventor.components.runtime.BluetoothClient;
+import com.google.appinventor.components.runtime.Ev3Commands;
+
+import junit.framework.Test;
+
+import java.util.Set;
+
 
 
 public class MainActivity extends AppCompatActivity
 {
-    public static EV3 ev3;
+    public static String motor1_port, motor2_port, motor3_port, color_sensor_port, gyro_sensor_port, touch_sensor_port, proximity_sensor_port = null;
+    public static BluetoothClient bluetoothClient;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
     private ImageButton manualMode, automaticmode, helpmode, settingsmode;
+    public Ev3Commands infoBrick;
     public TextView statusBattery, osfirmware;
     public static String MacAddress;
 
@@ -24,8 +40,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ev3 = EV3.getEV3();
         getWindow().setWindowAnimations(R.anim.fadein);
+        initializeLibraryObject();
         statusBattery = findViewById(R.id.statusBattery);
 
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
@@ -41,7 +57,7 @@ public class MainActivity extends AppCompatActivity
         buttonBluetoothDisconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                disconnectBluetooth(ev3.bluetoothClient);
+                disconnectBluetooth(bluetoothClient);
             }
         });
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
@@ -129,14 +145,15 @@ public class MainActivity extends AppCompatActivity
             String userBluetoothDevice = data.getStringExtra("bluetooth");
             String macAddressToConnect = (userBluetoothDevice.subSequence(0,17)).toString();
             MacAddress = macAddressToConnect;
-            ev3.bluetoothClient.Connect(macAddressToConnect);
-            if(ev3.bluetoothClient.IsConnected()){
+            bluetoothClient.Connect(macAddressToConnect);
+            if(bluetoothClient.IsConnected()){
                 visibilityBtConnected();
                 activeUserSections();
+                infoBrick.BluetoothClient(bluetoothClient);
                 //statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
-                if((int)(ev3.extra.commands.GetBatteryCurrent()*100) < 20)
+                if((int)(infoBrick.GetBatteryCurrent()*100) < 20)
                   //  statusBattery.setTextColor(Color.RED);
-                osfirmware.setText(ev3.extra.commands.GetHardwareVersion());
+                osfirmware.setText(infoBrick.GetHardwareVersion());
             }
             else{
                 visibilityBtDisconnected();
@@ -150,7 +167,6 @@ public class MainActivity extends AppCompatActivity
     public void visibilityBtDisconnected(){
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
         buttonBluetoothConnect.setVisibility(View.VISIBLE);
-<<<<<<< HEAD
         //disableUserSections();
     }
     private void initializeLibraryObject(){
@@ -211,7 +227,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
     */
-=======
-    }
->>>>>>> ALVISe
 }
