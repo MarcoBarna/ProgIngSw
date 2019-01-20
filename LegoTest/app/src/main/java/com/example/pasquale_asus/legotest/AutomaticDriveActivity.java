@@ -45,13 +45,14 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 r = new Runnable() {
                     public void run() {
                         debug.setText(ultrasonicSensor.GetDistance() + "");
-                        if(ultrasonicSensor.GetDistance() > 20){
-                            motors.RotateSyncIndefinitely(100, 0);
-                        }
-                        else {
+                        double distance = ultrasonicSensor.GetDistance();
+                        if(distance > 0 && distance < 20){
                             motors.Stop(false);
                             motors.RotateSyncIndefinitely(-50,90);
                             //motors.RotateSyncInTachoCounts(-50, 2, 90, false);
+                        }
+                        else {
+                            motors.RotateSyncIndefinitely(100, 0);
                         }
                         if (handlerStop == false)
                             handler.postDelayed(this, 200);
@@ -149,5 +150,5 @@ public class AutomaticDriveActivity extends AppCompatActivity {
 //        return algorithm;
 //    }
 
-    
+
 }
