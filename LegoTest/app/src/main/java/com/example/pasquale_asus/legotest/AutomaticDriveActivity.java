@@ -36,36 +36,21 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         firstaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //stopButton.setVisibility(View.VISIBLE);
+                debug.setVisibility(View.VISIBLE);
+                stopButton.setActivated(true);
                 interruptAction = false;
                 debug.setText("Cliccato");
                 handlerStop = true;
-
+                avoidObstacles();
                 //Runnable algorithm = avoidObstacles();
-
-                r = new Runnable() {
-                    public void run() {
-                        debug.setText(ultrasonicSensor.GetDistance() + "");
-                        double distance = ultrasonicSensor.GetDistance();
-                        if(distance > 0 && distance < 20){
-                            motors.Stop(false);
-                            motors.RotateSyncIndefinitely(-50,90);
-                            //motors.RotateSyncInTachoCounts(-50, 2, 90, false);
-                        }
-                        else {
-                            motors.RotateSyncIndefinitely(100, 0);
-                        }
-                        if (handlerStop == false)
-                            handler.postDelayed(this, 200);
-                    }
-                };
-
-                handlerStop = false;
-                handler.postDelayed(r, 500);
             }
-
-
         });
+
         stopButton = findViewById(R.id.stop_button);
+        stopButton.setActivated(false);
+        debug.setVisibility(View.INVISIBLE);
+        //stopButton.setVisibility(View.INVISIBLE);
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +63,9 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                         motors.Stop(false);
                     }
                 }, 500);
+                //stopButton.setVisibility(View.INVISIBLE);
+                stopButton.setActivated(false);
+                debug.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -116,6 +104,27 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         ultrasonicSensor.SensorPort("3");
         ultrasonicSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
     }
+    public void avoidObstacles(){
+        r = new Runnable() {
+            public void run() {
+                debug.setText("Distance value: "+ (int)ultrasonicSensor.GetDistance());
+                double distance = ultrasonicSensor.GetDistance();
+                if(distance > 0 && distance < 35){
+                    motors.Stop(false);
+                    motors.RotateSyncIndefinitely(-50,90);
+                    //motors.RotateSyncInTachoCounts(-50, 2, 90, false);
+                }
+                else {
+                    motors.RotateSyncIndefinitely(100, 0);
+                }
+                if (handlerStop == false)
+                    handler.postDelayed(this, 200);
+            }
+        };
+        handlerStop = false;
+        handler.postDelayed(r, 500);
+    }
+
 
 //    public Runnable avoidObstacles(){
 //        threadStop = false;
