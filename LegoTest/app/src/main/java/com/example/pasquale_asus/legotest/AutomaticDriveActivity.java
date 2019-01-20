@@ -40,7 +40,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 debug.setText("Cliccato");
                 handlerStop = true;
 
-                avoidObstacles();
+                Runnable algorithm = avoidObstacles();
 
 //                r = new Runnable() {
 //                    public void run() {
@@ -57,8 +57,9 @@ public class AutomaticDriveActivity extends AppCompatActivity {
 //                            handler.postDelayed(this, 200);
 //                    }
 //                };
-//                handlerStop = false;
-//                handler.postDelayed(r, 500);
+                
+                handlerStop = false;
+                handler.postDelayed(algorithm, 500);
             }
 
 
@@ -115,41 +116,37 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         ultrasonicSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
     }
 
-    public void avoidObstacles(){
+    public Runnable avoidObstacles(){
         threadStop = false;
-        Thread algorithm = new Thread() {
-            Handler handler = MainActivity.ev3.handler;
+        Runnable algorithm = new Runnable() {
             @Override
             public void run() {
                 double distance = 0;
                 try {
-                    while(!threadStop){
-                        distance = MainActivity.ev3.inputs.readProximitySensor().get();
-                        if (distance > 0 && distance < 20) {
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    motors.RotateSyncIndefinitely(-50, 100);
-                                }
-                            });
-                        }
-                        else{
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    motors.RotateSyncIndefinitely(50, 0);
-                                }
-                            });
-                        }
-
-                        sleep(500);
-                    }
+                    distance = MainActivity.ev3.inputs.readProximitySensor().get();
                 } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
                 }
+                if (distance > 0 && distance < 20) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            motors.RotateSyncInDuration(-50, 500, 100, false);
+                        }
+                    });
+                } else {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            motors.RotateSyncIndefinitely(50, 0);
+                        }
+                    });
+                }
+                if (!handlerStop)
+                    handler.postDelayed(this, 500);
             }
         };
-        algorithm.start();
+        return algorithm;
     }
 
 
