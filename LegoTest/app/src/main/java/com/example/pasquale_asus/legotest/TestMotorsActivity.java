@@ -30,11 +30,11 @@ public class TestMotorsActivity extends AppCompatActivity{
         size = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
 
-        motors = MainActivity.ev3.outputs.leftMotors;
+        motors = MainActivity.ev3.outputs.motor1;
         motors.MotorPorts("BC");
         motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
-        submotor = MainActivity.ev3.outputs.rightMotors;
+        submotor = MainActivity.ev3.outputs.motor1;
         submotor.MotorPorts("AD");
         submotor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 

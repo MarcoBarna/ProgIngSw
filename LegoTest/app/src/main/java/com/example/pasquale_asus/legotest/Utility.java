@@ -89,9 +89,9 @@ public class Utility {
         touch_sensor.setAdapter(adapter_numbers);
         ultrasonic_sensor.setAdapter(adapter_numbers);
 
-        motor1.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor1_port.MotorPorts()));
-        motor2.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor2_port.MotorPorts()));
-        motor3.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor3_port.MotorPorts()));
+        motor1.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor1.MotorPorts()));
+        motor2.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor2.MotorPorts()));
+        motor3.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor3.MotorPorts()));
         color_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.colorSensor.SensorPort()));
         gyro_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.gyroSensor.SensorPort()));
         touch_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.touchSensor.SensorPort()));
@@ -100,36 +100,36 @@ public class Utility {
         motor1.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.outputs.motor1_port.MotorPorts(newPort);
+                MainActivity.ev3.outputs.motor1.MotorPorts(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.outputs.motor1_port.MotorPorts();
+                return MainActivity.ev3.outputs.motor1.MotorPorts();
             }
         }, "Changed Motor1 port: "));
 
         motor2.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.outputs.motor2_port.MotorPorts(newPort);
+                MainActivity.ev3.outputs.motor2.MotorPorts(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.outputs.motor2_port.MotorPorts();
+                return MainActivity.ev3.outputs.motor2.MotorPorts();
             }
         }, "Changed Motor2 port: "));
 
         motor3.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.outputs.motor3_port.MotorPorts(newPort);
+                MainActivity.ev3.outputs.motor3.MotorPorts(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.outputs.motor3_port.MotorPorts();
+                return MainActivity.ev3.outputs.motor3.MotorPorts();
             }
         }, "Changed Motor3 port: "));
 

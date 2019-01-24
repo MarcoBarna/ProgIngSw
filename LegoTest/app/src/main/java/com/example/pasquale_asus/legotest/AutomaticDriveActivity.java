@@ -9,10 +9,6 @@ import android.widget.TextView;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-
 public class AutomaticDriveActivity extends AppCompatActivity {
     private android.widget.Button firstaction, stopButton;
     private Ev3Motors motors;
@@ -97,7 +93,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     }
 
     public void initializeMotors(){
-        motors = MainActivity.ev3.outputs.leftMotors;
+        motors = MainActivity.ev3.outputs.motor1;
         motors.MotorPorts("BC");
         motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
         ultrasonicSensor = MainActivity.ev3.inputs.ultrasonicSensor;

@@ -45,11 +45,9 @@ public class EV3 {
                 proximity_sensor_port = default_ultrasonic_port;
     }
     public class Outputs{
-        Ev3Motors   leftMotors,
-                    rightMotors,
-                    motor1_port,
-                    motor2_port,
-                    motor3_port;
+        Ev3Motors   motor1,
+                    motor2,
+                    motor3;
     }
     public class Inputs{
         Ev3TouchSensor touchSensor;
@@ -124,15 +122,11 @@ public class EV3 {
         handler = new Handler();
 
         extra.commands = new Ev3Commands(elementsEV3);
-        (outputs.leftMotors = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor1_port);
-        (outputs.rightMotors = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor2_port);
         (inputs.touchSensor = new Ev3TouchSensor(elementsEV3)).SensorPort(Ports.default_touch_port);
         (inputs.colorSensor = new Ev3ColorSensor(elementsEV3)).SensorPort(Ports.default_color_port);
         (inputs.ultrasonicSensor = new Ev3UltrasonicSensor(elementsEV3)).SensorPort(Ports.default_ultrasonic_port);
         (inputs.gyroSensor = new Ev3GyroSensor(elementsEV3)).SensorPort(Ports.default_gyro_port);
         bluetoothClient = new BluetoothClient(elementsEV3);
-
-
     }
 
     public static EV3 getEV3(){
