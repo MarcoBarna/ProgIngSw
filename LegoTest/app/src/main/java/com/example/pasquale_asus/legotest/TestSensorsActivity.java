@@ -52,15 +52,12 @@ public class TestSensorsActivity extends AppCompatActivity {
         });
 
         ev3TouchSensor = MainActivity.ev3.inputs.touchSensor;
-        ev3TouchSensor.SensorPort(MainActivity.ev3.ports.touch_sensor_port);
         ev3TouchSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
         ev3UltrasonicSensor = MainActivity.ev3.inputs.ultrasonicSensor;
-        ev3UltrasonicSensor.SensorPort(MainActivity.ev3.ports.proximity_sensor_port);
         ev3UltrasonicSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
         ev3ColorSensor = MainActivity.ev3.inputs.colorSensor;
-        ev3ColorSensor.SensorPort(MainActivity.ev3.ports.color_sensor_port);
         ev3ColorSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
         readSensorsStop = false;

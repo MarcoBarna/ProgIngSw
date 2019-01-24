@@ -11,7 +11,6 @@ import com.google.appinventor.components.runtime.Ev3TouchSensor;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 import com.google.appinventor.components.runtime.Form;
 
-import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
@@ -30,7 +29,7 @@ public class EV3 {
                 default_gyro_port = input_ports[3],
                 default_color_port = input_ports[0],
                 default_touch_port = input_ports[0],
-                default_proximity_port = input_ports[2],
+                default_ultrasonic_port = input_ports[2],
 
                 default_motor1_port = output_ports[2],
                 default_motor2_port = output_ports[1],
@@ -43,7 +42,7 @@ public class EV3 {
                 gyro_sensor_port = default_gyro_port,
                 color_sensor_port = default_color_port,
                 touch_sensor_port = default_touch_port,
-                proximity_sensor_port = default_proximity_port;
+                proximity_sensor_port = default_ultrasonic_port;
     }
     public class Outputs{
         Ev3Motors   leftMotors,
@@ -125,12 +124,12 @@ public class EV3 {
         handler = new Handler();
 
         extra.commands = new Ev3Commands(elementsEV3);
-        outputs.leftMotors = new Ev3Motors(elementsEV3);
-        outputs.rightMotors = new Ev3Motors(elementsEV3);
-        inputs.touchSensor = new Ev3TouchSensor(elementsEV3);
-        inputs.colorSensor = new Ev3ColorSensor(elementsEV3);
-        inputs.ultrasonicSensor = new Ev3UltrasonicSensor(elementsEV3);
-        inputs.gyroSensor = new Ev3GyroSensor(elementsEV3);
+        (outputs.leftMotors = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor1_port);
+        (outputs.rightMotors = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor2_port);
+        (inputs.touchSensor = new Ev3TouchSensor(elementsEV3)).SensorPort(Ports.default_touch_port);
+        (inputs.colorSensor = new Ev3ColorSensor(elementsEV3)).SensorPort(Ports.default_color_port);
+        (inputs.ultrasonicSensor = new Ev3UltrasonicSensor(elementsEV3)).SensorPort(Ports.default_ultrasonic_port);
+        (inputs.gyroSensor = new Ev3GyroSensor(elementsEV3)).SensorPort(Ports.default_gyro_port);
         bluetoothClient = new BluetoothClient(elementsEV3);
 
 
