@@ -63,7 +63,7 @@ public class Utility {
         Spinner color_sensor = dialog.findViewById(R.id.spinner_color_sensor);
         Spinner gyro_sensor = dialog.findViewById(R.id.spinner_gyro_sensor);
         Spinner touch_sensor = dialog.findViewById(R.id.spinner_touch_sensor);
-        Spinner proximity_sensor = dialog.findViewById(R.id.spinner_proximity_sensor);
+        Spinner ultrasonic_sensor = dialog.findViewById(R.id.spinner_proximity_sensor);
 
         String items_string_numbers = "";
         for(String item: EV3.Ports.input_ports)
@@ -87,97 +87,97 @@ public class Utility {
         color_sensor.setAdapter(adapter_numbers);
         gyro_sensor.setAdapter(adapter_numbers);
         touch_sensor.setAdapter(adapter_numbers);
-        proximity_sensor.setAdapter(adapter_numbers);
+        ultrasonic_sensor.setAdapter(adapter_numbers);
 
-        motor1.setSelection(items_string_letters.indexOf(MainActivity.ev3.ports.motor1_port));
-        motor2.setSelection(items_string_letters.indexOf(MainActivity.ev3.ports.motor2_port));
-        motor3.setSelection(items_string_letters.indexOf(MainActivity.ev3.ports.motor3_port));
-        color_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.ports.color_sensor_port));
-        gyro_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.ports.gyro_sensor_port));
-        touch_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.ports.touch_sensor_port));
-        proximity_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.ports.proximity_sensor_port));
+        motor1.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor1_port.MotorPorts()));
+        motor2.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor2_port.MotorPorts()));
+        motor3.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor3_port.MotorPorts()));
+        color_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.colorSensor.SensorPort()));
+        gyro_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.gyroSensor.SensorPort()));
+        touch_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.touchSensor.SensorPort()));
+        ultrasonic_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.ultrasonicSensor.SensorPort()));
 
         motor1.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.ports.motor1_port = newPort;
+                MainActivity.ev3.outputs.motor1_port.MotorPorts(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.ports.motor1_port;
+                return MainActivity.ev3.outputs.motor1_port.MotorPorts();
             }
         }, "Changed Motor1 port: "));
 
         motor2.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.ports.motor2_port = newPort;
+                MainActivity.ev3.outputs.motor2_port.MotorPorts(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.ports.motor2_port;
+                return MainActivity.ev3.outputs.motor2_port.MotorPorts();
             }
         }, "Changed Motor2 port: "));
 
         motor3.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.ports.motor3_port = newPort;
+                MainActivity.ev3.outputs.motor3_port.MotorPorts(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.ports.motor3_port;
+                return MainActivity.ev3.outputs.motor3_port.MotorPorts();
             }
         }, "Changed Motor3 port: "));
 
         color_sensor.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.ports.color_sensor_port = newPort;
+                MainActivity.ev3.inputs.colorSensor.SensorPort(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.ports.color_sensor_port;
+                return MainActivity.ev3.inputs.colorSensor.SensorPort();
             }
         }, "Changed ColorSensor port: "));
 
         gyro_sensor.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.ports.gyro_sensor_port = newPort;
+                MainActivity.ev3.inputs.gyroSensor.SensorPort(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.ports.gyro_sensor_port;
+                return MainActivity.ev3.inputs.gyroSensor.SensorPort();
             }
         }, "Changed GyroSensor port: "));
 
         touch_sensor.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.ports.touch_sensor_port = newPort;
+                MainActivity.ev3.inputs.touchSensor.SensorPort(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.ports.touch_sensor_port;
+                return MainActivity.ev3.inputs.touchSensor.SensorPort();
             }
         }, "Changed TouchSensor port: "));
 
-        proximity_sensor.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
+        ultrasonic_sensor.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
             public void setPort(String newPort) {
-                MainActivity.ev3.ports.proximity_sensor_port = newPort;
+                MainActivity.ev3.inputs.ultrasonicSensor.SensorPort(newPort);
             }
 
             @Override
             public String getPort() {
-                return MainActivity.ev3.ports.proximity_sensor_port;
+                return MainActivity.ev3.inputs.ultrasonicSensor.SensorPort();
             }
         }, "Changed ProximitySensor port: "));
 

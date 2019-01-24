@@ -46,8 +46,11 @@ public class EV3 {
                 proximity_sensor_port = default_proximity_port;
     }
     public class Outputs{
-        Ev3Motors leftMotors;
-        Ev3Motors rightMotors;
+        Ev3Motors   leftMotors,
+                    rightMotors,
+                    motor1_port,
+                    motor2_port,
+                    motor3_port;
     }
     public class Inputs{
         Ev3TouchSensor touchSensor;
@@ -109,14 +112,12 @@ public class EV3 {
 
     public BluetoothClient bluetoothClient;
     private ElementsEV3 elementsEV3;
-    public Ports ports;
     public Inputs inputs;
     public Outputs outputs;
     public Extra extra;
     public Handler handler;
 
     private EV3(){
-        ports = new Ports();
         inputs = new Inputs();
         outputs = new Outputs();
         extra = new Extra();
