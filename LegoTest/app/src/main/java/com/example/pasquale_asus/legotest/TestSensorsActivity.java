@@ -47,7 +47,7 @@ public class TestSensorsActivity extends AppCompatActivity {
         buttonTestMotors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               onButtonTestMotors(view);
+                onButtonTestMotors(view);
             }
         });
 

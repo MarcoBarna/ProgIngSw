@@ -120,7 +120,6 @@ public class EV3 {
         extra = new Extra();
         elementsEV3 = new ElementsEV3();
         handler = new Handler();
-
         extra.commands = new Ev3Commands(elementsEV3);
         (inputs.touchSensor = new Ev3TouchSensor(elementsEV3)).SensorPort(Ports.default_touch_port);
         (inputs.colorSensor = new Ev3ColorSensor(elementsEV3)).SensorPort(Ports.default_color_port);

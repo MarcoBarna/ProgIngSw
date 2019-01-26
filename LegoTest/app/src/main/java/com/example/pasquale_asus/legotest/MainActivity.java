@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
         manualMode = findViewById(R.id.manual_button);
         manualMode.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                  manualModeActivity();
-              }
-          });
+            @Override
+            public void onClick(View view) {
+                manualModeActivity();
+            }
+        });
         automaticmode = findViewById(R.id.automaticmode);
         automaticmode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +135,8 @@ public class MainActivity extends AppCompatActivity
                 activeUserSections();
                 //statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
                 if((int)(ev3.extra.commands.GetBatteryCurrent()*100) < 20)
-                  //  statusBattery.setTextColor(Color.RED);
-                osfirmware.setText(ev3.extra.commands.GetHardwareVersion());
+                    //  statusBattery.setTextColor(Color.RED);
+                    osfirmware.setText(ev3.extra.commands.GetHardwareVersion());
             }
             else{
                 visibilityBtDisconnected();
