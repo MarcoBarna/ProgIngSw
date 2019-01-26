@@ -19,7 +19,7 @@ import com.google.appinventor.components.runtime.ListPicker;
 
 import java.util.ArrayList;
 
-public class BtPaired extends AppCompatActivity {
+public class BtPairedActivity extends AppCompatActivity {
     private BluetoothClient bluetoothClient;
     private TextView bluetoothoff, title;
 

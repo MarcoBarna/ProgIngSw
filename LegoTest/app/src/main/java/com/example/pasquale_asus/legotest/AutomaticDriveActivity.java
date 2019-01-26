@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 
+import java.util.Locale;
+
 public class AutomaticDriveActivity extends AppCompatActivity {
     private android.widget.Button firstaction, stopButton;
     private Ev3Motors motors;
@@ -103,7 +105,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     public void avoidObstacles(){
         r = new Runnable() {
             public void run() {
-                debug.setText("Distance value: "+ (int)ultrasonicSensor.GetDistance());
+                debug.setText(String.format(Locale.ENGLISH, "%s%.2f", getString(R.string.distance_value), ultrasonicSensor.GetDistance()));
                 double distance = ultrasonicSensor.GetDistance();
                 if(distance > 0 && distance < 35){
                     motors.Stop(false);
@@ -113,7 +115,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 else {
                     motors.RotateSyncIndefinitely(100, 0);
                 }
-                if (handlerStop == false)
+                if (!handlerStop)
                     handler.postDelayed(this, 200);
             }
         };

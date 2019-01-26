@@ -48,7 +48,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toEndOf="@+id/manual_button"
-        app:srcCompat="@mipmap/faq_icon" />
+        app:srcCompat="@mipmap/faq_icon"
+        android:contentDescription="@string/help_section" />
 
     <ImageButton
         android:id="@+id/settings_button"
@@ -62,7 +63,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.864"
         app:layout_constraintStart_toEndOf="@+id/automaticmode"
-        app:srcCompat="@mipmap/setting0" />
+        app:srcCompat="@mipmap/setting0"
+        android:contentDescription="@string/settings_section" />
 
     <ImageButton
         android:id="@+id/manual_button"
@@ -74,7 +76,8 @@
         android:background="#008eb6f6"
         app:layout_constraintBottom_toTopOf="@+id/buttonBluetoothDisconnect"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/drive_icon" />
+        app:srcCompat="@mipmap/drive_icon"
+        android:contentDescription="@string/test_sections" />
 
     <ImageButton
         android:id="@+id/automaticmode"
@@ -86,7 +89,8 @@
         android:background="#008eb6f6"
         android:src="@mipmap/action_robot"
         app:layout_constraintBottom_toTopOf="@+id/buttonBluetoothDisconnect"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/automatic_section" />
 
     <TextView
         android:id="@+id/statusBattery"
@@ -95,7 +99,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="7dp"
-        android:text="Non connesso"
+        android:text="@string/not_connected"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.089"
@@ -116,12 +120,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="13dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"

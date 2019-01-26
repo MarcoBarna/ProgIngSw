@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void selectPairedBluetooth(){
-        Intent intent = new Intent(this, BtPaired.class);
+        Intent intent = new Intent(this, BtPairedActivity.class);
         startActivityForResult(intent, 0);
     }
 

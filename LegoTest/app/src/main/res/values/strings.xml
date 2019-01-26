@@ -1,12 +1,75 @@
 <resources>
     <string name="app_name">LegoTest</string>
     <string name="text">Text</string>
-    <string name="connect">Connect</string>
-    <string name="disconnect">Disconnect</string>
     <string name="JoyBackDescr">analogimage</string>
     <string name="title_activity_popwindows">popwindows</string>
     <string name="bloatstring">answeransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweranswer</string>
     <string name="placeHolderQuestion">Question X</string>
     <string name="placeHolderProblem">Problem X</string>
     <string name="closeDescription">Close</string>
+
+    <!--image descriptions-->
+
+    <!--generic strings-->
+
+    <!--AutomaticDriveActivity-->
+    <string name="distance_value">Distance value:</string>
+    <string name="logo">Logo</string>
+    <string name="automatic_section">Automatic Section</string>
+    <string name="test_sections">Test Sections</string>
+    <string name="help_section">Help Section</string>
+    <string name="settings_section">Settings Section</string>
+
+    <!--BtPairedActivity-->
+    <string name="select_a_bluetooth_device">Select a Bluetooth device</string>
+    <string name="bluetooth_off_or_no_paired_device">Bluetooth off or no Paired device</string>
+
+    <!--MainActivity-->
+    <string name="not_connected">Not connected</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="faqs_title">FAQs</string>
+
+    <!--FAQsActivity-->
+    <string name="buttonfaq_placeholder">buttonFAQ</string>
+
+    <!--ManualDriveActivity-->
+    <string name="number_rotations">Number Rotation</string>
+    <string name="go_up">go up</string>
+    <string name="go_left">go left</string>
+    <string name="go_right">go right</string>
+    <string name="go_down">go down</string>
+    <string name="up_text">UP</string>
+    <string name="down_text">DOWN</string>
+    <string name="gyro_placeholder">gyro value</string>
+    <string name="sensorup">sensorup</string>
+    <string name="sensordown">sensordown</string>
+
+    <!--SettingsActivity-->
+    <string name="bluetooth_enabled">Bluetooth enabled</string>
+    <string name="bluetooth_disabled">Bluetooth disabled</string>
+    <string name="enabling_bluetooth">enabling Bluetooth</string>
+    <string name="disabling_bluetooth">disabling Bluetooth</string>
+    <string name="bluetooth_not_present">Bluetooth is not present</string>
+    <string name="settings_title">SETTINGS</string>
+    <string name="set_ports">Set Ports</string>
+    <string name="review_app">Review App</string>
+    <string name="bluetooth_connection">Bluetooth Connection</string>
+
+    <!--TestMotorsActivity-->
+    <string name="test_motors_tilte">Test Motors</string>
+    <string name="go_test_sensors">Test Sensors</string>
+    <string name="go_test_motors">Test Motors</string>
+    <string name="up">up</string>
+    <string name="down">down</string>
+
+    <!--TestSensorsActivity-->
+    <string name="test_sensors_title">Test Sensors</string>
+    <string name="touch_sensor">Touch Sensor</string>
+    <string name="released">released</string>
+    <string name="proximity_sensor">Proximity Sensor</string>
+    <string name="light_sensor">Light Sensor</string>
+    <string name="gyro_sensor">Gyro Sensor</string>
+    <string name="novalue">noValue</string>
+
 </resources>
