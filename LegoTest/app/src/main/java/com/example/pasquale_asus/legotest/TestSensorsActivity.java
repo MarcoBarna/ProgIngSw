@@ -60,7 +60,9 @@ public class TestSensorsActivity extends AppCompatActivity {
         ev3UltrasonicSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
         ev3ColorSensor = MainActivity.ev3.inputs.colorSensor;
-        ev3ColorSensor.SensorPort(MainActivity.ev3.ports.color_sensor_port);
+        //ev3ColorSensor.SensorPort(MainActivity.ev3.ports.color_sensor_port);
+        ev3ColorSensor.SensorPort("4");
+        ev3ColorSensor.Mode("reflected");
         ev3ColorSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
         readSensorsStop = false;
@@ -82,7 +84,7 @@ public class TestSensorsActivity extends AppCompatActivity {
                 try {
                     touch.setText(String.format("%b", touchTask.get()));
                     prox.setText(String.format(Locale.ENGLISH,"%.2f", proximityTask.get()));
-                    color.setText(colorTask.get());
+                    color.setText(ev3ColorSensor.GetLightLevel());
                 } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
                 }
