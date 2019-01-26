@@ -47,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
                 if(bluetoothAdapter == null)
-                    Toast.makeText(getApplicationContext(), "Bluetooth is not present", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.bluetooth_not_present, Toast.LENGTH_LONG).show();
                 else{
                     boolean isEnabled = bluetoothAdapter.isEnabled();
                     if (isChecked && !isEnabled) {
@@ -74,26 +74,26 @@ public class SettingsActivity extends AppCompatActivity {
             protected void stateOn() {
                 switch_bluetooth.setChecked(true);
                 switch_bluetooth.setEnabled(true);
-                Toast.makeText(getApplicationContext(), "Bluetooth enabled", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.bluetooth_enabled, Toast.LENGTH_LONG).show();
             }
 
             @Override
             protected void stateOff() {
                 switch_bluetooth.setChecked(false);
                 switch_bluetooth.setEnabled(true);
-                Toast.makeText(getApplicationContext(), "Bluetooth disabled", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.bluetooth_disabled, Toast.LENGTH_LONG).show();
             }
 
             @Override
             protected void stateTurningOn() {
                 switch_bluetooth.setEnabled(false);
-                Toast.makeText(getApplicationContext(), "enabling Bluetooth", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.enabling_bluetooth, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             protected void stateTurningOff() {
                 switch_bluetooth.setEnabled(false);
-                Toast.makeText(getApplicationContext(), "disabling Bluetooth", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.disabling_bluetooth, Toast.LENGTH_SHORT).show();
             }
         };
 

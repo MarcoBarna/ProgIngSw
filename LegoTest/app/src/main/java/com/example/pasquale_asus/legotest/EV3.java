@@ -16,8 +16,8 @@ import java.util.concurrent.FutureTask;
 
 public class EV3 {
     public interface PortAccess {
-        public void setPort(String newPort);
-        public String getPort();
+        void setPort(String newPort);
+        String getPort();
     }
 
     public static class Ports {
@@ -35,14 +35,14 @@ public class EV3 {
                 default_motor2_port = output_ports[1],
                 default_motor3_port = output_ports[3];
 
-        public String
+        /*public String
                 motor1_port = default_motor1_port,
                 motor2_port = default_motor2_port,
                 motor3_port = default_motor3_port,
                 gyro_sensor_port = default_gyro_port,
                 color_sensor_port = default_color_port,
                 touch_sensor_port = default_touch_port,
-                proximity_sensor_port = default_ultrasonic_port;
+                proximity_sensor_port = default_ultrasonic_port;*/
     }
     public class Outputs{
         Ev3Motors   motor1,
@@ -121,6 +121,9 @@ public class EV3 {
         elementsEV3 = new ElementsEV3();
         handler = new Handler();
         extra.commands = new Ev3Commands(elementsEV3);
+        (outputs.motor1 = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor1_port);
+        (outputs.motor2 = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor2_port);
+        (outputs.motor3 = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor3_port);
         (inputs.touchSensor = new Ev3TouchSensor(elementsEV3)).SensorPort(Ports.default_touch_port);
         (inputs.colorSensor = new Ev3ColorSensor(elementsEV3)).SensorPort(Ports.default_color_port);
         (inputs.ultrasonicSensor = new Ev3UltrasonicSensor(elementsEV3)).SensorPort(Ports.default_ultrasonic_port);

@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Test Motors"
+            android:text="@string/test_motors_tilte"
             android:textColor="@color/colorWhite" />
 
     </android.support.v7.widget.Toolbar>
@@ -44,6 +44,7 @@
             android:layout_height="310dp"
             android:layout_marginTop="8dp"
             android:clickable="true"
+            android:focusable="true"
             app:backgroundTint="#222222"
             app:backgroundTintMode="multiply"
             app:fabCustomSize="100dp"
@@ -58,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:clickable="true"
+            android:focusable="true"
             app:backgroundTint="@color/greyButton"
             app:fabCustomSize="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +95,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         app:layout_constraintVertical_bias="0.174"
-        app:srcCompat="@android:drawable/arrow_down_float" />
+        app:srcCompat="@android:drawable/arrow_down_float"
+        android:contentDescription="@string/down" />
 
     <ImageButton
         android:id="@+id/test_motor_up"
@@ -106,14 +109,15 @@
         app:layout_constraintStart_toEndOf="@+id/test_motor_down"
         app:layout_constraintTop_toTopOf="@+id/test_motor_down"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/arrow_up_float" />
+        app:srcCompat="@android:drawable/arrow_up_float"
+        android:contentDescription="@string/up" />
 
     <Button
         android:id="@+id/button_test_motors_sensors"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:background="@color/greyButton"
-        android:text="Test Sensors"
+        android:text="@string/go_test_sensors"
         android:textColor="@android:color/white"
         app:layout_constraintBaseline_toBaselineOf="@+id/button_test_motors_motors"
         app:layout_constraintEnd_toStartOf="@+id/button_test_motors_motors"
@@ -126,7 +130,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:background="@color/greyBackground"
-        android:text="Test Motors"
+        android:text="@string/go_test_motors"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

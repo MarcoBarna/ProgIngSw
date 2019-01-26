@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Test Sensors" />
+            android:text="@string/test_sensors_title" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/greyButton"
-        android:text="Set Ports"
+        android:text="@string/set_ports"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -65,14 +65,14 @@
                 android:id="@+id/touch_sensor_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Touch Sensor"
+                android:text="@string/touch_sensor"
                 android:textColor="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/touch_sensor_state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="released"
+                android:text="@string/released"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -80,81 +80,63 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/proximity_sensor_test"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:text="@string/proximity_sensor"
+                android:textColor="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/proximity_sensor_test"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Proximity Sensor"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/proximity_sensor_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="no value"
-                    android:textSize="20sp" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/proximity_sensor_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/novalue"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/light_sensor_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="@string/light_sensor"
+                android:textColor="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/light_sensor_test"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Light Sensor"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/light_sensor_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="noValue"
-                    android:textSize="20sp" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/light_sensor_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/novalue"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/gyro_sensor_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="@string/gyro_sensor"
+                android:textColor="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/gyro_sensor_test"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Gyro Sensor"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/gyro_sensor_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="noValue"
-                    android:textSize="20sp" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/gyro_sensor_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/novalue"
+                android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -164,7 +146,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:background="@color/greyBackground"
-        android:text="Test Sensors"
+        android:text="@string/go_test_sensors"
         android:textColor="@android:color/white"
         app:layout_constraintBaseline_toBaselineOf="@+id/button_test_sensors_motors"
         app:layout_constraintEnd_toStartOf="@+id/button_test_sensors_motors"
@@ -177,7 +159,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:background="@color/greyButton"
-        android:text="Test Motors"
+        android:text="@string/go_test_motors"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

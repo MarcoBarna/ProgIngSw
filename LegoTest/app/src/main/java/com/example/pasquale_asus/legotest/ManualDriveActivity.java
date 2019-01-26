@@ -14,6 +14,8 @@ import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Ev3Sound;
 import com.google.appinventor.components.runtime.Form;
 
+import java.util.Locale;
+
 public class ManualDriveActivity extends Form {
     private ImageButton up, down, left, right;
     private TextView textView;
@@ -30,7 +32,7 @@ public class ManualDriveActivity extends Form {
     @Override
     public void $define(){
         setContentView(R.layout.activity_manual_drive);
-        textView = findViewById(R.id.textView);
+        textView = findViewById(R.id.textUP);
         buttonup = findViewById(R.id.sensorup);
         buttondown = findViewById(R.id.sensordown);
         /*Instance of sensors*/
@@ -102,14 +104,14 @@ public class ManualDriveActivity extends Form {
                         goForward(view);
                         number_rotation = wheels.GetTachoCount() / 360;
                         tot_number_rotation += number_rotation;
-                        text_gyro.setText("Number Rotation " + tot_number_rotation);
+                        text_gyro.setText(String.format(Locale.ENGLISH,"%s%d", getString(R.string.number_rotations), tot_number_rotation));
                         break;
                     case MotionEvent.ACTION_UP:
                         wheels.Stop(true);
                         wheels.Stop(false);
                         number_rotation = wheels.GetTachoCount() / 360;
                         tot_number_rotation += number_rotation;
-                        text_gyro.setText("Number Rotation " + tot_number_rotation);
+                        text_gyro.setText(String.format(Locale.ENGLISH,"%s%d", getString(R.string.number_rotations), tot_number_rotation));
                         wheels.ResetTachoCount();
                 }
                 return false;
@@ -132,7 +134,7 @@ public class ManualDriveActivity extends Form {
                 }
                 number_rotation = (-wheels.GetTachoCount() )/ 360;
                 tot_number_rotation += number_rotation;
-                text_gyro.setText("Number Rotation "+tot_number_rotation);
+                text_gyro.setText(String.format(Locale.ENGLISH,"%s%d", getString(R.string.number_rotations), tot_number_rotation));
                 return false;
             }
         });

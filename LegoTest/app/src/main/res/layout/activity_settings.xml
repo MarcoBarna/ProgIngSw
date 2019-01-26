@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="SETTINGS"
+            android:text="@string/settings_title"
             android:textColor="@color/colorWhite"/>
 
     </android.support.v7.widget.Toolbar>
@@ -37,7 +37,7 @@
         android:layout_marginTop="68dp"
         android:layout_marginEnd="8dp"
         android:background="@color/greyButton"
-        android:text="Set Port"
+        android:text="@string/set_ports"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -53,7 +53,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
         android:background="@color/greyButton"
-        android:text="Review App"
+        android:text="@string/review_app"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -82,7 +82,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:text="Bluetooth Connection"
+            android:text="@string/bluetooth_connection"
             android:textAlignment="textEnd"
             tools:layout_editor_absoluteX="34dp"
             tools:layout_editor_absoluteY="341dp" />
