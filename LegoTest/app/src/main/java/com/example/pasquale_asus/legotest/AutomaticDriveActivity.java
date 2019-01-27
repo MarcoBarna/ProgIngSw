@@ -29,7 +29,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         initializeMotors();
         handler = new Handler();
         debug = findViewById(R.id.textView7);
-        debug.setText("Non cliccato");
+        debug.setText(R.string.not_pressed);
         firstaction = findViewById(R.id.firstaction);
         firstaction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +38,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 debug.setVisibility(View.VISIBLE);
                 stopButton.setActivated(true);
                 interruptAction = false;
-                debug.setText("Cliccato");
+                debug.setText(R.string.pressed);
                 handlerStop = true;
                 avoidObstacles();
                 //Runnable algorithm = avoidObstacles();

@@ -9,17 +9,17 @@
     </array>
 
     <array name="FAQsQuestions">
-        <item>How do I connect to my LegoEv3?</item>
-        <item>How do I control LegoEv3?</item>
-        <item>Does it support IOS?</item>
-        <item>Can I configure the robot ports?</item>
+        <item>@string/question1</item>
+        <item>@string/question2</item>
+        <item>@string/question3</item>
+        <item>@string/question4</item>
 
     </array>
     <array name="FAQsAnswers">
-        <item>To connect to LegoEv3, you need to click on connect in the home view</item>
-        <item>To control the LegoEv3 you have to go to the home and select Test, otherwise if you plan to perform functions, you have to go to Advanced Actions</item>
-        <item>No, compatibility with the IOS system is not available at the moment.</item>
-        <item>Yes, by default we have inserted a configuration to control the robot, but at will they can be replaced with your own configurations</item>
+        <item>@string/answer1</item>
+        <item>@string/answer2</item>
+        <item>@string/answer3</item>
+        <item>@string/answer4</item>
 
     </array>
 
@@ -32,17 +32,17 @@
     </array>
 
     <array name="GuideProblems">
-        <item>TEST</item>
-        <item>ADVANCED ACTIONS</item>
-        <item>SETTINGS</item>
-        <item>HELP</item>
+        <item>@string/problem1</item>
+        <item>@string/problem2</item>
+        <item>@string/problem3</item>
+        <item>@string/problem4</item>
 
     </array>
     <array name="GuideSolutions">
-        <item>In this section you can test the various sensor, to check if your robot works correctly without any problems</item>
-        <item>In this section you can activate the various functions that the robot can do</item>
-        <item>In this section you can set the port to the sensor you are using so that it will work correctly. The motors can be configured from Port A to D, and the sensors from Port 1 to 4. You can also check the Bluetooth connection and review the app</item>
-        <item>In this section you can find help with the Faqs to common question you may have and our contacts and who developed this :) </item>
+        <item>@string/solution1</item>
+        <item>@string/solution2</item>
+        <item>@string/solution3</item>
+        <item>@string/solution4 </item>
 
     </array>
 

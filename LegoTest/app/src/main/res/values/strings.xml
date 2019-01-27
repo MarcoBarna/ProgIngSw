@@ -2,10 +2,10 @@
     <string name="app_name">LegoTest</string>
     <string name="text">Text</string>
     <string name="JoyBackDescr">analogimage</string>
-    <string name="title_activity_popwindows">popwindows</string>
-    <string name="bloatstring">answeransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweranswer</string>
-    <string name="placeHolderQuestion">Question X</string>
-    <string name="placeHolderProblem">Problem X</string>
+    <string name="title_activity_popwindows" translatable="false">popwindows</string>
+    <string name="bloatstring" translatable="false">answeransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweransweranswer</string>
+    <string name="placeHolderQuestion" translatable="false">Question X</string>
+    <string name="placeHolderProblem" translatable="false">Problem X</string>
     <string name="closeDescription">Close</string>
 
     <!--image descriptions-->
@@ -13,6 +13,8 @@
     <!--generic strings-->
 
     <!--AutomaticDriveActivity-->
+    <string name="not_pressed">Not pressed</string>
+    <string name="pressed">Pressed</string>
     <string name="distance_value">Distance value:</string>
     <string name="logo">Logo</string>
     <string name="automatic_section">Automatic Section</string>
@@ -28,10 +30,42 @@
     <string name="not_connected">Not connected</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
-    <string name="faqs_title">FAQs</string>
+    <string name="faqs_title" translatable="false">FAQs</string>
+
+    <!--HelpActivity-->
+        <string name="credits">CREDITS</string>
+        <string name="help_title">HELP</string>
+        <string name="contacts">CONTACTS</string>
+        <string name="guide">GUIDE</string>
+        <string name="faqs" translatable="false">FAQs</string>
 
     <!--FAQsActivity-->
-    <string name="buttonfaq_placeholder">buttonFAQ</string>
+    <string name="buttonfaq_placeholder" translatable="false">buttonFAQ</string>
+    
+        <!--FAQs-->
+            <string name="question1">How do I connect to my LegoEv3?</string>
+            <string name="question2">How do I control my LegoEv3?</string>
+            <string name="question3">Does it support IOS?</string>
+            <string name="question4">Can I configure the LegoEV3\'s ports?</string>
+        <!--answers-->
+            <string name="answer1">To connect to LegoEv3 you need to click on connect in the home view.</string>
+            <string name="answer2">To control the LegoEv3 you have to go to the home and select Test, otherwise if you plan to perform functions, you have to go to Advanced Actions.</string>
+            <string name="answer3">No, compatibility with the IOS system is not available at the moment.</string>
+            <string name="answer4">Yes, by default we have inserted a configuration to control the LegoEV3, but at will they can be replaced with your own configurations.</string>
+    
+    <!--GuideActivity-->
+    
+        <!--problems-->
+            <string name="problem1" translatable="false">TEST</string>
+            <string name="problem2">ADVANCED ACTIONS</string>
+            <string name="problem3">SETTINGS</string>
+            <string name="problem4">HELP</string>
+    
+        <!--solutions-->
+            <string name="solution1">In this section you can test the various sensor, to check if your LegoEV3 works correctly without any problems</string>
+            <string name="solution2">In this section you can activate the various functions that the LegoEV3 can do</string>
+            <string name="solution3">In this section you can set the port to the sensor you are using so that it will work correctly. The motors can be configured from Port A to D, and the sensors from Port 1 to 4. You can also check the Bluetooth connection and review the app</string>
+            <string name="solution4">In this section you can find help with the Faqs to common question you may have and our contacts and who developed this :) </string>
 
     <!--ManualDriveActivity-->
     <string name="number_rotations">Number Rotation</string>
@@ -67,9 +101,28 @@
     <string name="test_sensors_title">Test Sensors</string>
     <string name="touch_sensor">Touch Sensor</string>
     <string name="released">released</string>
-    <string name="proximity_sensor">Proximity Sensor</string>
     <string name="light_sensor">Light Sensor</string>
-    <string name="gyro_sensor">Gyro Sensor</string>
     <string name="novalue">noValue</string>
+
+    <!--contactsPopup-->
+    <string name="email_legostoneng_gmail_com" translatable="false">Email: legoStonEng@gmail.com</string>
+    <string name="phone_39_xxxxxxxxx">Phone: +39 XXXXXXXXX</string>
+    <string name="address_viale_legomaniaci_42">Address: Viale LegoManiaci 42</string>
+    <string name="website_optimusprime_altervista_it">Website: optimusprime.altervista.it</string>
+
+    <!--creditsPopup-->
+    <string name="developers">Developers</string>
+    <string name="marco_barna" translatable="false">Marco Barnà</string>
+    <string name="pasquale_soldano" translatable="false">Pasquale Soldano</string>
+    <string name="riccardo_dentico" translatable="false">Riccardo Dentico</string>
+    <string name="alvise_battistich" translatable="false">Alvise Battistich</string>
+
+    <!--setPortsPopup-->
+    <string name="motor1">Motor1</string>
+    <string name="motor2">Motor2</string>
+    <string name="motor3">Motor3</string>
+    <string name="color_sensor">Color Sensor</string>
+    <string name="gyro_sensor">Gyro Sensor</string>
+    <string name="proximity_sensor">Proximity Sensor</string>
 
 </resources>
