@@ -1,21 +1,31 @@
 package com.example.pasquale_asus.legotest;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.appinventor.components.runtime.Ev3ColorSensor;
 import com.google.appinventor.components.runtime.Ev3GyroSensor;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
+import com.google.appinventor.components.runtime.SpeechRecognizer;
 
 import java.math.BigInteger;
+import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -32,7 +42,8 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     private boolean handlerStop, threadStop;
     private long anglewheels = 0;
     Runnable r = null;
-
+    public TextToSpeech textToSpeech;
+    public android.speech.SpeechRecognizer speechRecognizer;
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -45,6 +56,8 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         firstaction = findViewById(R.id.firstaction);
         secondaction = findViewById(R.id.secondaction);
         thirdaction = findViewById(R.id.thirdaction);
+        initializeTextToSpeech();
+        initializeSpeechRecognizer();
         firstaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +86,17 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 //Runnable algorithm = avoidObstacles();
             }
         });
-
+        thirdaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
+                speechRecognizer.startListening(intent);
+                stopButton.setVisibility(View.VISIBLE);
+                stopButton.setActivated(true);
+            }
+        });
 
         stopButton = findViewById(R.id.stop_button);
         //stopButton.setActivated(false);
@@ -100,10 +123,121 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         Utility.setupToolbar(this, R.id.automaticDriveToolbar);
     }
 
+    private void initializeSpeechRecognizer() {
+        if(android.speech.SpeechRecognizer.isRecognitionAvailable(this)){
+            speechRecognizer = android.speech.SpeechRecognizer.createSpeechRecognizer(this);
+            speechRecognizer.setRecognitionListener(new RecognitionListener() {
+                @Override
+                public void onReadyForSpeech(Bundle bundle) {
+
+                }
+
+                @Override
+                public void onBeginningOfSpeech() {
+
+                }
+
+                @Override
+                public void onRmsChanged(float v) {
+
+                }
+
+                @Override
+                public void onBufferReceived(byte[] bytes) {
+
+                }
+
+                @Override
+                public void onEndOfSpeech() {
+
+                }
+
+                @Override
+                public void onError(int i) {
+
+                }
+
+                @Override
+                public void onResults(Bundle bundle) {
+                    List<String> result = bundle.getStringArrayList(
+                            android.speech.SpeechRecognizer.RESULTS_RECOGNITION
+                    );
+                    processResult(result.get(0));
+                }
+
+                @Override
+                public void onPartialResults(Bundle bundle) {
+
+                }
+
+                @Override
+                public void onEvent(int i, Bundle bundle) {
+
+                }
+            });
+        }
+    }
+    private void processResult(String command){
+        command = command.toLowerCase();
+
+        if(command.indexOf("go") != -1){
+            if(command.indexOf("up") != -1) {
+                speak("i'm going up");
+                motors.RotateSyncIndefinitely(50,0);
+            }
+            if(command.indexOf("left") != -1){
+                speak("i'm going to left");
+                motors.RotateSyncInTachoCounts(-50, 4, -90, false);
+                motors.RotateSyncIndefinitely(50,0);
+            }
+            if(command.indexOf("right") != -1){
+                speak("i'm going to right");
+                motors.RotateSyncInTachoCounts(-50, 4, 90, false);
+                motors.RotateSyncIndefinitely(50,0);
+            }
+            if(command.indexOf("down") != -1){
+                speak("i'm going down");
+                motors.RotateSyncIndefinitely(-50, 0);
+            }
+            if(command.indexOf("three hundred sixty") != -1){
+                speak("i'm crazy");
+                motors.RotateSyncIndefinitely(50,90);
+            }
+        }
+        if(command.indexOf("stop") != -1){
+            motors.Stop(true);
+        }
+
+    }
+    private void initializeTextToSpeech() {
+        textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+                if(textToSpeech.getEngines().size() == 0){
+                    Toast.makeText(AutomaticDriveActivity.this, "There is no textToSpeech engine on your device", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                else{
+                    textToSpeech.setLanguage(Locale.US);
+                   // speak("");
+                }
+            }
+        });
+    }
+    private void speak(String message){
+        if(Build.VERSION.SDK_INT >=21){
+            textToSpeech.speak(message, TextToSpeech.QUEUE_FLUSH, null, null);
+        }
+        else{
+            textToSpeech.speak(message, TextToSpeech.QUEUE_FLUSH, null);
+        }
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
         handler.removeCallbacksAndMessages(null);
+        textToSpeech.shutdown();
     }
 
     @Override
@@ -132,17 +266,19 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         ultrasonicSensor.SensorPort("3");
         ultrasonicSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
         colorSensor = MainActivity.ev3.inputs.colorSensor;
-        colorSensor.SensorPort("1");
-        colorSensor.Mode("color");
+        colorSensor.SensorPort("4");
+        colorSensor.Mode("reflected");
         colorSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
-
     }
     public void avoidObstacles(){
         r = new Runnable() {
             public void run() {
-                debug.setText("Distance value: "+ (int)ultrasonicSensor.GetDistance());
                 double distance = ultrasonicSensor.GetDistance();
-                if(distance > 0 && distance < 35){
+                int lightdistance = colorSensor.GetLightLevel();
+                debug.setText("Distance value: "+ distance + " | " +
+                        ((lightdistance != -128) ? lightdistance : "") );
+
+                if(distance > 0 && distance < 15 || lightdistance > 0){
                     motors.Stop(false);
                     motors.RotateSyncIndefinitely(-50,90);
                     //motors.RotateSyncInTachoCounts(-50, 2, 90, false);

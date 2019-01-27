@@ -84,7 +84,7 @@ public class TestSensorsActivity extends AppCompatActivity {
                 try {
                     touch.setText(String.format("%b", touchTask.get()));
                     prox.setText(String.format(Locale.ENGLISH,"%.2f", proximityTask.get()));
-                    color.setText(ev3ColorSensor.GetLightLevel());
+                    color.setText(""+ev3ColorSensor.GetLightLevel());
                 } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
                 }
