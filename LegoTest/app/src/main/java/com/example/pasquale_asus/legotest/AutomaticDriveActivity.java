@@ -170,7 +170,8 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     }
     private void processResult(String command){
         command = command.toLowerCase();
-
+        debug.setText(command);
+        debug.setVisibility(View.VISIBLE);
         if(command.contains(getString(R.string.go_lowercase))){
             if(command.contains(getString(R.string.up))) {
                 speak(getString(R.string.going_up));
