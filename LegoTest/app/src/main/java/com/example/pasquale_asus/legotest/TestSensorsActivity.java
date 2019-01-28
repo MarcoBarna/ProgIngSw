@@ -59,7 +59,7 @@ public class TestSensorsActivity extends AppCompatActivity {
 
         ev3ColorSensor = MainActivity.ev3.inputs.colorSensor;
         //ev3ColorSensor.SensorPort(MainActivity.ev3.ports.color_sensor_port);
-        ev3ColorSensor.SensorPort("4");
+        ev3ColorSensor.SensorPort(MainActivity.ev3.inputs.colorSensor.SensorPort());
         ev3ColorSensor.Mode("reflected");
         ev3ColorSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
