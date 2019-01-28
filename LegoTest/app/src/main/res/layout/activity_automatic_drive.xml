@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Advanced Actions" />
+            android:text="@string/advanced_actions_title" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -36,7 +36,7 @@
         android:layout_marginEnd="1dp"
         android:background="@color/colorPrimaryDark"
         android:elevation="0dp"
-        android:text="AvoidObstacles"
+        android:text="@string/avoid_obstacles"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.469"
@@ -51,7 +51,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:background="@color/colorPrimaryDark"
-        android:text="calculate distance"
+        android:text="@string/calculate_distance"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="1dp"
         android:background="@color/colorPrimaryDark"
-        android:text="Voice Command"
+        android:text="@string/voice_command"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.469"
@@ -79,7 +79,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
-        android:text="Result:"
+        android:text="@string/result"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +95,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:text="STOP"
+        android:text="@string/stop"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

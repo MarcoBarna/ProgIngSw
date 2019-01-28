@@ -9,37 +9,58 @@
     <string name="closeDescription">Close</string>
 
     <!--image descriptions-->
+    <string name="logo_description">Logo of LegoStoneEng</string>
+    <string name="smiley_face">Smiley face</string>
 
     <!--generic strings-->
 
     <!--AutomaticDriveActivity-->
     <string name="not_pressed">Not pressed</string>
     <string name="pressed">Pressed</string>
-    <string name="distance_value">Distance value:</string>
-    <string name="logo">Logo</string>
-    <string name="automatic_section">Automatic Section</string>
-    <string name="test_sections">Test Sections</string>
-    <string name="help_section">Help Section</string>
-    <string name="settings_section">Settings Section</string>
+    <string name="distance_value">Distance value</string>
+    <string name="advanced_actions_title">Advanced Actions</string>
+    <string name="avoid_obstacles">Avoid Obstacles</string>
+    <string name="calculate_distance">Calculate distance</string>
+    <string name="voice_command">Voice Command</string>
+    <string name="result">Result:</string>
+    <string name="stop" translatable="false">STOP</string>
+
+        <!--VocalCommands-->
+        <string name="go_lowercase">go</string>
+        <string name="going_up">i\'m going up</string>
+        <string name="left_lowercase">left</string>
+        <string name="going_left">i\'m going to left</string>
+        <string name="right_lowercase">right</string>
+        <string name="going_right">i\'m going to right</string>
+        <string name="down_lowercase">down</string>
+        <string name="going_down">i\'m going down</string>
+        <string name="three_sixty">three hundred sixty</string>
+        <string name="im_crazy">i\'m crazy</string>
+        <string name="stop_lowercase">stop</string>
 
     <!--BtPairedActivity-->
     <string name="select_a_bluetooth_device">Select a Bluetooth device</string>
     <string name="bluetooth_off_or_no_paired_device">Bluetooth off or no Paired device</string>
 
     <!--MainActivity-->
-    <string name="not_connected">Not connected</string>
+    <string name="disconnected">Disconnected</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
-    <string name="faqs_title" translatable="false">FAQs</string>
+    <string name="logo">Logo</string>
+    <string name="automatic_section">Automatic Section</string>
+    <string name="test_sections">Test Sections</string>
+    <string name="help_section">Help Section</string>
+    <string name="settings_section">Settings Section</string>
 
     <!--HelpActivity-->
         <string name="credits">CREDITS</string>
         <string name="help_title">HELP</string>
         <string name="contacts">CONTACTS</string>
-        <string name="guide">GUIDE</string>
+        <string name="manual">MANUAL</string>
         <string name="faqs" translatable="false">FAQs</string>
 
     <!--FAQsActivity-->
+    <string name="faqs_title" translatable="false">FAQs</string>
     <string name="buttonfaq_placeholder" translatable="false">buttonFAQ</string>
     
         <!--FAQs-->
@@ -53,7 +74,9 @@
             <string name="answer3">No, compatibility with the IOS system is not available at the moment.</string>
             <string name="answer4">Yes, by default we have inserted a configuration to control the LegoEV3, but at will they can be replaced with your own configurations.</string>
     
-    <!--GuideActivity-->
+    <!--ManualActivity-->
+    <string name="manual_title">MANUAL</string>
+    <string name="buttonmanual_placeholder" translatable="false">buttonManual</string>
     
         <!--problems-->
             <string name="problem1" translatable="false">TEST</string>

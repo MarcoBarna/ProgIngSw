@@ -12,7 +12,7 @@ package com.example.pasquale_asus.legotest;
         import android.widget.ImageView;
         import android.widget.TextView;
 
-public class GuideActivity extends AppCompatActivity {
+public class ManualActivity extends AppCompatActivity {
     Resources resources;
     TypedArray  GuideButtonsIDs,
                 GuideProblems,
@@ -22,7 +22,7 @@ public class GuideActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide);
+        setContentView(R.layout.activity_manual);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         initializeGuide();
@@ -36,7 +36,7 @@ public class GuideActivity extends AppCompatActivity {
         GuideSolutions = resources.obtainTypedArray(R.array.GuideSolutions);
 
         for(int i = 0; i < GuideButtonsIDs.length(); i++) {
-            final Integer index = new Integer(i);
+            final Integer index = i;
 
             Button questionButton = findViewById(GuideButtonsIDs.getResourceId(index, View.NO_ID));
 

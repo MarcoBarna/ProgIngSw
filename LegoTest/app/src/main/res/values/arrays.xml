@@ -24,10 +24,10 @@
     </array>
 
     <array name="GuideButtonsIDs">
-        <item>@+id/buttonGuide1</item>
-        <item>@+id/buttonGuide2</item>
-        <item>@+id/buttonGuide3</item>
-        <item>@+id/buttonGuide4</item>
+        <item>@+id/buttonManual1</item>
+        <item>@+id/buttonManual2</item>
+        <item>@+id/buttonManual3</item>
+        <item>@+id/buttonManual4</item>
 
     </array>
 

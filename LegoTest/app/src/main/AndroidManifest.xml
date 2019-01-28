@@ -68,7 +68,7 @@
             android:name=".FAQsActivity"
             android:parentActivityName=".HelpActivity" />
         <activity
-            android:name=".GuideActivity"
+            android:name=".ManualActivity"
             android:parentActivityName=".HelpActivity" />
         <activity
             android:name=".SettingsActivity"

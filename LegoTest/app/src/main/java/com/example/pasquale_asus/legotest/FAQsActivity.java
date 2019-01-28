@@ -35,7 +35,7 @@ public class FAQsActivity extends AppCompatActivity {
         FAQsAnswers = resources.obtainTypedArray(R.array.FAQsAnswers);
 
         for(int i = 0; i < FAQsButtonsIDs.length(); i++) {
-            final Integer index = new Integer(i);
+            final Integer index = i;
 
             Button questionButton = findViewById(FAQsButtonsIDs.getResourceId(index, View.NO_ID));
 

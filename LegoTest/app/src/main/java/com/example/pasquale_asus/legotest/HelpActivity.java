@@ -59,7 +59,7 @@ public class HelpActivity extends AppCompatActivity {
     }
 
     private void onButtonGuideClick(View v){
-        Intent GuideIntent = new Intent(this, GuideActivity.class);
+        Intent GuideIntent = new Intent(this, ManualActivity.class);
         startActivity(GuideIntent);
     }
 

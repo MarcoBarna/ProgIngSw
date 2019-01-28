@@ -3,10 +3,10 @@
     <string name="app_name">LegoTest</string>
     <string name="text">testo</string>
     <string name="JoyBackDescr">immagineanalogico</string>
-    <string name="closeDescription">chiudi</string>
+    <string name="closeDescription">Chiudi</string>
     <string name="not_pressed">Non cliccato</string>
     <string name="pressed">Cliccato</string>
-    <string name="distance_value">Valore distanza:</string>
+    <string name="distance_value">Valore distanza</string>
     <string name="logo">Logo</string>
     <string name="automatic_section">Sezione Automazione</string>
     <string name="test_sections">Sezione Test</string>
@@ -14,7 +14,7 @@
     <string name="settings_section">Sezione Impostazioni</string>
     <string name="select_a_bluetooth_device">Seleziona un dispositivo Bluetooth</string>
     <string name="bluetooth_off_or_no_paired_device">Bluetooth Spento o non ci sono dispositivi associati</string>
-    <string name="not_connected">Non connesso</string>
+    <string name="disconnected">Non connesso</string>
     <string name="connect">Connesso</string>
     <string name="disconnect">Disconnesso</string>
     <string name="question1">Come posso connettermi al mio LegoEV3?</string>
@@ -66,7 +66,7 @@
     <string name="credits">CREDITI</string>
     <string name="help_title">AIUTO</string>
     <string name="contacts">CONTATTI</string>
-    <string name="guide">GUIDA</string>
+    <string name="manual">MANUALE</string>
     <string name="phone_39_xxxxxxxxx">Telefono: +39 XXXXXXXXX</string>
     <string name="address_viale_legomaniaci_42">Indirizzo: Viale LegoManiaci 42</string>
     <string name="website_optimusprime_altervista_it">Sito Web: optimusprime.altervista.it</string>
@@ -75,4 +75,23 @@
     <string name="motor2">Motore2</string>
     <string name="motor3">Motore3</string>
     <string name="color_sensor">Sensore Colore</string>
+    <string name="go_lowercase">vai</string>
+    <string name="going_up">sto andando su</string>
+    <string name="left_lowercase">sinistra</string>
+    <string name="going_left">sto andando a sinistra</string>
+    <string name="right_lowercase">destra</string>
+    <string name="going_right">sto andando a destra</string>
+    <string name="down_lowercase">giù</string>
+    <string name="going_down">sto andando giù</string>
+    <string name="three_sixty">trecentosessanta</string>
+    <string name="im_crazy">sono pazzo</string>
+    <string name="stop_lowercase">fermo</string>
+    <string name="manual_title">MANUALE</string>
+    <string name="logo_description">Logo di LegoStoneEng</string>
+    <string name="smiley_face">Faccina sorridente</string>
+    <string name="advanced_actions_title">Funzioni Avanzate</string>
+    <string name="avoid_obstacles">Evita ostacoli</string>
+    <string name="calculate_distance">Calcola distanza</string>
+    <string name="voice_command">Comandi Vocali</string>
+    <string name="result">Risultato:</string>
 </resources>

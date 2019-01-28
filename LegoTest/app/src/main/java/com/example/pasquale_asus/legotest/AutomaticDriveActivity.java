@@ -1,10 +1,7 @@
 package com.example.pasquale_asus.legotest;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,17 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.appinventor.components.runtime.Ev3ColorSensor;
-import com.google.appinventor.components.runtime.Ev3GyroSensor;
 import com.google.appinventor.components.runtime.Ev3Motors;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
-import com.google.appinventor.components.runtime.SpeechRecognizer;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
 
 public class AutomaticDriveActivity extends AppCompatActivity {
     private android.widget.Button firstaction, stopButton, secondaction,thirdaction;
@@ -180,31 +171,31 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     private void processResult(String command){
         command = command.toLowerCase();
 
-        if(command.indexOf("go") != -1){
-            if(command.indexOf("up") != -1) {
-                speak("i'm going up");
+        if(command.contains(getString(R.string.go_lowercase))){
+            if(command.contains(getString(R.string.up))) {
+                speak(getString(R.string.going_up));
                 motors.RotateSyncIndefinitely(50,0);
             }
-            if(command.indexOf("left") != -1){
-                speak("i'm going to left");
+            if(command.contains(getString(R.string.left_lowercase))){
+                speak(getString(R.string.going_left));
                 motors.RotateSyncInTachoCounts(-50, 4, -90, false);
                 motors.RotateSyncIndefinitely(50,0);
             }
-            if(command.indexOf("right") != -1){
-                speak("i'm going to right");
+            if(command.contains(getString(R.string.right_lowercase))){
+                speak(getString(R.string.going_right));
                 motors.RotateSyncInTachoCounts(-50, 4, 90, false);
                 motors.RotateSyncIndefinitely(50,0);
             }
-            if(command.indexOf("down") != -1){
-                speak("i'm going down");
+            if(command.contains(getString(R.string.down_lowercase))){
+                speak(getString(R.string.going_down));
                 motors.RotateSyncIndefinitely(-50, 0);
             }
-            if(command.indexOf("three hundred sixty") != -1){
-                speak("i'm crazy");
+            if(command.contains(getString(R.string.three_sixty))){
+                speak(getString(R.string.im_crazy));
                 motors.RotateSyncIndefinitely(50,90);
             }
         }
-        if(command.indexOf("stop") != -1){
+        if(command.contains(getString(R.string.stop_lowercase))){
             motors.Stop(true);
         }
 
@@ -275,8 +266,9 @@ public class AutomaticDriveActivity extends AppCompatActivity {
             public void run() {
                 double distance = ultrasonicSensor.GetDistance();
                 int lightdistance = colorSensor.GetLightLevel();
-                debug.setText("Distance value: "+ distance + " | " +
-                        ((lightdistance != -128) ? lightdistance : "") );
+                debug.setText(String.format(
+                        Locale.ENGLISH,"%s: %f2. | %s", getString(R.string.distance_value), distance, ((lightdistance != -128) ? lightdistance : ""))
+                );
 
                 if(distance > 0 && distance < 15 || lightdistance > 0){
                     motors.Stop(false);
@@ -300,7 +292,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
             public void run() {
                 long temp_angle = (long)(motors.GetTachoCount() * 0.0273);
                 anglewheels = (temp_angle > anglewheels) ? temp_angle : (anglewheels);
-                debug.setText("Distance value: "+ anglewheels + " cm");
+                debug.setText(String.format(Locale.ENGLISH, "%s: %d cm", getString(R.string.distance_value), anglewheels));
                 double distance = ultrasonicSensor.GetDistance();
                 if(distance > 0 && distance < 35){
                     motors.Stop(false);

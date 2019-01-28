@@ -16,7 +16,8 @@
         android:layout_marginTop="7dp"
         android:layout_marginEnd="7dp"
         android:elevation="5dp"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/closeDescription" />
 
     <android.support.v7.widget.CardView
         android:layout_height="wrap_content"
@@ -52,7 +53,8 @@
                 android:layout_marginStart="26dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="1dp"
-                android:src="@drawable/ic_insert_emoticon_black_24dp" />
+                android:src="@drawable/ic_insert_emoticon_black_24dp"
+                android:contentDescription="@string/smiley_face" />
 
             <TextView
                 android:id="@+id/marco"

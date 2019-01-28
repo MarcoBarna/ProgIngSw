@@ -8,7 +8,7 @@
     android:configChanges="orientation"
     android:screenOrientation="portrait"
     android:theme="@style/ThemeOverlay.AppCompat"
-    tools:context=".GuideActivity">
+    tools:context=".ManualActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/GuideToolbar"
@@ -20,12 +20,12 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <TextView
-            android:id="@+id/guide_toolbar_title"
+            android:id="@+id/manual_toolbar_title"
             style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="MANUAL"
+            android:text="@string/manual_title"
             android:textColor="@color/colorWhite"
             tools:layout_editor_absoluteX="164dp"
             tools:layout_editor_absoluteY="15dp" />
@@ -33,53 +33,53 @@
     </android.support.v7.widget.Toolbar>
 
     <Button
-        android:id="@+id/buttonGuide1"
+        android:id="@+id/buttonManual1"
         android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="buttonGuide1"
+        android:text="@string/buttonmanual_placeholder"
         android:textSize="18sp"
         android:textColor="@android:color/white"
         android:background="@color/greyButton"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGuide2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonManual2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GuideToolbar" />
     
     <Button
-        android:id="@+id/buttonGuide2"
+        android:id="@+id/buttonManual2"
         android:layout_width="286dp"
         android:layout_height="wrap_content"
-        android:text="buttonGuide2"
+        android:text="@string/buttonmanual_placeholder"
         android:textSize="18sp"
         android:textColor="@android:color/white"
         android:background="@color/greyButton"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGuide3"
+        app:layout_constraintBottom_toTopOf="@+id/buttonManual3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGuide1" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonManual1" />
     
     <Button
-        android:id="@+id/buttonGuide3"
+        android:id="@+id/buttonManual3"
         android:layout_width="286dp"
         android:layout_height="wrap_content"
-        android:text="buttonGuide3"
+        android:text="@string/buttonmanual_placeholder"
         android:textSize="18sp"
         android:textColor="@android:color/white"
         android:background="@color/greyButton"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGuide4"
+        app:layout_constraintBottom_toTopOf="@+id/buttonManual4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGuide2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonManual2" />
     
     <Button
-        android:id="@+id/buttonGuide4"
+        android:id="@+id/buttonManual4"
         android:layout_width="286dp"
         android:layout_height="wrap_content"
-        android:text="buttonGuide4"
+        android:text="@string/buttonmanual_placeholder"
         android:textSize="18sp"
         android:textColor="@android:color/white"
         android:background="@color/greyButton"
@@ -87,6 +87,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGuide3" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonManual3" />
 
 </android.support.constraint.ConstraintLayout>
