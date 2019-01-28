@@ -44,6 +44,17 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/titlePopup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25sp"
+                android:layout_marginRight="20sp"
+                android:text="Contacts"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20sp" />

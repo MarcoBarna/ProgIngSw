@@ -64,6 +64,7 @@
         android:layout_height="wrap_content"
         android:background="@color/greyButton"
         android:text="@string/guide"
+        android:text="MANUAL"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonFAQ3"

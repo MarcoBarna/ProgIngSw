@@ -100,6 +100,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="7dp"
         android:text="@string/not_connected"
+        android:text="Disconected"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.089"
