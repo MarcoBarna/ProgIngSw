@@ -37,7 +37,7 @@ public class TestMotorsActivity extends AppCompatActivity{
         motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
         submotor = MainActivity.ev3.outputs.motor3;
-        submotor.MotorPorts("AD");
+        submotor.MotorPorts(MainActivity.ev3.outputs.motor3.MotorPorts() + "D");
         submotor.BluetoothClient(MainActivity.ev3.bluetoothClient);
 
 

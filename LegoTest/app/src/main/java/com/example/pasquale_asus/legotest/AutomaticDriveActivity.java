@@ -252,13 +252,14 @@ public class AutomaticDriveActivity extends AppCompatActivity {
 
     public void initializeMotors(){
         motors = MainActivity.ev3.outputs.motor1;
-        motors.MotorPorts("BC");
+        motors.MotorPorts(MainActivity.ev3.outputs.motor1.MotorPorts()
+                            + MainActivity.ev3.outputs.motor2.MotorPorts());
         motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
         ultrasonicSensor = MainActivity.ev3.inputs.ultrasonicSensor;
-        ultrasonicSensor.SensorPort("3");
+        ultrasonicSensor.SensorPort(MainActivity.ev3.inputs.ultrasonicSensor.SensorPort());
         ultrasonicSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
         colorSensor = MainActivity.ev3.inputs.colorSensor;
-        colorSensor.SensorPort("4");
+        colorSensor.SensorPort(MainActivity.ev3.inputs.colorSensor.SensorPort());
         colorSensor.Mode("reflected");
         colorSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
     }
