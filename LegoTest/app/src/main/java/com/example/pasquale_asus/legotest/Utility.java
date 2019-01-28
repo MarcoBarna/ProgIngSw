@@ -13,6 +13,29 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class Utility {
+
+    public static String convertToUsablePort(String port){
+        String convertedPort;
+        switch (port){
+            case "49":
+                convertedPort = "1";
+                break;
+            case "50":
+                convertedPort = "2";
+                break;
+            case "51":
+                convertedPort = "3";
+                break;
+            case "52":
+                convertedPort = "4";
+                break;
+            default:
+                convertedPort = port;
+                break;
+        }
+        return convertedPort;
+    }
+
     private static class OnSpinnerItemSelectedListener implements AdapterView.OnItemSelectedListener {
         private AppCompatActivity activity;
         private EV3.PortAccess port;
@@ -27,7 +50,8 @@ public class Utility {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             String item = (String) adapterView.getItemAtPosition(i);
-            if(port.getPort().equals(item) == false) {
+            String portValue = convertToUsablePort(port.getPort());
+            if(!portValue.equals(item)) {
                 port.setPort(item);
                 Toast.makeText(activity.getApplicationContext(), msg + item, Toast.LENGTH_LONG).show();
             }
@@ -89,13 +113,13 @@ public class Utility {
         touch_sensor.setAdapter(adapter_numbers);
         ultrasonic_sensor.setAdapter(adapter_numbers);
 
-        motor1.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor1.MotorPorts()));
-        motor2.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor2.MotorPorts()));
-        motor3.setSelection(items_string_letters.indexOf(MainActivity.ev3.outputs.motor3.MotorPorts()));
-        color_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.colorSensor.SensorPort()));
-        gyro_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.gyroSensor.SensorPort()));
-        touch_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.touchSensor.SensorPort()));
-        ultrasonic_sensor.setSelection(items_string_numbers.indexOf(MainActivity.ev3.inputs.ultrasonicSensor.SensorPort()));
+        motor1.setSelection(items_string_letters.indexOf(convertToUsablePort(MainActivity.ev3.outputs.motor1.MotorPorts())));
+        motor2.setSelection(items_string_letters.indexOf(convertToUsablePort(MainActivity.ev3.outputs.motor2.MotorPorts())));
+        motor3.setSelection(items_string_letters.indexOf(convertToUsablePort(MainActivity.ev3.outputs.motor3.MotorPorts())));
+        color_sensor.setSelection(items_string_numbers.indexOf(convertToUsablePort(MainActivity.ev3.inputs.colorSensor.SensorPort())));
+        gyro_sensor.setSelection(items_string_numbers.indexOf(convertToUsablePort(MainActivity.ev3.inputs.gyroSensor.SensorPort())));
+        touch_sensor.setSelection(items_string_numbers.indexOf(convertToUsablePort(MainActivity.ev3.inputs.touchSensor.SensorPort())));
+        ultrasonic_sensor.setSelection(items_string_numbers.indexOf(convertToUsablePort(MainActivity.ev3.inputs.ultrasonicSensor.SensorPort())));
 
         motor1.setOnItemSelectedListener(new OnSpinnerItemSelectedListener(activity, new EV3.PortAccess() {
             @Override
