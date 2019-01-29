@@ -251,7 +251,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     }
 
     public void initializeMotors(){
-        motors = MainActivity.ev3.outputs.motor1;
+        motors = MainActivity.ev3.outputs.motor2;
         motors.MotorPorts(MainActivity.ev3.outputs.motor1.MotorPorts()
                             + MainActivity.ev3.outputs.motor2.MotorPorts());
         motors.BluetoothClient(MainActivity.ev3.bluetoothClient);

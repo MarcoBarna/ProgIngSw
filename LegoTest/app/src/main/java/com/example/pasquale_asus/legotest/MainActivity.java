@@ -1,6 +1,7 @@
 package com.example.pasquale_asus.legotest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -144,10 +145,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
     public void visibilityBtConnected(){
+        statusBattery.setText("Connected");
+        statusBattery.setTextColor(Color.GREEN);
         buttonBluetoothConnect.setVisibility(View.INVISIBLE);
         buttonBluetoothDisconnect.setVisibility(View.VISIBLE);
     }
     public void visibilityBtDisconnected(){
+        statusBattery.setText("Disconnected");
+        statusBattery.setTextColor(Color.WHITE);
         buttonBluetoothDisconnect.setVisibility(View.INVISIBLE);
         buttonBluetoothConnect.setVisibility(View.VISIBLE);
     }
