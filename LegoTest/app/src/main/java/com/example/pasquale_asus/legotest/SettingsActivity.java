@@ -136,12 +136,7 @@ public class SettingsActivity extends AppCompatActivity {
         radioButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String languageToLoad  = "it";
-                Locale locale = new Locale(languageToLoad);
-                Locale.setDefault(locale);
-                Configuration config = new Configuration();
-                config.locale = locale;
-                SettingsActivity.this.getResources().updateConfiguration(config,SettingsActivity.this.getResources().getDisplayMetrics());
+                setLanguage("it");
                 Toast.makeText(getApplicationContext(), "Lingua Settata", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
@@ -149,27 +144,23 @@ public class SettingsActivity extends AppCompatActivity {
         radioButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String languageToLoad  = "en";
-                Locale locale = new Locale(languageToLoad);
-                Locale.setDefault(locale);
-                Configuration config = new Configuration();
-                config.locale = locale;
-                SettingsActivity.this.getResources().updateConfiguration(config,SettingsActivity.this.getResources().getDisplayMetrics());
+                setLanguage("en");
                 Toast.makeText(getApplicationContext(), "Language Setted", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
         });
-
-
-
-
-
-
-
+        
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
-
+    private void setLanguage(String language){
+        String languageToLoad  = language;
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        SettingsActivity.this.getResources().updateConfiguration(config,SettingsActivity.this.getResources().getDisplayMetrics());
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
