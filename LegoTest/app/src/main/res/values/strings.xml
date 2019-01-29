@@ -148,4 +148,10 @@
     <string name="gyro_sensor">Gyro Sensor</string>
     <string name="proximity_sensor">Proximity Sensor</string>
 
+    <!--selectLanguage-->
+    <string name="select_language">Select Language</string>
+    <string name="italiano" translatable="false">ITALIANO</string>
+    <string name="english" translatable="false">ENGLISH</string>
+    <string name="language_set">Language Set</string>
+
 </resources>

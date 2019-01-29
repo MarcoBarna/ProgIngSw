@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20sp"
-                android:text="Select Language"
+                android:text="@string/select_language"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
@@ -59,14 +59,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ITALIANO" />
+                    android:text="@string/italiano" />
 
                 <RadioButton
                     android:id="@+id/language_en"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ENGLISH" />
+                    android:text="@string/english" />
             </RadioGroup>
         </android.support.v7.widget.CardView>
     </LinearLayout>

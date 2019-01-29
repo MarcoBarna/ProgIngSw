@@ -10,24 +10,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import java.util.ArrayList;
 import java.util.Locale;
-
-import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class SettingsActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
@@ -137,16 +127,16 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setLanguage("it");
-                Toast.makeText(getApplicationContext(), "Lingua Settata", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
+                recreate();
             }
         });
         radioButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setLanguage("en");
-                Toast.makeText(getApplicationContext(), "Language Setted", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
+                recreate();
             }
         });
         
@@ -160,6 +150,7 @@ public class SettingsActivity extends AppCompatActivity {
         Configuration config = new Configuration();
         config.locale = locale;
         SettingsActivity.this.getResources().updateConfiguration(config,SettingsActivity.this.getResources().getDisplayMetrics());
+        Toast.makeText(getApplicationContext(), R.string.language_set, Toast.LENGTH_LONG).show();
     }
     @Override
     protected void onDestroy() {
