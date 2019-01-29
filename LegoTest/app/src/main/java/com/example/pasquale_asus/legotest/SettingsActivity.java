@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,15 +15,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 import static com.example.pasquale_asus.legotest.R.id.spinner_motor1;
 
 public class SettingsActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
-    private Button set_ports_button;
+    private Button set_ports_button, set_language_system;
     private Switch switch_bluetooth;
     private ImageView closePopup;
     boolean isSpinnerTouched = false;
@@ -41,6 +50,15 @@ public class SettingsActivity extends AppCompatActivity {
                 onButtonsetPortsClick(view);
             }
         });
+        set_language_system = findViewById(R.id.select_language);
+        set_language_system.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onButtonsetLanguageClick(view);
+            }
+        });
+
+        
         switch_bluetooth = findViewById(R.id.switch_bluetooth);
         switch_bluetooth.setChecked((BluetoothAdapter.getDefaultAdapter() == null) ? false : BluetoothAdapter.getDefaultAdapter().isEnabled());
         switch_bluetooth.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -100,6 +118,56 @@ public class SettingsActivity extends AppCompatActivity {
         IntentFilter bluetoothFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
         bluetoothFilter.addAction(BluetoothAdapter.EXTRA_STATE);
         registerReceiver(bluetoothReceiver, bluetoothFilter);
+    }
+
+    private void onButtonsetLanguageClick(View view) {
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.epic_popup_set_language);
+        closePopup = (ImageView) dialog.findViewById(R.id.closePopup);
+        closePopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        RadioButton radioButton1 = dialog.findViewById(R.id.language_ita);
+        RadioButton radioButton2 = dialog.findViewById(R.id.language_en);
+        radioButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String languageToLoad  = "it";
+                Locale locale = new Locale(languageToLoad);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                SettingsActivity.this.getResources().updateConfiguration(config,SettingsActivity.this.getResources().getDisplayMetrics());
+                Toast.makeText(getApplicationContext(), "Lingua Settata", Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
+        });
+        radioButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String languageToLoad  = "en";
+                Locale locale = new Locale(languageToLoad);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                SettingsActivity.this.getResources().updateConfiguration(config,SettingsActivity.this.getResources().getDisplayMetrics());
+                Toast.makeText(getApplicationContext(), "Language Setted", Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
+        });
+
+
+
+
+
+
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 
     @Override
