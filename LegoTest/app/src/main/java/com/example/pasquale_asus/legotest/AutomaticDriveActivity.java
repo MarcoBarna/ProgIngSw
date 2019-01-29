@@ -71,7 +71,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 debug.setVisibility(View.VISIBLE);
                 stopButton.setActivated(true);
                 interruptAction = false;
-                debug.setText("Pressed");
+                debug.setText(R.string.pressed);
                 handlerStop = true;
                 calculateDistance();
                 //Runnable algorithm = avoidObstacles();
