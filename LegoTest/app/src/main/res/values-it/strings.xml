@@ -15,8 +15,8 @@
     <string name="select_a_bluetooth_device">Seleziona un dispositivo Bluetooth</string>
     <string name="bluetooth_off_or_no_paired_device">Bluetooth Spento o non ci sono dispositivi associati</string>
     <string name="disconnected">Non connesso</string>
-    <string name="connect">Connesso</string>
-    <string name="disconnect">Disconnesso</string>
+    <string name="connect">Connetti</string>
+    <string name="disconnect">Disconnetti</string>
     <string name="question1">Come posso connettermi al mio LegoEV3?</string>
     <string name="question2">Come controllo il mio LegoEV3?</string>
     <string name="question3">IOS è supportato?</string>
