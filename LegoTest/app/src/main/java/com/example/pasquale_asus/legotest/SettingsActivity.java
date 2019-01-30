@@ -50,7 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         
         switch_bluetooth = findViewById(R.id.switch_bluetooth);
-        switch_bluetooth.setChecked((BluetoothAdapter.getDefaultAdapter() == null) ? false : BluetoothAdapter.getDefaultAdapter().isEnabled());
+        switch_bluetooth.setChecked((BluetoothAdapter.getDefaultAdapter() != null) && BluetoothAdapter.getDefaultAdapter().isEnabled());
         switch_bluetooth.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
