@@ -25,7 +25,7 @@
     <string name="result">Result:</string>
     <string name="stop" translatable="false">STOP</string>
 
-        <!--VocalCommands-->
+        <!--VoiceCommands-->
         <string name="go_lowercase">go</string>
         <string name="going_up">i\'m going up</string>
         <string name="left_lowercase">left</string>
@@ -53,11 +53,11 @@
     <string name="settings_section">Settings Section</string>
 
     <!--HelpActivity-->
-        <string name="credits">CREDITS</string>
-        <string name="help_title">HELP</string>
-        <string name="contacts">CONTACTS</string>
-        <string name="manual">MANUAL</string>
-        <string name="faqs" translatable="false">FAQs</string>
+    <string name="help_title">HELP</string>
+    <string name="credits">CREDITS</string>
+    <string name="contacts">CONTACTS</string>
+    <string name="manual">MANUAL</string>
+    <string name="faqs" translatable="false">FAQs</string>
 
     <!--FAQsActivity-->
     <string name="faqs_title" translatable="false">FAQs</string>
@@ -79,10 +79,10 @@
     <string name="buttonmanual_placeholder" translatable="false">buttonManual</string>
     
         <!--problems-->
-            <string name="problem1" translatable="false">TEST</string>
-            <string name="problem2">ADVANCED ACTIONS</string>
-            <string name="problem3">SETTINGS</string>
-            <string name="problem4">HELP</string>
+            <string name="manual_test" translatable="false">TEST</string>
+            <string name="manual_advanced_actions">ADVANCED ACTIONS</string>
+            <string name="manual_settings">SETTINGS</string>
+            <string name="manual_help">HELP</string>
     
         <!--solutions-->
             <string name="solution1">In this section you can test the various sensor, to check if your LegoEV3 works correctly without any problems</string>

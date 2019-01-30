@@ -32,10 +32,10 @@
     </array>
 
     <array name="GuideProblems">
-        <item>@string/problem1</item>
-        <item>@string/problem2</item>
-        <item>@string/problem3</item>
-        <item>@string/problem4</item>
+        <item>@string/manual_test</item>
+        <item>@string/manual_advanced_actions</item>
+        <item>@string/manual_settings</item>
+        <item>@string/manual_help</item>
 
     </array>
     <array name="GuideSolutions">
