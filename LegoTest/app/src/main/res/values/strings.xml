@@ -46,14 +46,14 @@
     <string name="bluetooth_off_or_no_paired_device">Bluetooth off or no Paired device</string>
 
     <!--MainActivity-->
-    <string name="disconnected">Disconnected</string>
-    <string name="connect">Connect</string>
-    <string name="disconnect">Disconnect</string>
-    <string name="logo">Logo</string>
-    <string name="automatic_section">Automatic Section</string>
-    <string name="test_sections">Test Sections</string>
-    <string name="help_section">Help Section</string>
-    <string name="settings_section">Settings Section</string>
+    <string name="disconnected" translatable="false">Disconnected</string>
+    <string name="connect" translatable="false">Connect</string>
+    <string name="disconnect" translatable="false">Disconnect</string>
+    <string name="logo" translatable="false">Logo</string>
+    <string name="automatic_section" translatable="false">Automatic Section</string>
+    <string name="test_sections" translatable="false">Test Sections</string>
+    <string name="help_section" translatable="false">Help Section</string>
+    <string name="settings_section" translatable="false">Settings Section</string>
 
     <!--HelpActivity-->
     <string name="help_title">HELP</string>
@@ -83,9 +83,9 @@
     
         <!--problems-->
             <string name="manual_test" translatable="false">TEST</string>
-            <string name="manual_advanced_actions">ADVANCED ACTIONS</string>
-            <string name="manual_settings">SETTINGS</string>
-            <string name="manual_help">HELP</string>
+            <string name="manual_advanced_actions" translatable="false">ADVANCED ACTIONS</string>
+            <string name="manual_settings" translatable="false">SETTINGS</string>
+            <string name="manual_help" translatable="false">HELP</string>
     
         <!--solutions-->
             <string name="solution1">In this section you can test the various sensor, to check if your LegoEV3 works correctly without any problems</string>
