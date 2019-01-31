@@ -212,7 +212,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    textToSpeech.setLanguage(Locale.US);
+                    textToSpeech.setLanguage(Locale.getDefault());
                    // speak("");
                 }
             }
@@ -273,6 +273,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 debug.setText(String.format(
                         Locale.ENGLISH,"%s: %f2. | %s", getString(R.string.distance_value), distance, ((lightdistance != -128) ? lightdistance : ""))
                 );
+
 
                 if(distance > 0 && distance < 15 || lightdistance > 0){
                     motors.Stop(false);
