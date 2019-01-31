@@ -179,13 +179,11 @@ public class AutomaticDriveActivity extends AppCompatActivity {
             }
             if(command.contains(getString(R.string.left_lowercase))){
                 speak(getString(R.string.going_left));
-                motors.RotateSyncInTachoCounts(-50, 4, -90, false);
-                motors.RotateSyncIndefinitely(50,0);
+                motors.RotateSyncInDuration(50,1000,-90,false);
             }
             if(command.contains(getString(R.string.right_lowercase))){
                 speak(getString(R.string.going_right));
-                motors.RotateSyncInTachoCounts(-50, 4, 90, false);
-                motors.RotateSyncIndefinitely(50,0);
+                motors.RotateSyncInDuration(50,1000,90,false);
             }
             if(command.contains(getString(R.string.down_lowercase))){
                 speak(getString(R.string.going_down));
