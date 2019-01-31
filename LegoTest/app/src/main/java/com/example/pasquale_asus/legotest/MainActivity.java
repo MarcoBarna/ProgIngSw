@@ -86,14 +86,14 @@ public class MainActivity extends AppCompatActivity
         language = Locale.getDefault().getLanguage();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (language != Locale.getDefault().getLanguage()) {
-            language = Locale.getDefault().getLanguage();
-            recreate();
-        }
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        if (language != Locale.getDefault().getLanguage()) {
+//            language = Locale.getDefault().getLanguage();
+//            recreate();
+//        }
+//    }
 
     @Override
     protected void onDestroy() {
