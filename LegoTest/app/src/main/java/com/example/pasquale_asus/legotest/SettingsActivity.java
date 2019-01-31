@@ -121,9 +121,10 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        RadioButton radioButton1 = dialog.findViewById(R.id.language_ita);
-        RadioButton radioButton2 = dialog.findViewById(R.id.language_en);
-        radioButton1.setOnClickListener(new View.OnClickListener() {
+        RadioButton radioButtonIT = dialog.findViewById(R.id.language_ita);
+        RadioButton radioButtonEN = dialog.findViewById(R.id.language_en);
+
+        radioButtonIT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setLanguage("it");
@@ -131,7 +132,7 @@ public class SettingsActivity extends AppCompatActivity {
                 recreate();
             }
         });
-        radioButton2.setOnClickListener(new View.OnClickListener() {
+        radioButtonEN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setLanguage("en");
@@ -139,7 +140,16 @@ public class SettingsActivity extends AppCompatActivity {
                 recreate();
             }
         });
-        
+        switch (Locale.getDefault().getLanguage()){
+            case "en":
+                radioButtonEN.setChecked(true);
+                break;
+            case "it":
+                radioButtonIT.setChecked(true);
+                break;
+            default:
+                break;
+        }
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
