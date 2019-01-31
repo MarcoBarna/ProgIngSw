@@ -3,6 +3,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.appinventor.components.runtime.BluetoothClient;
+
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     private ImageButton manualMode, automaticmode, helpmode, settingsmode;
     public TextView statusBattery, osfirmware;
     public static String MacAddress;
+    String language;
 
 
     @SuppressLint("ResourceType")
@@ -79,6 +83,16 @@ public class MainActivity extends AppCompatActivity
 
         osfirmware = findViewById(R.id.osfirmware);
         //disableUserSections();
+        language = Locale.getDefault().getLanguage();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (language != Locale.getDefault().getLanguage()) {
+            language = Locale.getDefault().getLanguage();
+            recreate();
+        }
     }
 
     @Override
