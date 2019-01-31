@@ -26,14 +26,14 @@ public class EV3 {
                 output_ports = {"A", "B", "C", "D"};
 
         private static String
-                default_gyro_port = input_ports[3],
-                default_color_port = input_ports[0],
+                default_gyro_port = input_ports[1],
+                default_color_port = input_ports[3],
                 default_touch_port = input_ports[0],
                 default_ultrasonic_port = input_ports[2],
 
                 default_motor1_port = output_ports[2],
                 default_motor2_port = output_ports[1],
-                default_motor3_port = output_ports[3];
+                default_motor3_port = output_ports[0];
 
         /*public String
                 motor1_port = default_motor1_port,
