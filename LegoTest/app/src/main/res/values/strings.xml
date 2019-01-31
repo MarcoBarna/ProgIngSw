@@ -27,15 +27,18 @@
 
         <!--VoiceCommands-->
         <string name="go_lowercase">go</string>
-        <string name="going_up">i\'m going up</string>
-        <string name="left_lowercase">left</string>
-        <string name="going_left">i\'m going to left</string>
-        <string name="right_lowercase">right</string>
-        <string name="going_right">i\'m going to right</string>
-        <string name="down_lowercase">down</string>
-        <string name="going_down">i\'m going down</string>
-        <string name="three_sixty">three hundred sixty</string>
-        <string name="im_crazy">i\'m crazy</string>
+            <string name="forward_lowercase">forward</string>
+                <string name="going_forward">i\'m going forward</string>
+            <string name="backwards_lowercase">backwards</string>
+                <string name="going_backwards">i\'m going backwards</string>
+        <string name="turn_lowercase">turn</string>
+            <string name="left_lowercase">left</string>
+                <string name="turning_left">i\'m turning left</string>
+            <string name="right_lowercase">right</string>
+                <string name="turning_right">i\'m turning right</string>
+        <string name="do_lowercase">do</string>
+            <string name="three_sixty">three hundred sixty</string>
+                <string name="im_crazy">i\'m crazy</string>
         <string name="stop_lowercase">stop</string>
 
     <!--BtPairedActivity-->

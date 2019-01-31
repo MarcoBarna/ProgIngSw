@@ -168,30 +168,34 @@ public class AutomaticDriveActivity extends AppCompatActivity {
             });
         }
     }
-    private void processResult(String command){
+    private void processResult(String command) {
         command = command.toLowerCase();
         debug.setText(command);
         debug.setVisibility(View.VISIBLE);
-        if(command.contains(getString(R.string.go_lowercase))){
-            if(command.contains(getString(R.string.up))) {
-                speak(getString(R.string.going_up));
-                motors.RotateSyncIndefinitely(50,0);
+        if (command.contains(getString(R.string.go_lowercase))) {
+            if (command.contains(getString(R.string.forward_lowercase))) {
+                speak(getString(R.string.going_forward));
+                motors.RotateSyncIndefinitely(50, 0);
             }
+            if (command.contains(getString(R.string.backwards_lowercase))) {
+                speak(getString(R.string.going_backwards));
+                motors.RotateSyncIndefinitely(-50, 0);
+            }
+        }
+        if(command.contains(getString(R.string.turn_lowercase))){
             if(command.contains(getString(R.string.left_lowercase))){
-                speak(getString(R.string.going_left));
+                speak(getString(R.string.turning_left));
                 motors.RotateSyncInDuration(50,1000,-90,false);
             }
             if(command.contains(getString(R.string.right_lowercase))){
-                speak(getString(R.string.going_right));
+                speak(getString(R.string.turning_right));
                 motors.RotateSyncInDuration(50,1000,90,false);
             }
-            if(command.contains(getString(R.string.down_lowercase))){
-                speak(getString(R.string.going_down));
-                motors.RotateSyncIndefinitely(-50, 0);
-            }
-            if(command.contains(getString(R.string.three_sixty))){
+        }
+        if(command.contains(getString(R.string.do_lowercase))) {
+            if (command.contains(getString(R.string.three_sixty))) {
                 speak(getString(R.string.im_crazy));
-                motors.RotateSyncIndefinitely(50,90);
+                motors.RotateSyncIndefinitely(50, 90);
             }
         }
         if(command.contains(getString(R.string.stop_lowercase))){
