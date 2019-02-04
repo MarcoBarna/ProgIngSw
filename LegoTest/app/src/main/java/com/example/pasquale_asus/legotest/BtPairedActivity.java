@@ -20,6 +20,7 @@ import com.google.appinventor.components.runtime.ListPicker;
 import java.util.ArrayList;
 
 public class BtPairedActivity extends AppCompatActivity {
+    private EV3 ev3;
     private BluetoothClient bluetoothClient;
     private TextView bluetoothoff, title;
 
@@ -28,18 +29,18 @@ public class BtPairedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bt_paired);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        ev3 = EV3.getEV3();
         bluetoothoff = findViewById(R.id.bluetoothoff);
 //        title = findViewById(R.id.listTitle);
         bluetoothoff.setVisibility(View.INVISIBLE);
         final ListView btList= findViewById(R.id.bt_list);
-        bluetoothClient = MainActivity.ev3.bluetoothClient;
+        bluetoothClient = ev3.bluetoothClient;
         final ArrayList<String> arrayList = new ArrayList<>(bluetoothClient.AddressesAndNames());
         if(arrayList.size() == 0) {
             bluetoothoff.setVisibility(View.VISIBLE);
             btList.setVisibility(View.INVISIBLE);
         }
-//        for (int i = 0; i < 10; i++)
-//            arrayList.add("bloatAddress"+(i+1));
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
         btList.setAdapter(arrayAdapter);
         btList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

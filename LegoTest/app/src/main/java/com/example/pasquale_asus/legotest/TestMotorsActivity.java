@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import com.google.appinventor.components.runtime.Ev3Motors;
 
 public class TestMotorsActivity extends AppCompatActivity{
+    private EV3 ev3;
     private Ev3Motors motors, submotor;
     private FloatingActionButton baseforcursor;
     private Point size = null;
@@ -26,19 +27,20 @@ public class TestMotorsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_motors);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        ev3 = EV3.getEV3();
 
         size = new Point();
         ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
 
-        motors = MainActivity.ev3.outputs.motor2;
+        motors = ev3.outputs.motor2;
         //motors.MotorPorts("BC");
-        motors.MotorPorts(MainActivity.ev3.outputs.motor1.MotorPorts() +
-                                        MainActivity.ev3.outputs.motor2.MotorPorts());
-        motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
+        motors.MotorPorts(ev3.outputs.motor1.MotorPorts() +
+                                        ev3.outputs.motor2.MotorPorts());
+        motors.BluetoothClient(ev3.bluetoothClient);
 
-        submotor = MainActivity.ev3.outputs.motor3;
-        submotor.MotorPorts(MainActivity.ev3.outputs.motor3.MotorPorts() + "D");
-        submotor.BluetoothClient(MainActivity.ev3.bluetoothClient);
+        submotor = ev3.outputs.motor3;
+        submotor.MotorPorts(ev3.outputs.motor3.MotorPorts() + "D");
+        submotor.BluetoothClient(ev3.bluetoothClient);
 
 
         baseforcursor = findViewById(R.id.floatingActionButton2);

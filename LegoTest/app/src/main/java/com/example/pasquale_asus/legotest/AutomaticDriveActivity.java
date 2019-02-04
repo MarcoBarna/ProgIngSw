@@ -23,6 +23,7 @@ import java.util.Locale;
 
 public class AutomaticDriveActivity extends AppCompatActivity {
     private android.widget.Button firstaction, stopButton, secondaction,thirdaction;
+    EV3 ev3;
     private Ev3Motors motors;
     private Ev3UltrasonicSensor ultrasonicSensor;
     private Ev3ColorSensor colorSensor;
@@ -40,6 +41,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_automatic_drive);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        ev3 = EV3.getEV3();
         initializeMotors();
         handler = new Handler();
         debug = findViewById(R.id.textView7);
@@ -253,17 +255,17 @@ public class AutomaticDriveActivity extends AppCompatActivity {
     }
 
     public void initializeMotors(){
-        motors = MainActivity.ev3.outputs.motor2;
-        motors.MotorPorts(MainActivity.ev3.outputs.motor1.MotorPorts()
-                            + MainActivity.ev3.outputs.motor2.MotorPorts());
-        motors.BluetoothClient(MainActivity.ev3.bluetoothClient);
-        ultrasonicSensor = MainActivity.ev3.inputs.ultrasonicSensor;
-        ultrasonicSensor.SensorPort(MainActivity.ev3.inputs.ultrasonicSensor.SensorPort());
-        ultrasonicSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
-        colorSensor = MainActivity.ev3.inputs.colorSensor;
-        colorSensor.SensorPort(MainActivity.ev3.inputs.colorSensor.SensorPort());
+        motors = ev3.outputs.motor2;
+        motors.MotorPorts(ev3.outputs.motor1.MotorPorts()
+                            + ev3.outputs.motor2.MotorPorts());
+        motors.BluetoothClient(ev3.bluetoothClient);
+        ultrasonicSensor = ev3.inputs.ultrasonicSensor;
+        ultrasonicSensor.SensorPort(ev3.inputs.ultrasonicSensor.SensorPort());
+        ultrasonicSensor.BluetoothClient(ev3.bluetoothClient);
+        colorSensor = ev3.inputs.colorSensor;
+        colorSensor.SensorPort(ev3.inputs.colorSensor.SensorPort());
         colorSensor.Mode("reflected");
-        colorSensor.BluetoothClient(MainActivity.ev3.bluetoothClient);
+        colorSensor.BluetoothClient(ev3.bluetoothClient);
     }
     public void avoidObstacles(){
         r = new Runnable() {
@@ -335,7 +337,7 @@ public class AutomaticDriveActivity extends AppCompatActivity {
 //            public void run() {
 //                double distance = 0;
 //                try {
-//                    distance = MainActivity.ev3.inputs.readProximitySensor().get();
+//                    distance = ev3.inputs.readProximitySensor().get();
 //                } catch (InterruptedException | ExecutionException e) {
 //                    e.printStackTrace();
 //                }

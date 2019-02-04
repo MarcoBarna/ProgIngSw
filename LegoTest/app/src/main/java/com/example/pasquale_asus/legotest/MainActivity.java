@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
 {
-    public static EV3 ev3;
+    public EV3 ev3;
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
     private ImageButton manualMode, automaticmode, helpmode, settingsmode;
     public TextView statusBattery, osfirmware;
