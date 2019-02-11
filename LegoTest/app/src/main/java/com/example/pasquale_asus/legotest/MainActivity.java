@@ -11,6 +11,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.appinventor.components.runtime.BluetoothClient;
+import com.google.appinventor.components.runtime.Component;
+import com.google.appinventor.components.runtime.Ev3Commands;
+import com.google.appinventor.components.runtime.Ev3Sound;
+import com.google.appinventor.components.runtime.Ev3UI;
 
 import java.util.Locale;
 
@@ -21,6 +25,9 @@ public class MainActivity extends AppCompatActivity
     private Button buttonBluetoothConnect, buttonBluetoothDisconnect;
     private ImageButton manualMode, automaticmode, helpmode, settingsmode;
     public TextView statusBattery, osfirmware;
+    private Ev3Sound ev3Sound;
+    private Ev3UI ev3UI;
+    private Ev3Commands ev3Commands;
     public static String MacAddress;
     String language;
 
@@ -32,7 +39,6 @@ public class MainActivity extends AppCompatActivity
         ev3 = EV3.getEV3();
         getWindow().setWindowAnimations(R.anim.fadein);
         statusBattery = findViewById(R.id.statusBattery);
-
         buttonBluetoothConnect = findViewById(R.id.buttonBluetoothConnect);
         registerForContextMenu(buttonBluetoothConnect);
         buttonBluetoothConnect.setOnClickListener(new View.OnClickListener() {
@@ -146,17 +152,39 @@ public class MainActivity extends AppCompatActivity
             MacAddress = macAddressToConnect;
             ev3.bluetoothClient.Connect(macAddressToConnect);
             if(ev3.bluetoothClient.IsConnected()){
+                ev3Commands = ev3.extra.commands;
+                ev3Commands.BluetoothClient(ev3.bluetoothClient);
+
+                ev3Sound = ev3.extra.sound;
+                ev3Sound.BluetoothClient(ev3.bluetoothClient);
+
+                ev3UI = ev3.extra.userInterface;
+                ev3UI.BluetoothClient(ev3.bluetoothClient);
+
+              // ev3Sound.PlayTone(30,800,400);
                 visibilityBtConnected();
                 activeUserSections();
                 //statusBattery.setText("Battery Level "+(int)(infoBrick.GetBatteryCurrent()*100) +"%");
-                if((int)(ev3.extra.commands.GetBatteryCurrent()*100) < 20)
+               // if((int)(ev3.extra.commands.GetBatteryCurrent()*100) < 20)
                     //  statusBattery.setTextColor(Color.RED);
-                    osfirmware.setText(ev3.extra.commands.GetHardwareVersion());
+                osfirmware.setText(getBatteryPercentage());
+                //ev3UI.FillScreen(Color.CYAN);
+                //ev3UI.DrawCircle(Component.COLOR_BLACK, 10,10,100,true);
             }
             else{
                 visibilityBtDisconnected();
             }
         }
+    }
+
+    private String getBatteryPercentage(){
+        double battery;
+        final double batteryRange = (8.3 - 5);
+        battery = ev3Commands.GetBatteryVoltage() - 5;
+        battery = battery / batteryRange * 100;
+        battery = Math.min(battery, 100);
+        battery = Math.max(battery, 0);
+        return String.format(Locale.ENGLISH,"%.0f%%", battery);
     }
     public void visibilityBtConnected(){
         statusBattery.setText("Connected");

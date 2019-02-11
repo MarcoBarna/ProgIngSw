@@ -273,11 +273,12 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 double distance = ultrasonicSensor.GetDistance();
                 int lightdistance = colorSensor.GetLightLevel();
                 debug.setText(String.format(
-                        Locale.ENGLISH,"%s: %f2. | %s", getString(R.string.distance_value), distance, ((lightdistance != -128) ? lightdistance : ""))
+                        Locale.ENGLISH,"%s: %.2f | %s", getString(R.string.distance_value), distance, ((lightdistance != -128) ? lightdistance : ""))
                 );
 
 
                 if(distance > 0 && distance < 15 || lightdistance > 0){
+                    ev3.extra.sound.PlayTone(15,500,100);
                     motors.Stop(false);
                     motors.RotateSyncIndefinitely(-50,90);
                     //motors.RotateSyncInTachoCounts(-50, 2, 90, false);

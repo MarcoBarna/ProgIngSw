@@ -7,7 +7,9 @@ import com.google.appinventor.components.runtime.Ev3ColorSensor;
 import com.google.appinventor.components.runtime.Ev3Commands;
 import com.google.appinventor.components.runtime.Ev3GyroSensor;
 import com.google.appinventor.components.runtime.Ev3Motors;
+import com.google.appinventor.components.runtime.Ev3Sound;
 import com.google.appinventor.components.runtime.Ev3TouchSensor;
+import com.google.appinventor.components.runtime.Ev3UI;
 import com.google.appinventor.components.runtime.Ev3UltrasonicSensor;
 import com.google.appinventor.components.runtime.Form;
 
@@ -54,7 +56,6 @@ public class EV3 {
         Ev3ColorSensor colorSensor;
         Ev3UltrasonicSensor ultrasonicSensor;
         Ev3GyroSensor gyroSensor;
-
         public FutureTask<Boolean> readTouchSensor(){
            Callable<Boolean> readSensor = new Callable<Boolean>(){
                @Override
@@ -103,6 +104,8 @@ public class EV3 {
     }
     public class Extra {
         Ev3Commands commands;
+        Ev3UI userInterface;
+        Ev3Sound sound;
     }
     private class ElementsEV3 extends Form {}
     private static EV3 ev3 = null;
@@ -121,6 +124,8 @@ public class EV3 {
         elementsEV3 = new ElementsEV3();
         handler = new Handler();
         extra.commands = new Ev3Commands(elementsEV3);
+        extra.userInterface = new Ev3UI(elementsEV3);
+        extra.sound = new Ev3Sound(elementsEV3);
         (outputs.motor1 = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor1_port);
         (outputs.motor2 = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor2_port);
         (outputs.motor3 = new Ev3Motors(elementsEV3)).MotorPorts(Ports.default_motor3_port);
@@ -128,6 +133,7 @@ public class EV3 {
         (inputs.colorSensor = new Ev3ColorSensor(elementsEV3)).SensorPort(Ports.default_color_port);
         (inputs.ultrasonicSensor = new Ev3UltrasonicSensor(elementsEV3)).SensorPort(Ports.default_ultrasonic_port);
         (inputs.gyroSensor = new Ev3GyroSensor(elementsEV3)).SensorPort(Ports.default_gyro_port);
+
         bluetoothClient = new BluetoothClient(elementsEV3);
     }
 
