@@ -277,14 +277,14 @@ public class AutomaticDriveActivity extends AppCompatActivity {
                 );
 
 
-                if(distance > 0 && distance < 15 || lightdistance > 0){
+                if(distance > 0 && distance < 25 || lightdistance > 0){
                     ev3.extra.sound.PlayTone(15,500,100);
                     motors.Stop(false);
                     motors.RotateSyncIndefinitely(-50,90);
                     //motors.RotateSyncInTachoCounts(-50, 2, 90, false);
                 }
                 else {
-                    motors.RotateSyncIndefinitely(100, 0);
+                    motors.RotateSyncIndefinitely(70, 0);
                 }
                 if (!handlerStop)
                     handler.postDelayed(this, 200);
